@@ -1,0 +1,38 @@
+{
+  "name": "MarvelAPI",
+  "version": "1.0.0",
+  "description": "",
+  "main": "_app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "firebase": "^8.2.8",
+    "next": "^10.0.7",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "sass": "^1.32.8",
+    "tailwind-react-ui": "^0.8.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.2.4",
+    "postcss": "^8.2.6",
+    "tailwindcss": "^2.0.3"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agomez99/MarvelAPI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agomez99/MarvelAPI/issues"
+  },
+  "homepage": "https://github.com/agomez99/MarvelAPI#readme"
+}
