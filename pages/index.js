@@ -17,7 +17,7 @@ const HomePage = ({ posts }) => (
 </Head>
       <div className={styles.HomePage}>
         <h1>Blog Posts</h1>
-        <Row gutter>
+        <Row gutter style={{display:"flex", flexDirection:'row'}} >
           {posts.slice(0, 5).map((post) => (
             <Card>
             <article key={post.slug}>
