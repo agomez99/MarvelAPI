@@ -4,6 +4,7 @@ import styles from '@styles/create.module.scss';
 import { createPost } from '@lib/firebase'; // this is new
 import { useAuth } from '@contexts/auth';
 import { Layout } from '@components';
+import { TextInput, Button } from 'tailwind-react-ui'
 
 const CreatePage = () => {
   const router = useRouter(); // this is new
@@ -89,8 +90,8 @@ const CreatePage = () => {
       <form onSubmit={handleSubmit}>
         <h1>Create a new post</h1>
         <div>
-          <label htmlFor="title">Name</label>
-          <input
+          <label htmlFor="name">Name</label>
+          <TextInput
             id="name"
             type="text"
             value={formValues.name}
@@ -99,7 +100,7 @@ const CreatePage = () => {
         </div>
         <div>
           <label htmlFor="slug">Slug</label>
-          <input
+          <TextInput
             id="slug"
             type="text"
             value={formValues.slug}
@@ -108,7 +109,7 @@ const CreatePage = () => {
         </div>
         <div>
           <label htmlFor="coverImage">Cover Image URL</label>
-          <input
+          <TextInput
             id="image"
             type="text"
             value={formValues.image}
@@ -117,7 +118,7 @@ const CreatePage = () => {
         </div>
         <div>
           <label htmlFor="coverImage">Cover2 Image URL</label>
-          <input
+          <TextInput
             id="image2"
             type="text"
             value={formValues.image2}
@@ -126,7 +127,7 @@ const CreatePage = () => {
         </div>
         <div>
           <label htmlFor="coverImageAlt">Cover Image Alt</label>
-          <input
+          <TextInput
             id="imageAlt"
             type="text"
             value={formValues.coverimageAlt}
@@ -135,7 +136,7 @@ const CreatePage = () => {
         </div>
         <div>
           <label htmlFor="content">Bio</label>
-          <textarea
+          <textarea className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" rows="4"
             id="bio"
             value={formValues.bio}
             onChange={handleChange}

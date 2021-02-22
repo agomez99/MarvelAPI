@@ -1,8 +1,24 @@
 .PostPage {
+  li{
+    width:50%;
+    list-style: none;
+  }
+  
+div{
+  margin:5%;
+  background-color: rgb(255, 255, 255);
+}
+
+  p{
+    font-size: 1.5rem;
+    width: 100%;
+ 
+  }
+
     img {
       max-width: 100%;
       border-radius: 12px;
-      border: 1px solid black;
+      border: 1px solid rgb(0, 0, 0);
     }
   
     h1 {
@@ -18,4 +34,5 @@
       color: black;
     }
   }
-  
+
+ 

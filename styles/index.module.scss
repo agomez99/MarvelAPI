@@ -1,54 +1,61 @@
 // These styles go with the index page.
 
 .HomePage {
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 24px;
-  
-    h1 {
-      margin-bottom: 32px;
-    }
-  img{
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+
+  h1 {
+    margin-bottom: 32px;
+  }
+  h2 {
+    font-size: 35px;
+    text-align: center;
+  }
+  img {
     width: 100%;
     height: auto;
-
   }
-  .main-col{
-    display:block;
+  .main-col {
+    display: block;
     flex-direction: row;
   }
-  
-    article {
-      border: 1px solid black;
-      border-radius: 12px;
-      overflow: hidden;
-  
-      &:not(:last-child) {
-        margin-bottom: 10px;
+  h2 {
+    margin-top: 0;
+    text-transform: uppercase;
+    color:white;
+  }
+  article {
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 5px;
+    overflow: hidden;
+    background-color: tomato;
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+
+    div {
+      padding: 16px;
+
+      h2 {
+        margin-top: 0;
+        margin-bottom: 4px;
       }
- 
-      div {
-        padding: 16px;
-  
-        h2 {
-          margin-top: 0;
-          margin-bottom: 4px;
-        }
-  
-        span {
-          display: block;
-          margin-bottom: 12px;
-        }
-  
-        p {
-          margin: 0;
-          margin-bottom: 16px;
-          text-align: center;
-        }
-        a{
-          color:#1a73e8;
-        }
+
+      span {
+        display: block;
+        margin-bottom: 12px;
+      }
+
+      p {
+        margin: 0;
+        margin-bottom: 16px;
+        text-align: center;
+      }
+      a {
+        color: #1a73e8;
       }
     }
   }
-  
+}

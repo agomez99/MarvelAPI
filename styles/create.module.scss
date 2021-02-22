@@ -2,10 +2,12 @@
     max-width: 100%;
     margin: 0 auto;
     padding: 24px;
-    background-color: rgb(129, 32, 32);
-  
+    margin-top: 20%;
     form {
       padding: 16px;
+      border-color: slategray;
+      background-color:rgb(104, 102, 102);
+      border-width: 2px;
   
       h1 {
         margin-top: 0;
@@ -14,19 +16,28 @@
   
       input {
         margin-bottom: 16px;
+        border-color: slategray;
+        border-width: 1px;
       }
   
       textarea {
-        height: 300px;
+        height: 200px;
+        border-color: slategray;
+        border-width: 1px;
       }
   
       button {
         display: block;
+        background-color: rgb(255, 255, 255);
+        color:rgb(250, 9, 9);
+        border-radius: 10%;
+        padding:15px;
         margin-right: 0;
         margin-left: auto;
         margin-top: 24px;
-        background-color:white;
+      }
+      label,h1{
+        font-size: 30px;
       }
     }
   }
-  
