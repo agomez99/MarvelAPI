@@ -37,7 +37,7 @@ const PostPage = ({ post }) => {
 
   return (
     <Layout>
-      <div className={styles.PostPage}>
+      <div>
         <Card style={{ backgroundColor: "rgb(226, 235, 175)", padding: "10px" }}>
           <Row>
             <div style={{ backgroundColor: "rgb(74, 147, 230)", width: "100%", margin: "0px 0px", marginBottom: "5%" }}>
@@ -45,13 +45,15 @@ const PostPage = ({ post }) => {
             </div>
           </Row>
           <Row>
-            <Col w="1/4" bg="grey-light" text="center" p="4">
-              {/* <img src={post.image} alt={post.imageAlt} /> */}
+            <Col w="1/2" bg="grey-light" text="center" p="4" >
+            <div style={{display:"flex"}}>
+               <img src={post.image} alt={post.imageAlt} /> 
               <img src={post.image2} alt={post.imageAlt} />
-
+            </div>
             </Col>
-            <Col w="1/2">
-              <HorizontalBar
+            <Col w="1/2" >
+            <div style={{position:"relative"}}>
+              <HorizontalBar 
                 data={data}
                 options={{
                   scales: {
@@ -80,6 +82,7 @@ const PostPage = ({ post }) => {
                 }
 
               />
+              </div>
             </Col>
           </Row>
           <Row>

@@ -15,29 +15,30 @@ const HomePage = ({ posts }) => (
       <Head>
         <title>Cardverse</title>
         <link rel="shortcut icon" href="/favicon.ico" />
-
+        <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+        <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet"></link>
       </Head>
       <div className="hdr">
         <h1>Characters</h1>
-
         <Row gutter style={{ display: "flex", flexDirection: 'row' }} >
           {posts.slice(0, 12).map((post) => (
             <Card>
 
               <article key={post.slug}>
 
-                <a href={`/post/${post.slug}`}>
-                  <h2>{post.name}</h2></a>
-            <div className="flip-card">
-              <div className="flip-card-inner">
-                 <div className="flip-card-front">
-                    <img src={post.image} alt={post.imageAlt} />
+            <a href={`/post/${post.slug}`}>
+              <h2 style={{ color: "white", fontSize: "2.3rem", fontFamily:"Bangers" }}>{post.name}</h2>
+            </a>
+                <div className="flip-card">
+                  <div className="flip-card-inner">
+                    <div className="flip-card-front">
+                      <img src={post.image} alt={post.imageAlt} />
                     </div>
-                  <div className="flip-card-back">
-                    <img src={post.image2} alt={post.imageAlt} />
+                    <div className="flip-card-back">
+                      <img src={post.image2} alt={post.imageAlt} />
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
               </article>
             </Card>
 
