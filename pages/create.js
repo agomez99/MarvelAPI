@@ -17,6 +17,12 @@ const CreatePage = () => {
     imageAlt:'',
     name: '',
     slug: ' ',
+    powerStrength:' ',
+    powerSpeed: ' ' ,
+    powerAgility: ' ',
+    powerStamina: ' ',
+    powerDurability: ' ',
+    powerIntelligence: ' ',
   });
   const [isLoading, setIsLoading] = useState(false); // this is new
   const [user, userLoading] = useAuth();
@@ -108,7 +114,7 @@ const CreatePage = () => {
           />
         </div>
         <div>
-          <label htmlFor="coverImage">Cover Image URL</label>
+          <label htmlFor="image">Cover Image URL</label>
           <TextInput
             id="image"
             type="text"
@@ -117,7 +123,7 @@ const CreatePage = () => {
           />
         </div>
         <div>
-          <label htmlFor="coverImage">Cover2 Image URL</label>
+          <label htmlFor="image2">Cover2 Image URL</label>
           <TextInput
             id="image2"
             type="text"
@@ -126,11 +132,61 @@ const CreatePage = () => {
           />
         </div>
         <div>
-          <label htmlFor="coverImageAlt">Cover Image Alt</label>
+          <label htmlFor="imageAlt">Cover Image Alt</label>
           <TextInput
             id="imageAlt"
             type="text"
             value={formValues.coverimageAlt}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="powerStrength">Strength</label>
+          <TextInput
+            id="powerStrength"
+            type="text"
+            value={formValues.powerStrength}
+            onChange={handleChange}
+          />
+        </div>        <div>
+          <label htmlFor="powerSpeed">Speed</label>
+          <TextInput
+            id="powerSpeed"
+            type="text"
+            value={formValues.powerSpeed}
+            onChange={handleChange}
+          />
+        </div>        <div>
+          <label htmlFor="powerAgility">Agility</label>
+          <TextInput
+            id="powerAgility"
+            type="text"
+            value={formValues.powerAgility}
+            onChange={handleChange}
+          />
+        </div>        <div>
+          <label htmlFor="powerStamina">Stamina</label>
+          <TextInput
+            id="powerStamina"
+            type="text"
+            value={formValues.powerStamina}
+            onChange={handleChange}
+          />
+        </div>        <div>
+          <label htmlFor="powerDurability">Durability</label>
+          <TextInput
+            id="powerDurability"
+            type="text"
+            value={formValues.powerDurability}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="powerIntelligence">Intelligence</label>
+          <TextInput
+            id="powerIntelligence"
+            type="text"
+            value={formValues.powerIntelligence}
             onChange={handleChange}
           />
         </div>

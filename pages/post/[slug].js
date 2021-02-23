@@ -17,18 +17,19 @@ const PostPage = ({ post }) => {
     return null;
   }
 
-  const state = {
+  const data = {
 
     labels: ['STRENGTH', 'SPEED', 'AGILITY',
       'STAMINA', 'DURABILITY', 'INTELLIGENCE'],
     datasets: [
       {
         label: 'POWER RATINGS',
-        backgroundColor: 'pink',
+        backgroundColor: 'red',
         borderColor: 'black',
         color: 'white',
         borderWidth: 3,
-        data: [65, 59, 80, 81, 56, 50],
+        data: [post.powerStrength, post.powerSpeed, post.powerAgility, post.powerStamina, post.powerDurability,  post.powerIntelligence],
+        barPercentage: 1.2,
 
       }
     ]
@@ -51,8 +52,17 @@ const PostPage = ({ post }) => {
             </Col>
             <Col w="1/2">
               <HorizontalBar
-                data={state}
+                data={data}
                 options={{
+                  scales: {
+                     xAxes:[{
+                      ticks: {
+                        beginAtZero: true,
+                      min:0,
+                      max:7,                      
+                      }
+                     }],
+                  },
                   title: {
                     display: true,
                     text: 'POWER RATINGS',

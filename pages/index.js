@@ -7,86 +7,40 @@ import { getPosts } from '@lib/firebase';
 import { Layout } from '@components';
 import { Col, Row, Card } from 'tailwind-react-ui'
 import Head from 'next/head';
+
 const HomePage = ({ posts }) => (
+
   <div>
     <Layout>
-<Head>
-  <title>Cardverse</title>
-  <link rel="shortcut icon" href="/favicon.ico" />
+      <Head>
+        <title>Cardverse</title>
+        <link rel="shortcut icon" href="/favicon.ico" />
 
-</Head>
-      <div className={styles.HomePage}>
-        <h1>Blog Posts</h1>
-        <Row gutter style={{display:"flex", flexDirection:'row'}} >
-          {posts.slice(0, 5).map((post) => (
+      </Head>
+      <div className="hdr">
+        <h1>Characters</h1>
+
+        <Row gutter style={{ display: "flex", flexDirection: 'row' }} >
+          {posts.slice(0, 12).map((post) => (
             <Card>
-            <article key={post.slug}>
-              <a href={`/post/${post.slug}`}>
-                <h2>{post.name}</h2></a>
-          <img src={post.image} alt={post.imageAlt} />
-                {/* <img src={post.image2} alt={post.imageAlt} /> */}
 
-                <div>
-                  {/* <p
-              dangerouslySetInnerHTML={{
-                __html: `${post.bio.substring(0, 200)}...`,
-              }}
-            >
-            </p>*/}
-                  {/* <a href={`/post/${post.slug}`}>Continue Reading</a> */}
-
-                  {/* <p>Affiliations: {post.affiliations}</p>  */}
-                </div>
-              </article>
-            </Card>
-          ))}
-        </Row>
-        <Row gutter>
-          {posts.slice(5, 10).map((post) => (
-            <Card>
               <article key={post.slug}>
-              <a href={`/post/${post.slug}`}>
-                <h2>{post.name}</h2></a>
-          <img src={post.image} alt={post.imageAlt} />
-                {/* <img src={post.image2} alt={post.imageAlt} /> */}
 
-                <div>
-                  {/* <p
-              dangerouslySetInnerHTML={{
-                __html: `${post.bio.substring(0, 200)}...`,
-              }}
-            >
-            </p>*/}
-                  {/* <a href={`/post/${post.slug}`}>Continue Reading</a> */}
-
-                  {/* <p>Affiliations: {post.affiliations}</p>  */}
+                <a href={`/post/${post.slug}`}>
+                  <h2>{post.name}</h2></a>
+            <div className="flip-card">
+              <div className="flip-card-inner">
+                 <div className="flip-card-front">
+                    <img src={post.image} alt={post.imageAlt} />
+                    </div>
+                  <div className="flip-card-back">
+                    <img src={post.image2} alt={post.imageAlt} />
                 </div>
+              </div>
+            </div>
               </article>
             </Card>
-          ))}
-        </Row>
-        <Row gutter>
-          {posts.slice(11, 15).map((post) => (
-            <Card>
-              <article key={post.slug}>
-                <h2>{post.name}</h2>
-                <a href={`/post/${post.slug}`}>Continue Reading
-          <img src={post.image} alt={post.imageAlt} /></a>
-                {/* <img src={post.image2} alt={post.imageAlt} /> */}
 
-                <div>
-                  {/* <p
-              dangerouslySetInnerHTML={{
-                __html: `${post.bio.substring(0, 200)}...`,
-              }}
-            >
-            </p>*/}
-                  {/* <a href={`/post/${post.slug}`}>Continue Reading</a> */}
-
-                  {/* <p>Affiliations: {post.affiliations}</p>  */}
-                </div>
-              </article>
-            </Card>
           ))}
         </Row>
       </div>

@@ -69,7 +69,7 @@ const EditPage = ({ post }) => {
             />
           </div>
           <div>
-            <label htmlFor="coverImage">url slug: </label>
+            <label htmlFor="slug">url slug: </label>
             <input
               id="slug"
               type="text"
@@ -95,6 +95,59 @@ const EditPage = ({ post }) => {
               onChange={handleChange}
             />
           </div>
+
+          <div>
+          <label htmlFor="coverImageAlt">Strength</label>
+          <input
+            id="powerStrength"
+            type="text"
+            value={values.powerStrength}
+            onChange={handleChange}
+          />
+        </div>       
+         <div>
+          <label htmlFor="powerSpeed">Speed</label>
+          <input
+            id="powerSpeed"
+            type="text"
+            value={values.powerSpeed}
+            onChange={handleChange}
+          />
+        </div>        <div>
+          <label htmlFor="powerAgility">Agility</label>
+          <input
+            id="powerAgility"
+            type="text"
+            value={values.powerAgility}
+            onChange={handleChange}
+          />
+        </div>        <div>
+          <label htmlFor="powerStamina">Stamina</label>
+          <input
+            id="powerStamina"
+            type="text"
+            value={values.powerStamina}
+            onChange={handleChange}
+          />
+        </div>        <div>
+          <label htmlFor="powerDurability">Durability</label>
+          <input
+            id="powerDurability"
+            type="text"
+            value={values.powerDurability}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="powerIntelligence">Intelligence</label>
+          <input
+            id="powerIntelligence"
+            type="text"
+            value={values.powerIntelligence}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
           <div>
             <label htmlFor="bio">Bio</label>
             <textarea
@@ -104,6 +157,7 @@ const EditPage = ({ post }) => {
               onChange={handleChange}
             />
           </div>
+
           <div>
             <label htmlFor="dyn">Did You Know?</label>
             <textarea
@@ -112,6 +166,7 @@ const EditPage = ({ post }) => {
               value={values.dyn}
               onChange={handleChange}
             />
+          </div>
           </div>
           <button type="submit" disabled={isLoading}>
             {isLoading ? 'Updating...' : 'Update'}
