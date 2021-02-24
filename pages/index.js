@@ -24,7 +24,6 @@ const HomePage = ({ posts }) => (
       <div className="hdr">
         <Row gutter  >
           {posts.slice(0, 100).map((post) => (
-            <Card>
 
               <article key={post.slug}>
 
@@ -42,7 +41,6 @@ const HomePage = ({ posts }) => (
                   </div>
                 </div>
               </article>
-            </Card>
 
           ))}
         </Row>
