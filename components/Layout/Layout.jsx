@@ -3,9 +3,11 @@ import { useAuth } from '@contexts/auth';
 import styles from './Layout.module.scss';
 import "tailwindcss/tailwind.css";
 import { FillButton } from 'tailwind-react-ui'
+import { useRouter } from 'next/router'
 
 const Layout = ({ children }) => {
   const [user] = useAuth();
+  const router = useRouter()
 
   return (
     <div className={styles.Layout}>
@@ -15,7 +17,13 @@ const Layout = ({ children }) => {
         </span>
         {user && (
           <span>
-            <FillButton  onClick={() => signOut()}>Sign Out</FillButton>
+            <FillButton
+              onClick={() => {
+                router.push({
+                  pathname: '/create',
+                })
+              }}>Create</FillButton>
+            <FillButton onClick={() => signOut()}>Sign Out</FillButton>
           </span>
         )}
       </nav>

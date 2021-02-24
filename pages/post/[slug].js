@@ -48,12 +48,13 @@ const PostPage = ({ post }) => {
             <Col w="1/2" bg="grey-light" text="center" p="4" >
             <div style={{display:"flex"}}>
                <img src={post.image} alt={post.imageAlt} /> 
-              <img src={post.image2} alt={post.imageAlt} />
+              {/* <img src={post.image2} alt={post.imageAlt} /> */}
             </div>
             </Col>
             <Col w="1/2" >
-            <div style={{position:"relative"}}>
-              <HorizontalBar 
+            
+            <div style={{width:"100%", margin:"20px auto"}}>
+              <HorizontalBar style={{display:"flex"}}
                 data={data}
                 options={{
                   scales: {

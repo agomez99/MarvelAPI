@@ -13,15 +13,15 @@ const HomePage = ({ posts }) => (
   <div>
     <Layout>
       <Head>
-        <title>Cardverse</title>
+        <title >Cardverse</title>
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.gstatic.com"></link>
         <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet"></link>
       </Head>
       <div className="hdr">
-        <h1>Characters</h1>
+        <h1 style={{ color: "black", fontSize: "3.5rem", fontFamily:"Bangers" }}>Characters</h1>
         <Row gutter style={{ display: "flex", flexDirection: 'row' }} >
-          {posts.slice(0, 12).map((post) => (
+          {posts.slice(0, 100).map((post) => (
             <Card>
 
               <article key={post.slug}>

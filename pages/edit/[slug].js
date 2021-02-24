@@ -4,6 +4,7 @@ import { getPostBySlug, updatePost } from '@lib/firebase';
 import { useAuth } from '@contexts/auth';
 import { Layout } from '@components';
 import styles from '@styles/create.module.scss';
+import { TextInput, Button } from 'tailwind-react-ui'
 
 const EditPage = ({ post }) => {
   const router = useRouter();
@@ -61,7 +62,7 @@ const EditPage = ({ post }) => {
           <h1>Edit For : {post.slug}</h1>
           <div>
             <label htmlFor="name">Name: </label>
-            <input
+            <TextInput
               id="name"
               type="text"
               value={values.name}
@@ -70,7 +71,7 @@ const EditPage = ({ post }) => {
           </div>
           <div>
             <label htmlFor="slug">url slug: </label>
-            <input
+            <TextInput
               id="slug"
               type="text"
               value={values.slug}
@@ -79,7 +80,7 @@ const EditPage = ({ post }) => {
           </div>
           <div>
             <label htmlFor="image">Cover Image Alt</label>
-            <input
+            <TextInput
               id="image"
               type="text"
               value={values.image}
@@ -88,7 +89,7 @@ const EditPage = ({ post }) => {
           </div>
           <div>
             <label htmlFor="image2">Cover Image Alt2</label>
-            <input
+            <TextInput
               id="image2"
               type="text"
               value={values.image2}
@@ -98,7 +99,7 @@ const EditPage = ({ post }) => {
 
           <div>
           <label htmlFor="coverImageAlt">Strength</label>
-          <input
+          <TextInput
             id="powerStrength"
             type="text"
             value={values.powerStrength}
@@ -107,7 +108,7 @@ const EditPage = ({ post }) => {
         </div>       
          <div>
           <label htmlFor="powerSpeed">Speed</label>
-          <input
+          <TextInput
             id="powerSpeed"
             type="text"
             value={values.powerSpeed}
@@ -115,7 +116,7 @@ const EditPage = ({ post }) => {
           />
         </div>        <div>
           <label htmlFor="powerAgility">Agility</label>
-          <input
+          <TextInput
             id="powerAgility"
             type="text"
             value={values.powerAgility}
@@ -123,7 +124,7 @@ const EditPage = ({ post }) => {
           />
         </div>        <div>
           <label htmlFor="powerStamina">Stamina</label>
-          <input
+          <TextInput
             id="powerStamina"
             type="text"
             value={values.powerStamina}
@@ -131,7 +132,7 @@ const EditPage = ({ post }) => {
           />
         </div>        <div>
           <label htmlFor="powerDurability">Durability</label>
-          <input
+          <TextInput
             id="powerDurability"
             type="text"
             value={values.powerDurability}
@@ -140,7 +141,7 @@ const EditPage = ({ post }) => {
         </div>
         <div>
           <label htmlFor="powerIntelligence">Intelligence</label>
-          <input
+          <TextInput
             id="powerIntelligence"
             type="text"
             value={values.powerIntelligence}
@@ -149,8 +150,8 @@ const EditPage = ({ post }) => {
         </div>
         <div>
           <div>
-            <label htmlFor="bio">Bio</label>
-            <textarea
+          <label htmlFor="bio">Bio</label>
+          <textarea className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" rows="4"      
               id="bio"
               type="text"
               value={values.bio}
@@ -160,7 +161,7 @@ const EditPage = ({ post }) => {
 
           <div>
             <label htmlFor="dyn">Did You Know?</label>
-            <textarea
+            <textarea className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" rows="4"      
               id="dyn"
               type="text"
               value={values.dyn}
