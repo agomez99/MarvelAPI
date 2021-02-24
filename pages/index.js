@@ -18,9 +18,10 @@ const HomePage = ({ posts }) => (
         <link rel="preconnect" href="https://fonts.gstatic.com"></link>
         <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet"></link>
       </Head>
+              <h1 style={{ color: "black", fontSize: "3.5rem", fontFamily:"Bangers" }}>Characters</h1>
+
       <div className="hdr">
-        <h1 style={{ color: "black", fontSize: "3.5rem", fontFamily:"Bangers" }}>Characters</h1>
-        <Row gutter style={{ display: "flex" }} >
+        <Row gutter  >
           {posts.slice(0, 100).map((post) => (
             <Card>
 
