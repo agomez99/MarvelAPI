@@ -7,6 +7,7 @@ import { getPosts } from '@lib/firebase';
 import { Layout } from '@components';
 import { Col, Row, Card } from 'tailwind-react-ui'
 import Head from 'next/head';
+import "tailwindcss/tailwind.css";
 
 const HomePage = ({ posts }) => (
 
