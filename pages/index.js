@@ -20,7 +20,7 @@ const HomePage = ({ posts }) => (
       </Head>
       <div className="hdr">
         <h1 style={{ color: "black", fontSize: "3.5rem", fontFamily:"Bangers" }}>Characters</h1>
-        <Row gutter style={{ display: "flex", flexDirection: 'row' }} >
+        <Row gutter style={{ display: "flex" }} >
           {posts.slice(0, 100).map((post) => (
             <Card>
 
