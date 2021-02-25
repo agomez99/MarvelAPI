@@ -54,17 +54,20 @@ const PostPage = ({ post }) => {
             </div>
           </Row>
           <Row>
-            <Col w="1/2" bg="grey-light" text="center" p="4" >
-              <div style={{ display: "flex" }}>
-                <img src={post.image} alt={post.imageAlt} />
+            <Col w="full" bg="grey-light" text="center" p="4" >
+              <div>
+                <img src={post.image} alt={post.imageAlt}  style={{ display: "block", marginLeft:"auto", marginRight:"auto", width:"50%" }}/>
                 {/* <img src={post.image2} alt={post.imageAlt} /> */}
               </div>
 
             </Col>
-            <Col w="1/2" >
+            </Row>
+
+            <Row>
+            <Col w="full" >
 
               <div style={{ width: "100%", margin: "20px auto" }}>
-                <HorizontalBar style={{ display: "flex" }}
+                <HorizontalBar 
                   data={data}
                   options={{
                     scales: {
