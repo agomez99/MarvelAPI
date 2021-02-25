@@ -1,5 +1,5 @@
 main{
-    max-width: 100%;
+    max-width: 80%;
     margin: 0 auto;
     padding: 24px;
 }
@@ -17,13 +17,12 @@ article {
   }
 .hdr{
     text-align: center;
-    display: flex;
 }
 
 .flip-card {
     background-color: transparent;
     width: 290px;
-    height: 405px;
+    height: 450px;
     border: 1px solid #f1f1f1;
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
   }
@@ -54,7 +53,7 @@ article {
   
   /* Style the front side (fallback if image is missing) */
   .flip-card-front {
-    background-color: #bbb;
+    background-color: rgb(197, 10, 10);
     color: black;
   }
   

@@ -7,7 +7,6 @@ import { getPosts } from '@lib/firebase';
 import { Layout } from '@components';
 import { Col, Row, Card } from 'tailwind-react-ui'
 import Head from 'next/head';
-import "tailwindcss/tailwind.css";
 
 const HomePage = ({ posts }) => (
 
@@ -21,18 +20,20 @@ const HomePage = ({ posts }) => (
       </Head>
               <h1 style={{ color: "black", fontSize: "3.5rem", fontFamily:"Bangers" }}>Characters</h1>
 
-      <div className="hdr">
+      <div >
         <Row gutter  >
+        <Col className="hdr">
           {posts.slice(0, 100).map((post) => (
 
               <article key={post.slug}>
 
-            <a href={`/post/${post.slug}`}>
-              <h2 style={{ color: "white", fontSize: "2.3rem", fontFamily:"Bangers" }}>{post.name}</h2>
-            </a>
+
                 <div className="flip-card">
                   <div className="flip-card-inner">
                     <div className="flip-card-front">
+                    <a href={`/post/${post.slug}`}>
+              <h2 style={{ color: "white", fontSize: "2.3rem", fontFamily:"Bangers" }}>{post.name}</h2>
+            </a>
                       <img src={post.image} alt={post.imageAlt} />
                     </div>
                     <div className="flip-card-back">
@@ -43,6 +44,7 @@ const HomePage = ({ posts }) => (
               </article>
 
           ))}
+          </Col>
         </Row>
       </div>
 
