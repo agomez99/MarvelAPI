@@ -22,6 +22,7 @@ const HomePage = ({ posts }) => (
 
       <div >
         <Row gutter  >
+        <Col>
           {posts.slice(0, 100).map((post) => (
 
               <article key={post.slug}>
@@ -45,6 +46,7 @@ const HomePage = ({ posts }) => (
               </article>
 
           ))}
+          </Col>
         </Row>
       </div>
 
