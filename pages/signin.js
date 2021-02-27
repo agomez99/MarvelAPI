@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import { signIn } from '@lib/firebase';
 import { useAuth } from '@contexts/auth';
 import styles from '@styles/signin.module.scss';
+import {Field, Label, TextInput} from 'tailwind-react-ui';
+import { FillButton } from 'tailwind-react-ui'
 
 const SignInPage = () => {
   const router = useRouter();
@@ -49,21 +51,21 @@ const SignInPage = () => {
     <div className={styles.SignIn}>
       <form onSubmit={handleSubmit}>
         <h1>Please Sign In</h1>
-        <label htmlFor="email">Email</label>
-        <input
+        <Label htmlFor="email">Email</Label>
+        <TextInput
           id="email"
-          type="email"
+          name="email"
           value={values.email}
           onChange={handleChange}
         />
-        <label htmlFor="password">Password</label>
-        <input
+        <Label htmlFor="password">Password</Label>
+        <TextInput
           id="password"
           type="password"
           value={values.password}
           onChange={handleChange}
         />
-        <button type="submit">Sign In</button>
+        <FillButton type="submit" >Sign In</FillButton>
       </form>
     </div>
   );
