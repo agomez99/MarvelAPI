@@ -56,7 +56,7 @@ const PostPage = ({ post }) => {
           <Row>
             <Col w="full" bg="grey-light" text="center" p="4" >
               <div>
-                <img src={post.image} alt={post.imageAlt}  style={{ display: "block", marginLeft:"auto", marginRight:"auto", width:"50%" }}/>
+                <img src={post.image} alt={post.imageAlt}  style={{ display: "block", marginLeft:"auto", marginRight:"auto", height:"26rem"}}/>
                 {/* <img src={post.image2} alt={post.imageAlt} /> */}
               </div>
 
@@ -66,9 +66,11 @@ const PostPage = ({ post }) => {
             <Row>
             <Col w="full" >
 
-              <div style={{ width: "100%", margin: "20px auto" }}>
+              <div style={{ width: "60%", margin: "20px auto" }} className="chart-div">
                 <HorizontalBar 
                   data={data}
+                  width={500}
+                height={100}
                   options={{
                     scales: {
                       xAxes: [{
@@ -100,8 +102,8 @@ const PostPage = ({ post }) => {
             </Col>
           </Row>
           <Row>
-            <div style={{ backgroundColor: "white", padding: "20px" }}>
-              <p style={{ fontSize: "1.5vh" }}> {post.bio}</p>
+            <div style={{ backgroundColor: "white", padding: "20px", marginLeft:"10%", marginRight:"10%" }}>
+              <p  className="bio-p"> {post.bio}</p>
             </div>
           </Row>
 
