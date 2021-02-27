@@ -60,6 +60,16 @@ const EditPage = ({ post }) => {
       <div className={styles.EditPage}>
         <form onSubmit={handleSubmit}>
           <h1>Edit For : {post.slug}</h1>
+
+          <div>
+          <label htmlFor="id">ID#</label>
+          <TextInput
+            id="id"
+            type="text"
+            value={values.id}
+            onChange={handleChange}
+          />
+        </div>
           <div>
             <label htmlFor="name">Name: </label>
             <TextInput

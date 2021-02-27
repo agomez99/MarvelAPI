@@ -10,6 +10,7 @@ const CreatePage = () => {
   const router = useRouter(); // this is new
 
   const [formValues, setFormValues] = useState({
+    id:'',
     affiliations: '',
     bio: '',
     image: '',
@@ -95,6 +96,15 @@ const CreatePage = () => {
     <div className={styles.CreatePage}>
       <form onSubmit={handleSubmit}>
         <h1>Create a new post</h1>
+        <div>
+          <label htmlFor="id">ID#</label>
+          <TextInput
+            id="id"
+            type="number"
+            value={formValues.idnum}
+            onChange={handleChange}
+          />
+        </div>
         <div>
           <label htmlFor="name">Name</label>
           <TextInput

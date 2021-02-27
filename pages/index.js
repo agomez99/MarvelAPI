@@ -19,15 +19,11 @@ const HomePage = ({ posts }) => (
         <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet"></link>
       </Head>
               <h1 style={{ color: "black", fontSize: "3.5rem", fontFamily:"Bangers" }}>Characters</h1>
-
-      <div >
+      <div>
         <Row gutter  >
         <Col className="hdr">
           {posts.slice(0, 100).map((post) => (
-
-              <article key={post.slug}>
-
-
+              <article key={post.idnum}>
                 <div className="flip-card">
                 <a href={`/post/${post.slug}`}>
                   <div className="flip-card-inner">
@@ -41,10 +37,8 @@ const HomePage = ({ posts }) => (
                     </div>
                   </div>
                   </a>
-
                 </div>
               </article>
-
           ))}
           </Col>
         </Row>

@@ -51,6 +51,8 @@ const PostPage = ({ post }) => {
 
                 <FillButton style={{backgroundColor:"green"}}><a href={`/edit/${post.slug}`}>EDIT </a></FillButton>
               )}
+              <h1 >ID#{post.id}</h1>
+
             </div>
           </Row>
           <Row>
