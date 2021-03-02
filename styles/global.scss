@@ -10,7 +10,7 @@ article {
     border-radius: 12px;
     padding: 5px;
     overflow: hidden;
-    background-color: rgb(236, 54, 22);
+    background-color: #ED1D24;
     &:not(:last-child) {
       margin-bottom: 10px;
     }
@@ -60,7 +60,7 @@ canvas{
   
   /* Style the front side (fallback if image is missing) */
   .flip-card-front {
-    background-color: rgb(197, 10, 10);
+    background-color: #ED1D24;
     color: black;
   }
   

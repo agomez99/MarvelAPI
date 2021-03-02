@@ -13,12 +13,12 @@ const HomePage = ({ posts }) => (
   <div>
     <Layout>
       <Head>
-        <title >Cardverse</title>
+        <title>Cardverse</title>
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.gstatic.com"></link>
         <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet"></link>
       </Head>
-              <h1 style={{ color: "black", fontSize: "3.5rem", fontFamily:"Bangers" }}>Characters</h1>
+              <h1 style={{ color: "white", fontSize: "3.5rem", fontFamily:"Bangers", textAlign:"center" }}>Characters</h1>
       <div>
         <Row gutter  >
         <Col className="hdr">
