@@ -65,7 +65,7 @@ const PostPage = ({ post }) => {
             </Col>
             </Row>
 
-            <Row>
+            {/* <Row>
             <Col w="full" >
 
               <div style={{ width: "60%", margin: "20px auto" }} className="chart-div">
@@ -102,7 +102,7 @@ const PostPage = ({ post }) => {
                 />
               </div>
             </Col>
-          </Row>
+          </Row> */}
           <Row>
             <div style={{ backgroundColor: "white", padding: "20px", marginLeft:"10%", marginRight:"10%" }}>
               <p  className="bio-p"> {post.bio}</p>
@@ -110,7 +110,7 @@ const PostPage = ({ post }) => {
           </Row>
 
           <Row>
-            <div style={{ backgroundColor: "rgb(226, 235, 175)", padding: "10px", borderWidth: "2px", borderColor: "black" }}>
+            <div style={{ backgroundColor: "rgb(226, 235, 175)", padding: "10px",marginTop:"10px", borderWidth: "2px", borderColor: "black", marginLeft:"auto", marginRight:"auto" }}>
               <p style={{ fontSize: "1.5vh", fontWeight: "bold" }}>DID YOU KNOW :</p><p> {post.dyn}</p>
             </div>
           </Row>
