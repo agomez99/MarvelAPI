@@ -66,6 +66,12 @@ const SignInPage = () => {
           onChange={handleChange}
         />
         <FillButton type="submit" >Sign In</FillButton>
+        <FillButton  onClick={() => {
+                router.push({
+                  pathname: '/',
+                })
+              }}>Home</FillButton>
+
       </form>
     </div>
   );

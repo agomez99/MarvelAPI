@@ -42,23 +42,6 @@ const Layout = ({ children }) => {
         )}
       </nav>
       <main>{children}</main>
-      <nav>
-        {user && (
-          <span>
-            <FillButton onClick={() => signOut()}>Sign Out</FillButton>
-          </span>
-        )}
-        {!user && (
-          <span>
-            <FillButton
-              onClick={() => {
-                router.push({
-                  pathname: '/signin',
-                })
-              }}>Log in</FillButton>
-          </span>
-        )}
-      </nav>
     </div>
   );
 };

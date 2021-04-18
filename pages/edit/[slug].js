@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { getPostBySlug, updatePost } from '@lib/firebase';
 import { useAuth } from '@contexts/auth';
 import { Layout } from '@components';
-import styles from '@styles/create.module.scss';
+import styles from '@styles/edit.module.scss';
 import { TextInput, Button } from 'tailwind-react-ui'
 
 const EditPage = ({ post }) => {
@@ -59,7 +59,7 @@ const EditPage = ({ post }) => {
     <Layout>
       <div className={styles.EditPage}>
         <form onSubmit={handleSubmit}>
-          <h1>Edit For : {post.slug}</h1>
+          <h1 style={{textAlign:"center", fontSize:"55px"}}>Edit For : {post.slug}</h1>
 
           <div>
           <label htmlFor="id">ID#</label>
@@ -187,9 +187,9 @@ const EditPage = ({ post }) => {
             />
           </div>
           </div>
-          <button type="submit" disabled={isLoading}>
+          <Button type="submit" disabled={isLoading}>
             {isLoading ? 'Updating...' : 'Update'}
-          </button>
+          </Button>
         </form>
       </div>
     </Layout>
