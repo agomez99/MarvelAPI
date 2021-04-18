@@ -39,13 +39,13 @@ const HomePage = ({ posts }) => (
       <GoogleAnalytics />
 
       <div style={{backgroundColor:"rgba(0,0,0,0.5)", width:"100%", display:"flex",justifyContent:"center", alignItems:"center"}}>
-      <h1 style={{ color: "white", fontSize: "5.5rem", fontFamily: "Bangers", textAlign: "center" }}>Cardverse</h1>
+      <h1 style={{ color: "white", fontSize: "5.5rem", fontFamily: "Bangers", textAlign: "center", paddingRight:"15px" }}>Cardverse</h1>
         <Image src="/cardverse.png"
           alt="Picture of the author"
           width={300}
           height={300} />
       </div>
-      <h1 style={{ color: "white", fontSize: "3.5rem", fontFamily: "Bangers", textAlign: "center" }}>Characters</h1>
+      <h1 style={{marginTop:"5%", color: "white", fontSize: "3.5rem", fontFamily: "Bangers", textAlign: "center", backgroundColor:"rgba(0,0,0,0.5)",  }}>Characters</h1>
       <div>
         <Row gutter  >
           <Col className="hdr">
