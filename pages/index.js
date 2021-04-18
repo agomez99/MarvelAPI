@@ -25,14 +25,14 @@ const HomePage = ({ posts }) => (
         <meta property="og:description"
           content="Marvel Cards Series 1"
         />
-        <meta property="og:image" content="/cardverse.png"/>
+        <meta property="og:image" content="/card.png"/>
       
         <meta property="fb:app_id" content="134816985125175" />
 
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="Marvel Cardverse"/>
-        <meta name="twitter:description" content="Marver Carverse Series 1"/>
-        <meta name="twitter:image" content="/cardverse.png"/>
+        <meta name="twitter:description" content="Cardverse"/>
+        <meta name="twitter:image" content="/card.png"/>
         <meta name="twitter:card" content="summary_large_image"/>
         <GoogleAnalytics />
 
