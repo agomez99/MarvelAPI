@@ -1,39 +1,45 @@
 .Layout {
-    nav {
-      padding-left: 15px;
-      padding-right:15px;
-      background-color: #e40013;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+  nav {
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #e40013;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-      span {
-        a {
-          font-size: 1.6rem;
-          font-weight: bold;
-          color: white;
-          text-decoration: none;
-  
-          &:hover {
-            text-decoration: underline;
-          }
+    span {
+      a {
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
         }
-        button{
-          color: white;
-          background-color: purple;
-        }
+      }
+      button {
+        color: white;
+        background-color: purple;
       }
     }
- 
-    main {
-        max-width:100%;
-        margin: 0 auto;
-        padding: 24px;
-      }
-
-      article{
-        display: inline-flex;
-      }
-
   }
-  
+  footer {
+    padding: 15px;
+    background-color: #e40013;
+    text-align: center;
+
+    p {
+      color: white;
+    }
+  }
+  main {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 24px;
+  }
+
+  article {
+    display: inline-flex;
+  }
+}
