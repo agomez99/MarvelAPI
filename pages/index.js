@@ -5,10 +5,10 @@
 import styles from '@styles/index.module.scss';
 import { getPosts } from '@lib/firebase';
 import { Layout } from '@components';
-import { Col, Row, Card } from 'tailwind-react-ui'
+import { Col, Row, Card } from 'tailwind-react-ui';
 import Head from 'next/head';
-import Image from 'next/image'
-import GoogleAnalytics from "../components/googleAnalytics.js"
+import Image from 'next/image';
+//  import GoogleAnalytics from "../components/googleAnalytics";
 
 const HomePage = ({ posts }) => (
 
@@ -25,16 +25,16 @@ const HomePage = ({ posts }) => (
         <meta property="og:description"
           content="Marvel Cards Series 1"
         />
-        <meta property="og:image" content="/card.png"/>
+        <meta property="og:image" content="https://i.ibb.co/jRtDHr1/card.png"/>
       
         <meta property="fb:app_id" content="134816985125175" />
 
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="Marvel Cardverse"/>
         <meta name="twitter:description" content="Cardverse"/>
-        <meta name="twitter:image" content="/card.png"/>
+        <meta name="twitter:image" content="https://i.ibb.co/jRtDHr1/card.png"/>
         <meta name="twitter:card" content="summary_large_image"/>
-        <GoogleAnalytics />
+        {/* <GoogleAnalytics /> */}
 
       </Head>
       <div style={{backgroundColor:"rgba(0,0,0,0.5)", width:"100%", display:"flex",justifyContent:"center", alignItems:"center"}}>
