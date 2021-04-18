@@ -16,7 +16,7 @@ const HomePage = ({ posts }) => (
     <Layout>
       <Head>
         <title>Cardverse</title>
-        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/cardverse.png" />
         <link rel="preconnect" href="https://fonts.gstatic.com"></link>
         <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet"></link>
         <meta property="og:url" content="https://cardverse.vercel.app/"/>
