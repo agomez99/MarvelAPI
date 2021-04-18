@@ -16,7 +16,7 @@ export default class extends Component {
                 function gtag(){dataLayer.push(arguments);}
                 gtag("js", new Date());
 
-                gtag("config", "G-QS9XBPVCFF");`
+                gtag("config", "YOUR_MEASUREMENT_ID");`
               }}
             />
           </Head> : null
