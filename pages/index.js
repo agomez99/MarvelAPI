@@ -8,7 +8,7 @@ import { Layout } from '@components';
 import { Col, Row, Card } from 'tailwind-react-ui';
 import Head from 'next/head';
 import Image from 'next/image';
- import GoogleAnalytics from "../components/googleAnalytics";
+ import GoogleAnalytics from "./googleAnalytics";
 
 const HomePage = ({ posts }) => (
 
