@@ -8,7 +8,7 @@ import { Layout } from '@components';
 import { Col, Row, Card } from 'tailwind-react-ui';
 import Head from 'next/head';
 import Image from 'next/image';
-//  import GoogleAnalytics from "../components/googleAnalytics";
+ import GoogleAnalytics from "../components/googleAnalytics";
 
 const HomePage = ({ posts }) => (
 
@@ -34,9 +34,10 @@ const HomePage = ({ posts }) => (
         <meta name="twitter:description" content="Cardverse"/>
         <meta name="twitter:image" content="https://i.ibb.co/jRtDHr1/card.png"/>
         <meta name="twitter:card" content="summary_large_image"/>
-        {/* <GoogleAnalytics /> */}
 
       </Head>
+      <GoogleAnalytics />
+
       <div style={{backgroundColor:"rgba(0,0,0,0.5)", width:"100%", display:"flex",justifyContent:"center", alignItems:"center"}}>
       <h1 style={{ color: "white", fontSize: "5.5rem", fontFamily: "Bangers", textAlign: "center" }}>Cardverse</h1>
         <Image src="/cardverse.png"
