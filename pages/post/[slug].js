@@ -58,7 +58,7 @@ const PostPage = ({ post }) => {
           <Row>
             <Col w="full" bg="grey-light" text="center" p="4" >
               <div>
-                <img src={post.image} alt={post.imageAlt}  style={{ display: "block", marginLeft:"auto", marginRight:"auto", height:"26rem"}}/>
+                <img src={post.imageAlt} alt={post.imageAlt}  style={{ display: "block", marginLeft:"auto", marginRight:"auto", height:"26rem"}}/>
                 {/* <img src={post.image2} alt={post.imageAlt} /> */}
               </div>
 

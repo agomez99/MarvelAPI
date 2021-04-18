@@ -106,7 +106,15 @@ const EditPage = ({ post }) => {
               onChange={handleChange}
             />
           </div>
-
+          <div>
+            <label htmlFor="imageAlt">feature image</label>
+            <TextInput
+              id="imageAlt"
+              type="text"
+              value={values.imageAlt}
+              onChange={handleChange}
+            />
+          </div>
           <div>
           <label htmlFor="coverImageAlt">Strength</label>
           <TextInput
