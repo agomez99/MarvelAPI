@@ -8,6 +8,7 @@ import { Layout } from '@components';
 import { Col, Row, Card } from 'tailwind-react-ui'
 import Head from 'next/head';
 import Image from 'next/image'
+import GoogleAnalytics from "../components/googleAnalytics.js"
 
 const HomePage = ({ posts }) => (
 
@@ -18,6 +19,23 @@ const HomePage = ({ posts }) => (
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.gstatic.com"></link>
         <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet"></link>
+        <meta property="og:url" content="https://cardverse.vercel.app/"/>
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Cardverse"/>
+        <meta property="og:description"
+          content="Marvel Cards Series 1"
+        />
+        <meta property="og:image" content="/cardverse.png"/>
+      
+        <meta property="fb:app_id" content="134816985125175" />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Marvel Cardverse"/>
+        <meta name="twitter:description" content="Marver Carverse Series 1"/>
+        <meta name="twitter:image" content="/cardverse.png"/>
+        <meta name="twitter:card" content="summary_large_image"/>
+        <GoogleAnalytics />
+
       </Head>
       <div style={{backgroundColor:"rgba(0,0,0,0.5)", width:"100%", display:"flex",justifyContent:"center", alignItems:"center"}}>
       <h1 style={{ color: "white", fontSize: "5.5rem", fontFamily: "Bangers", textAlign: "center" }}>Cardverse</h1>
