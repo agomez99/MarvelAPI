@@ -46,7 +46,7 @@ const PostPage = ({ post }) => {
         <Card style={{ backgroundColor: "rgb(226, 235, 175)", padding: "10px" }}>
           <Row>
             <div style={{ backgroundColor: "rgb(74, 147, 230)", width: "100%", margin: "0px 0px", marginBottom: "5%" }}>
-              <h1 style={{ textAlign: "left", fontSize: "8vw", fontWeight: "bold", color: "white", textTransform: "upperCase" }}>{post.name}</h1>
+              <h1 style={{ textAlign: "center", fontSize: "8vw", fontWeight: "bold", color: "white", textTransform: "upperCase" }}>{post.name}</h1>
               {user && (
 
                 <FillButton style={{backgroundColor:"green"}}><a href={`/edit/${post.slug}`}>EDIT </a></FillButton>
