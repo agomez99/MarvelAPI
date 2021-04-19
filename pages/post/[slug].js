@@ -51,7 +51,7 @@ const PostPage = ({ post }) => {
 
                 <FillButton style={{backgroundColor:"green"}}><a href={`/edit/${post.slug}`}>EDIT </a></FillButton>
               )}
-              <h1 >ID#{post.id}</h1>
+              <h1 style={{ textAlign: "right", fontSize: "2vw",  color: "white" }}>ID#{post.id}</h1>
 
             </div>
           </Row>
