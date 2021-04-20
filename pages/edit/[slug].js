@@ -187,7 +187,7 @@ const EditPage = ({ post }) => {
             />
           </div>
           </div>
-          <Button style={{backgroundColor:"green"}} type="submit" disabled={isLoading}>
+          <Button style={{backgroundColor:"green", marginBottom:"15px"}} type="submit" disabled={isLoading}>
             {isLoading ? 'Updating...' : 'Update'}
           </Button>
         </form>
