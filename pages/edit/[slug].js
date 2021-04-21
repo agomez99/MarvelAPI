@@ -59,7 +59,8 @@ const EditPage = ({ post }) => {
     <Layout>
       <div className={styles.EditPage}>
         <form onSubmit={handleSubmit}>
-          <h1 style={{textAlign:"center", fontSize:"55px"}}>Edit For : {post.slug}</h1>
+          <h1 style={{textAlign:"center", fontSize:"55px"}}>Edit For :</h1>
+          <h1 style={{textAlign:"center", fontSize:"60px", color:"purple", textTransform:"uppercase"}}> {post.slug}</h1>
 
           <div>
           <label htmlFor="id">ID#</label>
@@ -187,9 +188,11 @@ const EditPage = ({ post }) => {
             />
           </div>
           </div>
+          <div style={{paddingBottom:"10px"}}>
           <Button style={{backgroundColor:"green", marginBottom:"15px"}} type="submit" disabled={isLoading}>
             {isLoading ? 'Updating...' : 'Update'}
           </Button>
+          </div>
         </form>
       </div>
     </Layout>
