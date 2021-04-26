@@ -1,20 +1,20 @@
-import { useRouter } from 'next/router';
-import styles from '@styles/post.module.scss';
-import { getPostBySlug } from '@lib/firebase';
-import { Layout } from '@components';
-import { Col, Row, Card, Button } from 'tailwind-react-ui'
-import Image from 'next/image';
-import { HorizontalBar } from 'react-chartjs-2';
-import { useAuth } from '@contexts/auth';
-import { FillButton } from 'tailwind-react-ui'
+import { useRouter } from "next/router";
+import styles from "@styles/post.module.scss";
+import { getPostBySlug } from "@lib/firebase";
+import { Layout } from "@components";
+import { Col, Row, Card, Button } from "tailwind-react-ui";
+import Image from "next/image";
+import { HorizontalBar } from "react-chartjs-2";
+import { useAuth } from "@contexts/auth";
+import { FillButton } from "tailwind-react-ui";
 import "tailwindcss/tailwind.css";
 
 const PostPage = ({ post }) => {
   const router = useRouter();
   const [user] = useAuth();
 
-  if (!post && typeof window !== 'undefined') {
-    router.push('/404');
+  if (!post && typeof window !== "undefined") {
+    router.push("/404");
     return;
   }
 
@@ -23,49 +23,108 @@ const PostPage = ({ post }) => {
   }
 
   const data = {
-
-    labels: ['STRENGTH', 'SPEED', 'AGILITY',
-      'STAMINA', 'DURABILITY', 'INTELLIGENCE'],
+    labels: [
+      "STRENGTH",
+      "SPEED",
+      "AGILITY",
+      "STAMINA",
+      "DURABILITY",
+      "INTELLIGENCE",
+    ],
     datasets: [
       {
-        label: 'POWER RATINGS',
-        backgroundColor: 'red',
-        borderColor: 'black',
-        color: 'white',
+        label: "POWER RATINGS",
+        backgroundColor: "red",
+        borderColor: "black",
+        color: "white",
         borderWidth: 3,
-        data: [post.powerStrength, post.powerSpeed, post.powerAgility, post.powerStamina, post.powerDurability, post.powerIntelligence],
+        data: [
+          post.powerStrength,
+          post.powerSpeed,
+          post.powerAgility,
+          post.powerStamina,
+          post.powerDurability,
+          post.powerIntelligence,
+        ],
         barPercentage: 1.2,
-
-      }
-    ]
-  }
+      },
+    ],
+  };
 
   return (
     <Layout>
       <div>
-        <Card style={{ backgroundColor: "rgb(226, 235, 175)", padding: "10px" }}>
+        <Card
+          style={{ backgroundColor: "rgb(226, 235, 175)", padding: "10px" }}
+        >
           <Row>
-            <div style={{ backgroundColor: "rgb(74, 147, 230)", width: "100%", margin: "0px 0px", marginBottom: "5%" }}>
-              <h1 style={{ textAlign: "center", fontSize: "8vw", fontWeight: "bold", color: "white", textTransform: "upperCase" }}>{post.name}</h1>
+            <div
+              style={{
+                backgroundColor: "rgb(74, 147, 230)",
+                width: "100%",
+                margin: "0px 0px",
+                marginBottom: "5%",
+              }}
+            >
+
+              <h1
+                style={{
+                  float: "left",
+                  fontSize: "8vw",
+                  fontWeight: "bold",
+                  color: "white",
+                  textTransform: "upperCase",
+                }}
+              >
+                {post.name}
+              </h1>
+
+              <div style={{
+                textAlign: "right",
+                position:"relative"            
+                  }}>
+              <Image
+                style={{
+                  float:"right",
+                }}
+                src="/logo.jpg"
+                alt="Picture of the author"
+                width={150}
+                height={150}/>
+              <h1
+                style={{ textAlign: "right", fontSize: "4vw", color: "white", position:"absolute", top:"50px",right:"50px" }}>#{post.id}
+              </h1>
+              </div>
+              {" "}
               {user && (
-
-                <FillButton style={{backgroundColor:"green"}}><a href={`/edit/${post.slug}`}>EDIT </a></FillButton>
+                <FillButton style={{ backgroundColor: "green" }}>
+                  <a href={`/edit/${post.slug}`}>EDIT </a>
+                </FillButton>
               )}
-              <h1 style={{ textAlign: "right", fontSize: "2vw",  color: "white" }}>ID#{post.id}</h1>
-
             </div>
+
+
+
           </Row>
           <Row>
-            <Col w="full" bg="grey-light" text="center" p="4" >
+            <Col w="full" bg="grey-light" text="center" p="4">
               <div>
-                <img src={post.imageAlt} alt={post.imageAlt}  style={{ display: "block", marginLeft:"auto", marginRight:"auto", height:"26rem"}}/>
+                <img
+                  src={post.imageAlt}
+                  alt={post.imageAlt}
+                  style={{
+                    display: "block",
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                    height: "26rem",
+                  }}
+                />
                 {/* <img src={post.image2} alt={post.imageAlt} /> */}
               </div>
-
             </Col>
-            </Row>
+          </Row>
 
-            {/* <Row>
+          {/* <Row>
             <Col w="full" >
 
               <div style={{ width: "60%", margin: "20px auto" }} className="chart-div">
@@ -104,22 +163,41 @@ const PostPage = ({ post }) => {
             </Col>
           </Row> */}
           <Row>
-            <div style={{ backgroundColor: "white", padding: "20px", marginLeft:"10%", marginRight:"10%" }}>
-              <p  className="bio-p"> {post.bio}</p>
+            <div
+              style={{
+                backgroundColor: "white",
+                padding: "20px",
+                marginLeft: "10%",
+                marginRight: "10%",
+              }}
+            >
+              <p className="bio-p"> {post.bio}</p>
             </div>
           </Row>
 
           <Row>
-            <div style={{ backgroundColor: "rgb(226, 235, 175)", padding: "10px",marginTop:"10px", borderWidth: "2px", borderColor: "black", marginLeft:"auto", marginRight:"auto" }}>
-              <p style={{ fontSize: "1.5vh", fontWeight: "bold" }}>DID YOU KNOW :</p><p> {post.dyn}</p>
+            <div
+              style={{
+                backgroundColor: "rgb(226, 235, 175)",
+                padding: "10px",
+                marginTop: "10px",
+                borderWidth: "2px",
+                borderColor: "black",
+                marginLeft: "auto",
+                marginRight: "auto",
+              }}
+            >
+              <p style={{ fontSize: "1.5vh", fontWeight: "bold" }}>
+                DID YOU KNOW :
+              </p>
+              <p> {post.dyn}</p>
             </div>
           </Row>
         </Card>
       </div>
     </Layout>
   );
-
-}
+};
 export async function getServerSideProps(context) {
   const post = await getPostBySlug(context.query.slug);
 
@@ -129,6 +207,5 @@ export async function getServerSideProps(context) {
     },
   };
 }
-
 
 export default PostPage;
