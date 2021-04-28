@@ -26,7 +26,7 @@ const Layout = ({ children }) => {
         </span>
         {user && (
           <span>
-            <FillButton
+            <FillButton style={{marginRight:"5px"}}
               onClick={() => {
                 router.push({
                   pathname: "/create",

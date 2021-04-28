@@ -60,7 +60,7 @@ const EditPage = ({ post }) => {
       <div className={styles.EditPage}>
         <form onSubmit={handleSubmit}>
           <h1 style={{textAlign:"center", fontSize:"55px"}}>Edit For :</h1>
-          <h1 style={{textAlign:"center", fontSize:"60px", color:"purple", textTransform:"uppercase"}}> {post.slug}</h1>
+          <h1 style={{textAlign:"center", fontSize:"60px", color:"purple", textTransform:"uppercase"}}> {post.name}</h1>
 
           <div>
           <label htmlFor="id">ID#</label>
