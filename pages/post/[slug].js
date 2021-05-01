@@ -83,16 +83,18 @@ const PostPage = ({ post }) => {
                 textAlign: "right",
                 position:"relative"            
                   }}>
+                <div style={{height:"100%"}}>
               <Image
                 style={{
                   float:"right",
                 }}
-                src="/whitelogo.png"
+                src="/logo.png"
                 alt="Picture of the author"
                 width={150}
                 height={150}/>
+                </div>
               <h1
-                style={{ fontWeight:"bold",  textAlign: "right", fontSize: "4vw", color: "black", position:"absolute", top:"36px",right:"40px" }}>{post.id}
+                style={{ fontWeight:"bold",  textAlign: "center", fontSize: "4vw", color: "black", position:"absolute", top:"36px",right:"55px" }}>{post.id}
               </h1>
               </div>
               {" "}
