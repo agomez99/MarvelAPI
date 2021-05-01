@@ -47,7 +47,7 @@ const EditPage = ({ post }) => {
     updatePost(values)
       .then(() => {
         setIsLoading(false);
-        router.push(`/post/${post.slug}`);
+        router.push(`/`);
       })
       .catch((err) => {
         alert(err);
@@ -63,11 +63,11 @@ const EditPage = ({ post }) => {
           <h1 style={{textAlign:"center", fontSize:"60px", color:"purple", textTransform:"uppercase"}}> {post.name}</h1>
 
           <div>
-          <label htmlFor="id">ID#</label>
+          <label htmlFor="number">#</label>
           <TextInput
-            id="id"
+            id="number"
             type="text"
-            value={values.id}
+            value={values.number}
             onChange={handleChange}
           />
         </div>
@@ -116,57 +116,7 @@ const EditPage = ({ post }) => {
               onChange={handleChange}
             />
           </div>
-          <div>
-          <label htmlFor="coverImageAlt">Strength</label>
-          <TextInput
-            id="powerStrength"
-            type="text"
-            value={values.powerStrength}
-            onChange={handleChange}
-          />
-        </div>       
-         <div>
-          <label htmlFor="powerSpeed">Speed</label>
-          <TextInput
-            id="powerSpeed"
-            type="text"
-            value={values.powerSpeed}
-            onChange={handleChange}
-          />
-        </div>        <div>
-          <label htmlFor="powerAgility">Agility</label>
-          <TextInput
-            id="powerAgility"
-            type="text"
-            value={values.powerAgility}
-            onChange={handleChange}
-          />
-        </div>        <div>
-          <label htmlFor="powerStamina">Stamina</label>
-          <TextInput
-            id="powerStamina"
-            type="text"
-            value={values.powerStamina}
-            onChange={handleChange}
-          />
-        </div>        <div>
-          <label htmlFor="powerDurability">Durability</label>
-          <TextInput
-            id="powerDurability"
-            type="text"
-            value={values.powerDurability}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="powerIntelligence">Intelligence</label>
-          <TextInput
-            id="powerIntelligence"
-            type="text"
-            value={values.powerIntelligence}
-            onChange={handleChange}
-          />
-        </div>
+
         <div>
           <div>
           <label htmlFor="bio">Bio</label>

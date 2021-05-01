@@ -49,9 +49,9 @@ const HomePage = ({ posts }) => (
       <div>
         <Row gutter  >
           <Col className="hdr">
-            {posts.slice(0, 100).map((post) => (
-              <article key={post.id}>
-                <div className="flip-card">
+            {posts.slice(0,200).map((post) => (
+              <article>
+                <div className="flip-card"  key={post.number}>
                   <a href={`/post/${post.slug}`}>
                     <div className="flip-card-inner">
                       <div className="flip-card-front">
