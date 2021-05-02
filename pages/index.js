@@ -15,10 +15,7 @@ const HomePage = ({ posts }) => (
   <div>
     <Layout>
       <Head>
-        <title>Cardverse</title>
-        <link rel="shortcut icon" href="/cardverse.png" />
-        <link rel="preconnect" href="https://fonts.gstatic.com"></link>
-        <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet"></link>
+
         <meta property="og:url" content="https://cardverse.vercel.app/"/>
         <meta property="og:type" content="article" />
         <meta property="og:title" content="Cardverse"/>
@@ -34,7 +31,10 @@ const HomePage = ({ posts }) => (
         <meta name="twitter:description" content="Cardverse"/>
         <meta name="twitter:image" content="https://i.ibb.co/jRtDHr1/card.png"/>
         <meta name="twitter:card" content="summary_large_image"/>
-
+        <title>Cardverse</title>
+        <link rel="shortcut icon" href="/cardverse.png" />
+        <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+        <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet"></link>
       </Head>
       <GoogleAnalytics />
 
@@ -50,8 +50,8 @@ const HomePage = ({ posts }) => (
         <Row gutter  >
           <Col className="hdr">
             {posts.slice(0,200).map((post) => (
-              <article>
-                <div className="flip-card"  key={post.number}>
+              <article key={post.name}>
+                <div className="flip-card"  >
                   <a href={`/post/${post.slug}`}>
                     <div className="flip-card-inner">
                       <div className="flip-card-front">
