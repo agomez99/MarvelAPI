@@ -13,7 +13,8 @@ import GoogleAnalytics from "./googleAnalytics"
 const HomePage = ({ posts }) => (
 
   <div>
-    <Layout>
+    <Layout className={styles.HomePage}>
+    <div>
       <Head>
 
         <meta property="og:url" content="https://cardverse.vercel.app/"/>
@@ -41,7 +42,7 @@ const HomePage = ({ posts }) => (
       <div style={{backgroundColor:"rgba(0,0,0,0.5)", width:"100%", display:"flex",justifyContent:"center", alignItems:"center"}}>
       <h1 style={{ color: "white", fontSize: "5.5rem", fontFamily: "Bangers", textAlign: "center", paddingRight:"15px" }}>Cardverse</h1>
         <Image src="/cardverse.png"
-          alt="Picture of the author"
+          alt="logo"
           width={300}
           height={300} />
       </div>
@@ -70,7 +71,7 @@ const HomePage = ({ posts }) => (
           </Col>
         </Row>
       </div>
-
+</div>
     </Layout>
   </div>
 
