@@ -94,7 +94,7 @@ const PostPage = ({ post }) => {
                 height={150}/>
                 </div>
               <h1
-                style={{ fontWeight:"bold",  textAlign: "center", fontSize: "4vw", color: "black", position:"absolute", top:"36px",right:"55px" }}>{post.id}
+                style={{ fontWeight:"bold",  textAlign: "center", fontSize: "4vw", color: "black", position:"absolute", top:"36px",right:"55px" }}>{post.number}
               </h1>
               </div>
               {" "}
@@ -109,8 +109,8 @@ const PostPage = ({ post }) => {
 
           </Row>
           <Row>
-            <Col w="full" bg="grey-light" text="center" p="4">
-              <div>
+            <Col w="full" bg="grey-light" text="center" p="4" >
+              <div >
                 <img
                   src={post.imageAlt}
                   alt={post.imageAlt}

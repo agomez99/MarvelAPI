@@ -17,6 +17,7 @@ const CreatePage = () => {
     name: '',
     slug: ' ',
     number: ' ',
+    color:' '
   });
   const [isLoading, setIsLoading] = useState(false); // this is new
   const [user, userLoading] = useAuth();
@@ -140,6 +141,15 @@ const CreatePage = () => {
             id="imageAlt"
             type="text"
             value={formValues.coverimageAlt}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="color">color</label>
+          <TextInput
+            id="color"
+            type="text"
+            value={formValues.color}
             onChange={handleChange}
           />
         </div>
