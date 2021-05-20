@@ -22,6 +22,9 @@ const PostPage = ({ post }) => {
     return null;
   }
 
+  console.log(post)
+  const backColor = post.color;
+
   const data = {
     labels: [
       "STRENGTH",
@@ -52,6 +55,7 @@ const PostPage = ({ post }) => {
   };
 
   return (
+    
     <Layout>
       <div>
         <Card
@@ -60,7 +64,7 @@ const PostPage = ({ post }) => {
           <Row>
             <div
               style={{
-                backgroundColor: "rgb(74, 147, 230)",
+                backgroundColor: backColor,
                 width: "100%",
                 margin: "0px 0px",
                 marginBottom: "5%",

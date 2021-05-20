@@ -116,7 +116,15 @@ const EditPage = ({ post }) => {
               onChange={handleChange}
             />
           </div>
-
+          <div>
+            <label htmlFor="color">Background Color</label>
+            <TextInput
+              id="color"
+              type="text"
+              value={values.color}
+              onChange={handleChange}
+            />
+          </div>
         <div>
           <div>
           <label htmlFor="bio">Bio</label>
