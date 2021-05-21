@@ -47,7 +47,7 @@ const EditPage = ({ post }) => {
     updatePost(values)
       .then(() => {
         setIsLoading(false);
-        router.push(`/`);
+        router.push(`/post/${post.slug}`);
       })
       .catch((err) => {
         alert(err);
