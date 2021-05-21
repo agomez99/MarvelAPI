@@ -8,7 +8,7 @@ export default class extends Component {
         {
           process.env.NODE_ENV === "production" && process.browser ?
           <Head>
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-QS9XBPVCFF"></script>
+            <script async src="https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}"></script>
             <script
               async
               dangerouslySetInnerHTML={{
@@ -16,7 +16,7 @@ export default class extends Component {
                 function gtag(){dataLayer.push(arguments);}
                 gtag("js", new Date());
 
-                gtag("config", "YOUR_MEASUREMENT_ID");`
+                gtag("config", "${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}");`
               }}
             />
           </Head> : null

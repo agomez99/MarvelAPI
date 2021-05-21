@@ -10,7 +10,9 @@ import Head from 'next/head';
 import Image from 'next/image';
 import GoogleAnalytics from "./googleAnalytics"
 
-
+const colors = posts => posts.map(post => (
+  <li key={post.id}>{post.name}</li>
+));
 const HomePage = ({ posts }) => (
 
   <div>
@@ -51,13 +53,14 @@ const HomePage = ({ posts }) => (
       <div>
         <Row gutter  >
           <Col className="hdr">
-            {posts.slice(0,200).map((post) => (
+            {posts.slice(0,200).reverse().map((post) => (
 
-              <article key={post.name}>
-                <div className="flip-card"  >
+              <article >
+                <div className="flip-card" >
                   <a href={`/post/${post.slug}`}>
                     <div className="flip-card-inner">
-                      <div className="flip-card-front">
+                      <div className="flip-card-front" style={{ backgroundColor: "red" }}>
+                      {/* <h1 >{post.number}</h1> */}
                         <h2 style={{ color: "white", fontSize: "2.3rem", fontFamily: "Bangers" }}>{post.name}</h2>
                         <img src={post.image} alt={post.imageAlt} />
                       </div>
