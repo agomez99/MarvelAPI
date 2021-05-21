@@ -10,6 +10,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import GoogleAnalytics from "./googleAnalytics"
 
+
 const HomePage = ({ posts }) => (
 
   <div>
@@ -51,6 +52,7 @@ const HomePage = ({ posts }) => (
         <Row gutter  >
           <Col className="hdr">
             {posts.slice(0,200).map((post) => (
+
               <article key={post.name}>
                 <div className="flip-card"  >
                   <a href={`/post/${post.slug}`}>
