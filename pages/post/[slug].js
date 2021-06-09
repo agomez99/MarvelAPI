@@ -94,11 +94,13 @@ const PostPage = ({ post }) => {
                 }}
                 src="/logo.png"
                 alt="Picture of the author"
-                width={150}
-                height={150}/>
+                layout="intrinsic"
+
+                width={100}
+                height={100}/>
                 </div>
               <h1
-                style={{ fontWeight:"bold",  textAlign: "center", fontSize: "4vw", color: "black", position:"absolute", top:"36px",right:"55px" }}>{post.number}
+                style={{ fontWeight:"bold",  textAlign: "center", fontSize: "40px", color: "black", position:"absolute", top:"22px",right:"27px" }}>{post.number}
               </h1>
               </div>
               {" "}
