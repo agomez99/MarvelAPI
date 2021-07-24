@@ -70,7 +70,9 @@ canvas{
       transform: rotateY(180deg);
 
   }
-
+.marvellM{
+  color:"red"
+}
   /* ----------- iPhone 4 and 4S ----------- */
 
 /* Portrait and Landscape */
@@ -200,6 +202,7 @@ and (-webkit-min-device-pixel-ratio: 3) {
   }
 
 }
+
 
 /* Portrait */
 @media only screen 
