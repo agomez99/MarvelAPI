@@ -12,21 +12,42 @@ const Layout = ({ children }) => {
 
   return (
     <div className={styles.Layout}>
-      <nav>
-        <span>
+    <div className="flex flex-wrap py-0">
+  <div className="w-full px-0">
+    <nav className="relative flex flex-wrap items-center justify-between px-2 py-3">
+      <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
+        <div className="w-full relative flex justify-between lg:w-auto px-4 lg:static lg:block lg:justify-start">
           <a href="/">
             {" "}
             <Image
               src="/cardverse.png"
-              alt="Picture of the author"
-              width={100}
-              height={100}
+              alt="brandlogo"
+              width={130}
+              height={130}
             />
-          </a>
-        </span>
-        {user && (
+        </a>
+          
+        </div>
+        <div className="flex lg:flex-grow items-center" id="example-navbar-info">
+          <ul className="flex flex-col lg:flex-row list-none ml-auto">
+            <li className="nav-item">
+              <span>
+          <FillButton
+            onClick={() => {
+              router.push({
+                pathname: "/chars",
+              });
+            }}
+          >
+            Characters
+          </FillButton>
+        </span>              
+            </li>
+            <li className="nav-item">
+              {user && (
           <span>
-            <FillButton style={{marginRight:"5px"}}
+            <FillButton
+              style={{ marginRight: "5px" }}
               onClick={() => {
                 router.push({
                   pathname: "/create",
@@ -37,8 +58,10 @@ const Layout = ({ children }) => {
             </FillButton>
             <FillButton onClick={() => signOut()}>Sign Out</FillButton>
           </span>
-        )}
-        {!user && (
+        )} 
+            </li>
+            <li className="nav-item">
+              {!user && (
           <span>
             <FillButton
               onClick={() => {
@@ -50,8 +73,15 @@ const Layout = ({ children }) => {
               Log in
             </FillButton>
           </span>
-        )}
-      </nav>
+        )}  
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+     
       <main>{children}</main>
       <footer>
         <p>powered by agdigital</p>

@@ -1,15 +1,15 @@
 .Layout {
+
+
   nav {
-    padding-left: 15px;
-    padding-right: 15px;
+ 
     background-color: #e40013;
     display: flex;
-    justify-content: space-between;
     align-items: center;
 
     span {
       a {
-        font-size: 1.6rem;
+        font-size: 1.9rem;
         font-weight: bold;
         color: white;
         text-decoration: none;
@@ -21,13 +21,17 @@
       button {
         color: white;
         background-color: purple;
+        margin-right: 10px;
+
       }
       button:hover{
-        color:black;
-        background-color: rgb(245, 245, 245);
+        color:rgb(255, 255, 255);
+        background-color: rgb(148, 28, 28);
       }
     }
+
   }
+
   footer {
     padding: 15px;
     background-color: #e40013;

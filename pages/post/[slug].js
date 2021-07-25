@@ -54,9 +54,11 @@ const PostPage = ({ post }) => {
     ],
   };
 
+
+
   return (
     
-    <Layout>
+    <Layout >
       <div>
         <Card
           style={{ backgroundColor: "rgb(226, 235, 175)", padding: "10px" }}
@@ -85,13 +87,15 @@ const PostPage = ({ post }) => {
 
               <div style={{
                 textAlign: "right",
-                position:"relative"            
+                position:"relative" ,
+                display:"block",          
                   }}>
                 <div style={{height:"100%"}}>
               <Image
                 style={{
                   float:"right",
                 }}
+                layout="intrinsic"
                 src="/logo.png"
                 alt="Picture of the author"
                 layout="intrinsic"
@@ -101,8 +105,11 @@ const PostPage = ({ post }) => {
                 </div>
               <h1
                 style={{ fontWeight:"bold",  textAlign: "center", fontSize: "40px", color: "black", position:"absolute", top:"22px",right:"27px" }}>{post.number}
+
               </h1>
               </div>
+
+
               {" "}
               {user && (
                 <FillButton style={{ backgroundColor: "green" }}>

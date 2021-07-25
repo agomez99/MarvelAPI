@@ -9,10 +9,13 @@ import { Col, Row, Card } from "tailwind-react-ui";
 import Head from "next/head";
 import Image from "next/image";
 import GoogleAnalytics from "./googleAnalytics";
+import { FillButton } from "tailwind-react-ui";
+
 
 //const colors = (posts) => posts.map((post) => Console.log(posts));
 
 const HomePage = ({ posts }) => (
+
   <div>
     <Layout className={styles.HomePage}>
       <div>
@@ -81,16 +84,6 @@ const HomePage = ({ posts }) => (
           Characters
         </h1>
         <div>
-          <Row>
-            <Col>
-              {posts.map((post) => (
-
-              <h2 style={{color: "white"}}>
-                {post.name}
-              </h2>
-              ))}
-            </Col>
-          </Row>
           <Row gutter>
             <Col className="hdr">
               {posts
@@ -100,33 +93,25 @@ const HomePage = ({ posts }) => (
                   <article>
                     <div className="flip-card">
                       <a href={`/post/${post.slug}`}>
+                      <h2
+                              style={{
+                                color: "white",
+                                fontSize: "2.3rem",
+                                fontFamily: "Bangers",
+                              }}
+                            >
+                              {post.name}
+                            </h2>
                         <div className="flip-card-inner">
                           <div
                             className="flip-card-front"
                             style={{ backgroundColor: "red" }}
                           >
                             {/* <h1 >{post.number}</h1> */}
-                            <h2
-                              style={{
-                                color: "white",
-                                fontSize: "2.3rem",
-                                fontFamily: "Bangers",
-                              }}
-                            >
-                              {post.name}
-                            </h2>
+               
                             <img src={post.image} alt={post.imageAlt} />
                           </div>
                           <div className="flip-card-back">
-                            <h2
-                              style={{
-                                color: "white",
-                                fontSize: "2.3rem",
-                                fontFamily: "Bangers",
-                              }}
-                            >
-                              {post.name}
-                            </h2>
                             <img src={post.image2} alt={post.imageAlt} />
                           </div>
                         </div>
@@ -150,6 +135,7 @@ export async function getServerSideProps() {
   const posts = await getPosts();
 
   return {
+    
     props: {
       posts,
     },

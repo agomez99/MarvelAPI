@@ -5,6 +5,7 @@ import { useAuth } from '@contexts/auth';
 import styles from '@styles/signin.module.scss';
 import {Field, Label, TextInput} from 'tailwind-react-ui';
 import { FillButton } from 'tailwind-react-ui'
+import { Layout } from '@components';
 
 const SignInPage = () => {
   const router = useRouter();
@@ -48,6 +49,7 @@ const SignInPage = () => {
   };
 
   return (
+    <Layout>
     <div className={styles.SignIn}>
       <form onSubmit={handleSubmit}>
         <h1>Please Sign In</h1>
@@ -74,6 +76,7 @@ const SignInPage = () => {
 
       </form>
     </div>
+    </Layout>
   );
 };
 
