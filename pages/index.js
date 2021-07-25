@@ -28,9 +28,7 @@ const HomePage = ({ posts }) => (
             property="og:image"
             content="https://i.ibb.co/jRtDHr1/card.png"
           />
-
           <meta property="fb:app_id" content="134816985125175" />
-
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:title" content="Marvel Cardverse" />
           <meta name="twitter:description" content="Cardverse" />
@@ -112,6 +110,7 @@ const HomePage = ({ posts }) => (
                             <img src={post.image} alt={post.imageAlt} />
                           </div>
                           <div className="flip-card-back">
+
                             <img src={post.image2} alt={post.imageAlt} />
                           </div>
                         </div>
@@ -126,16 +125,10 @@ const HomePage = ({ posts }) => (
     </Layout>
   </div>
 );
-// This is for fetching data every time the page is visited. We do this
-// so that we don't have to redploy the site every time we add a blog post.
-// You can read more about this in the Next.js docs at:
-// https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering
 
 export async function getServerSideProps() {
   const posts = await getPosts();
-
   return {
-    
     props: {
       posts,
     },
