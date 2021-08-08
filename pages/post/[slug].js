@@ -8,10 +8,56 @@ import { HorizontalBar } from "react-chartjs-2";
 import { useAuth } from "@contexts/auth";
 import { FillButton } from "tailwind-react-ui";
 import "tailwindcss/tailwind.css";
+import { data } from "autoprefixer";
+import { useEffect, useState } from "react";
+const md5 = require('md5');
 
-const PostPage = ({ post }) => {
+const  ts = new Date().getTime();
+
+// const hash = md5(ts+PRIVKEY+PUBKEY);
+
+
+console.log(hash);
+console.log(ts);
+
+const PostPage = ({ post, data }) => {
   const router = useRouter();
   const [user] = useAuth();
+
+let id = '';
+if(post.name === "thor"){
+  id = "659";
+ 
+ }
+ 
+if(post.name === "loki"){
+  id ="414";
+  console.log(id);
+ 
+ }
+
+ let [Id, setId] = useState(null)
+
+
+
+
+
+  fetch("https://www.superheroapi.com/api.php/3913169345411392/"+ id +"/biography", {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+  .then((response) => response.json())
+  //Then with the data from the response in JSON...
+  .then((data) => {
+    console.log('Success:', data);
+  })
+  //Then with the error genereted...
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+
 
   if (!post && typeof window !== "undefined") {
     router.push("/404");
@@ -22,37 +68,36 @@ const PostPage = ({ post }) => {
     return null;
   }
 
-  console.log(post)
   const backColor = post.color;
 
-  const data = {
-    labels: [
-      "STRENGTH",
-      "SPEED",
-      "AGILITY",
-      "STAMINA",
-      "DURABILITY",
-      "INTELLIGENCE",
-    ],
-    datasets: [
-      {
-        label: "POWER RATINGS",
-        backgroundColor: "red",
-        borderColor: "black",
-        color: "white",
-        borderWidth: 3,
-        data: [
-          post.powerStrength,
-          post.powerSpeed,
-          post.powerAgility,
-          post.powerStamina,
-          post.powerDurability,
-          post.powerIntelligence,
-        ],
-        barPercentage: 1.2,
-      },
-    ],
-  };
+  // const data = {
+  //   labels: [
+  //     "STRENGTH",
+  //     "SPEED",
+  //     "AGILITY",
+  //     "STAMINA",
+  //     "DURABILITY",
+  //     "INTELLIGENCE",
+  //   ],
+  //   datasets: [
+  //     {
+  //       label: "POWER RATINGS",
+  //       backgroundColor: "red",
+  //       borderColor: "black",
+  //       color: "white",
+  //       borderWidth: 3,
+  //       data: [
+  //         post.powerStrength,
+  //         post.powerSpeed,
+  //         post.powerAgility,
+  //         post.powerStamina,
+  //         post.powerDurability,
+  //         post.powerIntelligence,
+  //       ],
+  //       barPercentage: 1.2,
+  //     },
+  //   ],
+  // };
 
 
 
@@ -72,7 +117,7 @@ const PostPage = ({ post }) => {
                 marginBottom: "5%",
               }}
             >
-
+              <h1>First Appearancedata{}</h1>
               <h1
                 style={{
                   float: "left",
