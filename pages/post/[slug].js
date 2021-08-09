@@ -10,54 +10,72 @@ import { FillButton } from "tailwind-react-ui";
 import "tailwindcss/tailwind.css";
 import { data } from "autoprefixer";
 import { useEffect, useState } from "react";
-const md5 = require('md5');
+//const md5 = require('md5');
 
-const  ts = new Date().getTime();
+const ts = new Date().getTime();
 
-// const hash = md5(ts+PRIVKEY+PUBKEY);
+//const hash = md5(ts+PRIVKEY+PUBKEY);
 
-
-console.log(hash);
+//console.log(hash);
 console.log(ts);
 
-const PostPage = ({ post, data }) => {
+const PostPage = ({ post}) => {
   const router = useRouter();
   const [user] = useAuth();
 
-let id = '';
-if(post.name === "thor"){
-  id = "659";
- 
- }
- 
-if(post.name === "loki"){
-  id ="414";
-  console.log(id);
- 
- }
 
- let [Id, setId] = useState(null)
+  const [data,setData]=useState([]);
+  const getData=()=>{
+    fetch("https://www.superheroapi.com/api.php/3913169345411392/" + post.uid +"/biography",
+    
+    {
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    }
+    )
+      .then(function(response){
+        return response.json();
+      })
+      .then(function(myJson) {
+        console.log(myJson);
+        setData(myJson)
+      });
+  }
 
 
 
 
 
-  fetch("https://www.superheroapi.com/api.php/3913169345411392/"+ id +"/biography", {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  })
-  .then((response) => response.json())
-  //Then with the data from the response in JSON...
-  .then((data) => {
-    console.log('Success:', data);
-  })
-  //Then with the error genereted...
-  .catch((error) => {
-    console.error('Error:', error);
-  });
+  useEffect(()=>{
+    getData()
+  },[])
 
+
+  // fetch(
+  //   "https://www.superheroapi.com/api.php/3913169345411392/" +
+  //     id +
+  //     "/biography",
+  //   {
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(data),
+  //   }
+  // )
+  //   .then((response) => response.json())
+  //   //Then with the data from the response in JSON...
+  //   .then((data) => {
+  //     console.log("Full Name: " + data["full-name"]);
+  //     console.log("First Appearance: " + data["first-appearance"]);
+  //     console.log("Place of Birth: " + data["place-of-birth"]);
+
+  //   })
+  //   //Then with the error genereted...
+  //   .catch((error) => {
+  //     console.error("Error:", error);
+  //   });
 
   if (!post && typeof window !== "undefined") {
     router.push("/404");
@@ -70,40 +88,10 @@ if(post.name === "loki"){
 
   const backColor = post.color;
 
-  // const data = {
-  //   labels: [
-  //     "STRENGTH",
-  //     "SPEED",
-  //     "AGILITY",
-  //     "STAMINA",
-  //     "DURABILITY",
-  //     "INTELLIGENCE",
-  //   ],
-  //   datasets: [
-  //     {
-  //       label: "POWER RATINGS",
-  //       backgroundColor: "red",
-  //       borderColor: "black",
-  //       color: "white",
-  //       borderWidth: 3,
-  //       data: [
-  //         post.powerStrength,
-  //         post.powerSpeed,
-  //         post.powerAgility,
-  //         post.powerStamina,
-  //         post.powerDurability,
-  //         post.powerIntelligence,
-  //       ],
-  //       barPercentage: 1.2,
-  //     },
-  //   ],
-  // };
-
-
+  
 
   return (
-    
-    <Layout >
+    <Layout>
       <div>
         <Card
           style={{ backgroundColor: "rgb(226, 235, 175)", padding: "10px" }}
@@ -117,7 +105,7 @@ if(post.name === "loki"){
                 marginBottom: "5%",
               }}
             >
-              <h1>First Appearancedata{}</h1>
+
               <h1
                 style={{
                   float: "left",
@@ -129,46 +117,50 @@ if(post.name === "loki"){
               >
                 {post.name}
               </h1>
-
-              <div style={{
-                textAlign: "right",
-                position:"relative" ,
-                display:"block",          
-                  }}>
-                <div style={{height:"100%"}}>
-              <Image
+              <div
                 style={{
-                  float:"right",
+                  textAlign: "right",
+                  position: "relative",
+                  display: "block",
                 }}
-                layout="intrinsic"
-                src="/logo.png"
-                alt="Picture of the author"
-                layout="intrinsic"
-
-                width={100}
-                height={100}/>
+              >
+                <div style={{ height: "100%" }}>
+                  <Image
+                    style={{
+                      float: "right",
+                    }}
+                    layout="intrinsic"
+                    src="/logo.png"
+                    alt="Picture of the author"
+                    layout="intrinsic"
+                    width={100}
+                    height={100}
+                  />
                 </div>
-              <h1
-                style={{ fontWeight:"bold",  textAlign: "center", fontSize: "40px", color: "black", position:"absolute", top:"22px",right:"27px" }}>{post.number}
-
-              </h1>
-              </div>
-
-
-              {" "}
+                <h1
+                  style={{
+                    fontWeight: "bold",
+                    textAlign: "center",
+                    fontSize: "40px",
+                    color: "black",
+                    position: "absolute",
+                    top: "22px",
+                    right: "27px",
+                  }}
+                >
+                  {post.number}
+                </h1>
+              </div>{" "}
               {user && (
                 <FillButton style={{ backgroundColor: "green" }}>
                   <a href={`/edit/${post.slug}`}>EDIT </a>
                 </FillButton>
               )}
             </div>
-
-
-
           </Row>
           <Row>
-            <Col w="full" bg="grey-light" text="center" p="4" >
-              <div >
+            <Col w="full" bg="grey-light" text="center" p="4">
+              <div>
                 <img
                   src={post.imageAlt}
                   alt={post.imageAlt}
@@ -179,49 +171,23 @@ if(post.name === "loki"){
                     height: "26rem",
                   }}
                 />
-                {/* <img src={post.image2} alt={post.imageAlt} /> */}
               </div>
+
             </Col>
           </Row>
 
-          {/* <Row>
+           <Row>
             <Col w="full" >
-
-              <div style={{ width: "60%", margin: "20px auto" }} className="chart-div">
-                <HorizontalBar 
-                  data={data}
-                  width={500}
-                height={100}
-                  options={{
-                    scales: {
-                      xAxes: [{
-                        ticks: {
-                          beginAtZero: true,
-                          min: 0,
-                          max: 7,
-                        }
-                      }],
-                    },
-                    title: {
-                      display: true,
-                      text: 'POWER RATINGS',
-                      fontSize: 40,
-                      fontColor: ' black',
-
-                    },
-                    legend: {
-                      display: true,
-                      position: 'bottom',
+            <div style={{alignItems:"center", marginLeft:"10%", marginBottom:"5%"}}>
+      <h1 style={{color:"black", fontSize:"1.5rem", fontWeight:"bold", float:"left"}}>Full Name - </h1><h1 style={{color:"black", fontSize:"1.5rem"}}>{data["full-name"]}</h1>
+      <h1 style={{color:"black", fontSize:"1.5rem",fontWeight:"bold", float:"left"}}>First Appearance -  </h1><h1 style={{color:"black", fontSize:"1.5rem"}}>  {data["first-appearance"]}</h1>
+      <h1 style={{color:"black",fontSize:"1.5rem",fontWeight:"bold", float:"left"}}>Place Of Birth -  </h1><h1 style={{color:"black", fontSize:"1.5rem"}}> {data["place-of-birth"]}</h1>
+      <h1 style={{color:"black", fontSize:"1.5rem",fontWeight:"bold", float:"left"}}>Aliasas:  </h1><h1 style={{color:"black", fontSize:"1.5rem"}}>{data.aliases} </h1>
 
 
-                    },
-                  }
-                  }
-
-                />
-              </div>
+       </div>
             </Col>
-          </Row> */}
+          </Row> 
           <Row>
             <div
               style={{
