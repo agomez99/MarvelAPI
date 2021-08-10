@@ -24,7 +24,7 @@ const PostPage = ({ post}) => {
   const [user] = useAuth();
 
 
-  const [data,setData]=useState([]);
+  const [data, setData]= useState([]);
   const getData=()=>{
     fetch("https://www.superheroapi.com/api.php/3913169345411392/" + post.uid +"/biography",
     
@@ -46,6 +46,7 @@ const PostPage = ({ post}) => {
 
 
 
+console.log(data)
 
 
   useEffect(()=>{
@@ -182,10 +183,14 @@ const PostPage = ({ post}) => {
       <h1 style={{color:"black", fontSize:"1.5rem", fontWeight:"bold", float:"left"}}>Full Name - </h1><h1 style={{color:"black", fontSize:"1.5rem"}}>{data["full-name"]}</h1>
       <h1 style={{color:"black", fontSize:"1.5rem",fontWeight:"bold", float:"left"}}>First Appearance -  </h1><h1 style={{color:"black", fontSize:"1.5rem"}}>  {data["first-appearance"]}</h1>
       <h1 style={{color:"black",fontSize:"1.5rem",fontWeight:"bold", float:"left"}}>Place Of Birth -  </h1><h1 style={{color:"black", fontSize:"1.5rem"}}> {data["place-of-birth"]}</h1>
-      <h1 style={{color:"black", fontSize:"1.5rem",fontWeight:"bold", float:"left"}}>Aliasas:  </h1><h1 style={{color:"black", fontSize:"1.5rem"}}>{data.aliases} </h1>
-
-
-       </div>
+      <h1 style={{color:"black", fontSize:"1.5rem",fontWeight:"bold", float:"left"}}>Aliasas:  </h1><br></br><br></br>
+      {/* <h1 style={{color:"black", fontSize:"1.5rem"}}>{data.aliases} </h1> */}
+      <div style={{ fontSize:"1.5rem"}}>
+      {data.aliases && data.aliases.map((item) => (       
+              <li style={{listStyle:"inside"}}>{item}</li>
+         ))}
+         </div>
+              </div>
             </Col>
           </Row> 
           <Row>
