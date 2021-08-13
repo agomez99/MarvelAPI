@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import styles from "@styles/post.module.scss";
 import { getPostBySlug } from "@lib/firebase";
 import { Layout } from "@components";
 import { Col, Row, Card, Button } from "tailwind-react-ui";
@@ -8,75 +7,77 @@ import { HorizontalBar } from "react-chartjs-2";
 import { useAuth } from "@contexts/auth";
 import { FillButton } from "tailwind-react-ui";
 import "tailwindcss/tailwind.css";
-import { data } from "autoprefixer";
 import { useEffect, useState } from "react";
 //const md5 = require('md5');
-
 const ts = new Date().getTime();
 
 //const hash = md5(ts+PRIVKEY+PUBKEY);
 
 //console.log(hash);
-console.log(ts);
+//console.log(ts);
 
-const PostPage = ({ post}) => {
+const PostPage = ({ post }) => {
   const router = useRouter();
   const [user] = useAuth();
 
+  const [data, setData] = useState([]);
+  const [stat, setStat] = useState([]);
+  const getData = () => {
+    fetch(
+      "https://www.superheroapi.com/api.php/3913169345411392/" +
+        post.uid +
+        "/biography",
 
-  const [data, setData]= useState([]);
-  const getData=()=>{
-    fetch("https://www.superheroapi.com/api.php/3913169345411392/" + post.uid +"/biography",
-    
-    {
-      headers : { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-       }
-    }
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
     )
-      .then(function(response){
+      .then(function (response) {
         return response.json();
       })
-      .then(function(myJson) {
-        console.log(myJson);
-        setData(myJson)
+      .then(function (myJson) {
+        //console.log(myJson);
+        setData(myJson);
       });
-  }
+  };
 
+  const getData2 = () => {
+    fetch(
+      "https://www.superheroapi.com/api.php/3913169345411392/" +
+        post.uid +
+        "/image",
 
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
+    )
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (myJson) {
+        console.log(myJson);
 
-console.log(data)
+        setStat(myJson);
+      });
+  };
 
-
-  useEffect(()=>{
-    getData()
-  },[])
-
-
-  // fetch(
-  //   "https://www.superheroapi.com/api.php/3913169345411392/" +
-  //     id +
-  //     "/biography",
-  //   {
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(data),
-  //   }
-  // )
-  //   .then((response) => response.json())
-  //   //Then with the data from the response in JSON...
-  //   .then((data) => {
-  //     console.log("Full Name: " + data["full-name"]);
-  //     console.log("First Appearance: " + data["first-appearance"]);
-  //     console.log("Place of Birth: " + data["place-of-birth"]);
-
-  //   })
-  //   //Then with the error genereted...
-  //   .catch((error) => {
-  //     console.error("Error:", error);
-  //   });
+  useEffect(() => {
+    getData();
+    if (!getData()) {
+      console.log("not available");
+    }
+    getData2();
+    if (!getData2()) {
+      console.log("not available");
+      stat.url = "https://media.giphy.com/media/6036p0cTnjUrNFpAlr/giphy.gif";
+    }
+  }, []);
 
   if (!post && typeof window !== "undefined") {
     router.push("/404");
@@ -86,46 +87,20 @@ console.log(data)
   if (!post) {
     return null;
   }
-
   const backColor = post.color;
-
-  
-
   return (
     <Layout>
-      <div>
-        <Card
-          style={{ backgroundColor: "rgb(226, 235, 175)", padding: "10px" }}
-        >
+      <div >
+        <Card style={{backgroundColor:"rgb(226, 235, 175)"}}>
           <Row>
             <div
-              style={{
-                backgroundColor: backColor,
-                width: "100%",
-                margin: "0px 0px",
-                marginBottom: "5%",
-              }}
-            >
-
-              <h1
-                style={{
-                  float: "left",
-                  fontSize: "8vw",
-                  fontWeight: "bold",
-                  color: "white",
-                  textTransform: "upperCase",
-                }}
-              >
+              className="cardheading"
+              style={{ backgroundColor: backColor }}>
+              <h1 className="nameTitle">
                 {post.name}
               </h1>
-              <div
-                style={{
-                  textAlign: "right",
-                  position: "relative",
-                  display: "block",
-                }}
-              >
-                <div style={{ height: "100%" }}>
+              <div className="logodiv" >
+                <div className="logo" >
                   <Image
                     style={{
                       float: "right",
@@ -138,17 +113,7 @@ console.log(data)
                     height={100}
                   />
                 </div>
-                <h1
-                  style={{
-                    fontWeight: "bold",
-                    textAlign: "center",
-                    fontSize: "40px",
-                    color: "black",
-                    position: "absolute",
-                    top: "22px",
-                    right: "27px",
-                  }}
-                >
+                <h1  className="idnum">
                   {post.number}
                 </h1>
               </div>{" "}
@@ -165,59 +130,42 @@ console.log(data)
                 <img
                   src={post.imageAlt}
                   alt={post.imageAlt}
-                  style={{
-                    display: "block",
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                    height: "26rem",
-                  }}
+                  className="featimg"
                 />
               </div>
-
             </Col>
           </Row>
-
-           <Row>
-            <Col w="full" >
-            <div style={{alignItems:"center", marginLeft:"10%", marginBottom:"5%"}}>
-      <h1 style={{color:"black", fontSize:"1.5rem", fontWeight:"bold", float:"left"}}>Full Name - </h1><h1 style={{color:"black", fontSize:"1.5rem"}}>{data["full-name"]}</h1>
-      <h1 style={{color:"black", fontSize:"1.5rem",fontWeight:"bold", float:"left"}}>First Appearance -  </h1><h1 style={{color:"black", fontSize:"1.5rem"}}>  {data["first-appearance"]}</h1>
-      <h1 style={{color:"black",fontSize:"1.5rem",fontWeight:"bold", float:"left"}}>Place Of Birth -  </h1><h1 style={{color:"black", fontSize:"1.5rem"}}> {data["place-of-birth"]}</h1>
-      <h1 style={{color:"black", fontSize:"1.5rem",fontWeight:"bold", float:"left"}}>Aliasas:  </h1><br></br><br></br>
-      {/* <h1 style={{color:"black", fontSize:"1.5rem"}}>{data.aliases} </h1> */}
-      <div style={{ fontSize:"1.5rem"}}>
-      {data.aliases && data.aliases.map((item) => (       
-              <li style={{listStyle:"inside"}}>{item}</li>
-         ))}
-         </div>
-              </div>
-            </Col>
-          </Row> 
           <Row>
-            <div
-              style={{
-                backgroundColor: "white",
-                padding: "20px",
-                marginLeft: "10%",
-                marginRight: "10%",
-              }}
-            >
+            <div className="bio-div" >
+              <img
+                className="bio-image"
+                src={stat.url}
+                onLoad={(event) =>
+                  (event.target.style.display = "inline-block")
+                }
+                alt={stat.imageAlt}
+              ></img>
+              <div className="bio-stats">
+                <h1 className="bio-sec">Full Name - </h1>
+                <h1>{data["full-name"]}</h1>
+                <h1 className="bio-sec">First Appearance - </h1>
+                <h1> {data["first-appearance"]} </h1>
+                <h1 className="bio-sec">Place Of Birth - </h1>
+                <h1> {data["place-of-birth"]} </h1>
+                <h1 className="bio-sec">Aliasas: </h1>
+                <br></br>
+                {data.aliases &&
+                  data.aliases.map((item) => (
+                    <li key={item.toString()} style={{ listStyle: "inside" }}>
+                      {item}
+                    </li>
+                  ))}
+              </div>
               <p className="bio-p"> {post.bio}</p>
             </div>
           </Row>
-
           <Row>
-            <div
-              style={{
-                backgroundColor: "rgb(226, 235, 175)",
-                padding: "10px",
-                marginTop: "10px",
-                borderWidth: "2px",
-                borderColor: "black",
-                marginLeft: "auto",
-                marginRight: "auto",
-              }}
-            >
+            <div  className="dyn" >
               <p style={{ fontSize: "1.5vh", fontWeight: "bold" }}>
                 DID YOU KNOW :
               </p>

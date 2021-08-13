@@ -26,8 +26,85 @@ canvas{
   height:"300px"
 }
 
+/*Bio Page*/
+
+.bio.card{
+  background-color: rgb(226, 235, 175);
+}
+
+div.cardheading{
+  width:100%;
+  margin: 0px 0px;
+  margin-bottom: 5%;
+}
+div.logodiv{
+  text-align: right;
+  position: relative;
+  display: block;
+}
+div.logo{
+  height: 100%;
+}
+.idnum{
+  font-weight: bold;
+  text-align: center;
+  font-size: 40px;
+  color:black;
+  top:22px;
+  right:27px;
+  position: absolute;
+}
+.nameTitle{
+  float:left;
+  font-size: 8vw;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+}
+
+.featimg{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height:26rem;
+
+}
+.bio-div{
+  background-color: white;
+  padding:20px;
+  margin-left: 10%;
+  margin-right: 10%;
+  display: block;
+}
+.bio-stats{
+  float:left;
+  margin:5%;
+  font-size: 1.5rem;  
+  color: black;
+  white-space: nowrap;
+}
+.bio-sec{
+  float:left;
+  font-weight: bold;
+}
 .bio-p{
   font-size: 26px;
+  float: left;
+  margin-top:5%;
+}
+.bio-image{
+  width:200px;
+  height:200px;
+  margin:5%;
+  float:right;
+}
+
+.dyn{
+  background-color: rgb(226, 235, 175);
+  padding:10px;
+  border-width: 2px;
+  border-color: black;
+  margin: 5% auto 5% auto;
 }
 .flip-card {
     background-color: transparent;

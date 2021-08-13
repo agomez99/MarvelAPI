@@ -17,7 +17,8 @@ const CreatePage = () => {
     name: '',
     slug: ' ',
     number: ' ',
-    color:' '
+    color:' ',
+    uid: ' ',
   });
   const [isLoading, setIsLoading] = useState(false); // this is new
   const [user, userLoading] = useAuth();
@@ -154,6 +155,15 @@ const CreatePage = () => {
           />
         </div>
         <div>
+          <label htmlFor="uid">UID</label>
+          <TextInput
+            id="uid"
+            type="text"
+            value={formValues.uid}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
           <label htmlFor="content">Bio</label>
           <textarea className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" rows="4"
             id="bio"
@@ -161,7 +171,7 @@ const CreatePage = () => {
             onChange={handleChange}
           />
         </div>
-        <button type="submit">Create</button>
+        <Button type="submit">Create</Button>
       </form>
     </div>
     </Layout>
