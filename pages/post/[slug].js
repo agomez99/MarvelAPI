@@ -158,7 +158,7 @@ const PostPage = ({ post }) => {
             <div className="bio-div" >
                 <ReactImageFallback
                   src={stat.url}
-                  fallbackImage="https://i.ibb.co/rFgJ7nj/plceavatar.png"
+                  fallbackImage="https://i.ibb.co/LnPBDY1/icon.png"
                   initialImage="https://i.ibb.co/ZGLW03w/loading1.gif"
                   alt={stat.imageAlt}
                   className="bio-image"

@@ -84,11 +84,8 @@ const HomePage = ({ posts }) => (
         <div>
           <Row gutter>
             <Col className="hdr">
-              {posts
-                .slice(0, 200)
-                .reverse()
-                .map((post) => (
-                  <article>
+              {posts.sort((a, b) => a.number - b.number).map((post) => (
+                  <article key={post.number}>
                     <div className="flip-card">
                       <a href={`/post/${post.slug}`}>
                       <h2
