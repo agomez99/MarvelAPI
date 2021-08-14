@@ -16,13 +16,18 @@ const ts = new Date().getTime();
 
 //console.log(hash);
 //console.log(ts);
+const APIKEY="228a2cac6d893dce20244bdab584d41a";
 
 const PostPage = ({ post }) => {
   const router = useRouter();
   const [user] = useAuth();
 
   const [data, setData] = useState([]);
+  const [bio, setBio] = useState([]);
+
   const [stat, setStat] = useState([]);
+
+  const bioname = post;
   const getData = () => {
     fetch(
       "https://www.superheroapi.com/api.php/3913169345411392/" +
@@ -43,14 +48,14 @@ const PostPage = ({ post }) => {
   if(response.error = "invalid id"){
     //return  "Name not Found";
   }
-  console.log(data);
+  //console.log(data);
   // Read the response as json.
   return response.json();
 })
 .then(function(myJson) {
   // Do stuff with the JSON
   setData(myJson);
-  console.log(myJson);
+  //console.log(myJson);
 })
 .catch(function(error) {
   console.log('Looks like there was a problem: \n', error);
@@ -84,18 +89,54 @@ const PostPage = ({ post }) => {
     .then(function(myJson) {
       // Do stuff with the JSON
       setStat(myJson);
-      console.log(myJson);
+      //console.log(myJson);
     })
     .catch(function(error) {
       console.log('Looks like there was a problem: \n', error);
     });
       
   };
+  const getBio = () => {
+    
+    fetch(
+      "http://gateway.marvel.com/v1/public/characters?name=hulk&apikey=" +
+      APIKEY,
   
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
+    )
+  .then(function(response) {
+  if (!response.ok) {
+    throw Error(response.statusText);
+  }
+  //console.log(response);
+  
+  // Read the response as json.
+  return response.json();
+  })
+  .then(function(myJson) {
+  // Do stuff with the JSON
+  console.log(myJson);
+
+  setBio(myJson)
+  console.log(bio.data.results[0].description);
+  })
+
+
+  .catch(function(error) {
+  console.log('Looks like there was a problem: \n', error);
+  });
+  };
+
 
   useEffect(() => {
     getData();
     getData2();
+    getBio();
   }, []);
 
   if (!post && typeof window !== "undefined") {
@@ -180,7 +221,7 @@ const PostPage = ({ post }) => {
                     </li>
                   ))}
               </div>
-              <p className="bio-p"> {post.bio}</p>
+                <p className="bio-p"> {bio.data.results[0].description}</p> 
             </div>
           </Row>
           <Row>
