@@ -8,6 +8,7 @@ import { useAuth } from "@contexts/auth";
 import { FillButton } from "tailwind-react-ui";
 import "tailwindcss/tailwind.css";
 import { useEffect, useState } from "react";
+import ReactImageFallback from "react-image-fallback";
 //const md5 = require('md5');
 const ts = new Date().getTime();
 
@@ -35,13 +36,25 @@ const PostPage = ({ post }) => {
         },
       }
     )
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (myJson) {
-        //console.log(myJson);
-        setData(myJson);
-      });
+.then(function(response) {
+  if (!response.ok) {
+    throw Error(response.statusText);
+  }
+  if(response.error = "invalid id"){
+    //return  "Name not Found";
+  }
+  console.log(data);
+  // Read the response as json.
+  return response.json();
+})
+.then(function(myJson) {
+  // Do stuff with the JSON
+  setData(myJson);
+  console.log(myJson);
+})
+.catch(function(error) {
+  console.log('Looks like there was a problem: \n', error);
+});
   };
 
   const getData2 = () => {
@@ -57,26 +70,32 @@ const PostPage = ({ post }) => {
         },
       }
     )
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (myJson) {
-        console.log(myJson);
+    .then(function(response) {
+      if (!response.ok) {
+        throw Error(response.statusText);  
+         }
+         if(response.error = "invalid id"){
+          setStat(response);
+      }
+      // Read the response as json.
+      return response.json();
 
-        setStat(myJson);
-      });
+    })
+    .then(function(myJson) {
+      // Do stuff with the JSON
+      setStat(myJson);
+      console.log(myJson);
+    })
+    .catch(function(error) {
+      console.log('Looks like there was a problem: \n', error);
+    });
+      
   };
+  
 
   useEffect(() => {
     getData();
-    if (!getData()) {
-      console.log("not available");
-    }
     getData2();
-    if (!getData2()) {
-      console.log("not available");
-      stat.url = "https://media.giphy.com/media/6036p0cTnjUrNFpAlr/giphy.gif";
-    }
   }, []);
 
   if (!post && typeof window !== "undefined") {
@@ -137,14 +156,14 @@ const PostPage = ({ post }) => {
           </Row>
           <Row>
             <div className="bio-div" >
-              <img
-                className="bio-image"
-                src={stat.url}
-                onLoad={(event) =>
-                  (event.target.style.display = "inline-block")
-                }
-                alt={stat.imageAlt}
-              ></img>
+                <ReactImageFallback
+                  src={stat.url}
+                  fallbackImage="https://i.ibb.co/rFgJ7nj/plceavatar.png"
+                  initialImage="https://i.ibb.co/ZGLW03w/loading1.gif"
+                  alt={stat.imageAlt}
+                  className="bio-image"
+ 
+                  />
               <div className="bio-stats">
                 <h1 className="bio-sec">Full Name - </h1>
                 <h1>{data["full-name"]}</h1>
