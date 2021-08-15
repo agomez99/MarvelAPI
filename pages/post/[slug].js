@@ -16,7 +16,7 @@ const ts = new Date().getTime();
 
 //console.log(hash);
 //console.log(ts);
-const APIKEY="228a2cac6d893dce20244bdab584d41a";
+const APIKEY = "228a2cac6d893dce20244bdab584d41a";
 
 const PostPage = ({ post }) => {
   const router = useRouter();
@@ -27,7 +27,6 @@ const PostPage = ({ post }) => {
 
   const [stat, setStat] = useState([]);
 
-  const bioname = post;
   const getData = () => {
     fetch(
       "https://www.superheroapi.com/api.php/3913169345411392/" +
@@ -41,25 +40,25 @@ const PostPage = ({ post }) => {
         },
       }
     )
-.then(function(response) {
-  if (!response.ok) {
-    throw Error(response.statusText);
-  }
-  if(response.error = "invalid id"){
-    //return  "Name not Found";
-  }
-  //console.log(data);
-  // Read the response as json.
-  return response.json();
-})
-.then(function(myJson) {
-  // Do stuff with the JSON
-  setData(myJson);
-  //console.log(myJson);
-})
-.catch(function(error) {
-  console.log('Looks like there was a problem: \n', error);
-});
+      .then(function (response) {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        if ((response.error = "invalid id")) {
+          //return  "Name not Found";
+        }
+        //console.log(data);
+        // Read the response as json.
+        return response.json();
+      })
+      .then(function (myJson) {
+        // Do stuff with the JSON
+        setData(myJson);
+        //console.log(myJson);
+      })
+      .catch(function (error) {
+        console.log("Looks like there was a problem: \n", error);
+      });
   };
 
   const getData2 = () => {
@@ -75,33 +74,34 @@ const PostPage = ({ post }) => {
         },
       }
     )
-    .then(function(response) {
-      if (!response.ok) {
-        throw Error(response.statusText);  
-         }
-         if(response.error = "invalid id"){
+      .then(function (response) {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        if ((response.error = "invalid id")) {
           setStat(response);
-      }
-      // Read the response as json.
-      return response.json();
-
-    })
-    .then(function(myJson) {
-      // Do stuff with the JSON
-      setStat(myJson);
-      //console.log(myJson);
-    })
-    .catch(function(error) {
-      console.log('Looks like there was a problem: \n', error);
-    });
-      
+        }
+        // Read the response as json.
+        return response.json();
+      })
+      .then(function (myJson) {
+        // Do stuff with the JSON
+        setStat(myJson);
+        //console.log(myJson);
+      })
+      .catch(function (error) {
+        console.log("Looks like there was a problem: \n", error);
+      });
   };
+ 
+
   const getBio = () => {
-    
+    const heros = post.name.toLowerCase()
+
     fetch(
-      "http://gateway.marvel.com/v1/public/characters?name=hulk&apikey=" +
-      APIKEY,
-  
+      "http://gateway.marvel.com/v1/public/characters?name="+heros+"&apikey=" +
+        APIKEY,
+
       {
         headers: {
           "Content-Type": "application/json",
@@ -109,27 +109,24 @@ const PostPage = ({ post }) => {
         },
       }
     )
-  .then(function(response) {
-  if (!response.ok) {
-    throw Error(response.statusText);
-  }
-  //console.log(response);
-  
-  // Read the response as json.
-  return response.json();
-  })
-  .then(function(myJson) {
-  // Do stuff with the JSON
-  console.log(myJson);
+      .then(function (response) {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        //console.log(response)
+        // Read the response as json.
+        return response.json();
+      })
+      .then(function (myJson) {
+        // Do stuff with the JSON
+        console.log(myJson);
 
-  setBio(myJson)
-  console.log(bio.data.results[0].description);
-  })
+        setBio(myJson);
+      })
 
-
-  .catch(function(error) {
-  console.log('Looks like there was a problem: \n', error);
-  });
+      .catch(function (error) {
+        console.log("Looks like there was a problem: \n", error);
+      });
   };
 
 
@@ -150,17 +147,13 @@ const PostPage = ({ post }) => {
   const backColor = post.color;
   return (
     <Layout>
-      <div >
-        <Card style={{backgroundColor:"rgb(226, 235, 175)"}}>
+      <div>
+        <Card style={{ backgroundColor: "rgb(226, 235, 175)" }}>
           <Row>
-            <div
-              className="cardheading"
-              style={{ backgroundColor: backColor }}>
-              <h1 className="nameTitle">
-                {post.name}
-              </h1>
-              <div className="logodiv" >
-                <div className="logo" >
+            <div className="cardheading" style={{ backgroundColor: backColor }}>
+              <h1 className="nameTitle">{post.name}</h1>
+              <div className="logodiv">
+                <div className="logo">
                   <Image
                     style={{
                       float: "right",
@@ -173,9 +166,7 @@ const PostPage = ({ post }) => {
                     height={100}
                   />
                 </div>
-                <h1  className="idnum">
-                  {post.number}
-                </h1>
+                <h1 className="idnum">{post.number}</h1>
               </div>{" "}
               {user && (
                 <FillButton style={{ backgroundColor: "green" }}>
@@ -196,15 +187,14 @@ const PostPage = ({ post }) => {
             </Col>
           </Row>
           <Row>
-            <div className="bio-div" >
-                <ReactImageFallback
-                  src={stat.url}
-                  fallbackImage="https://i.ibb.co/LnPBDY1/icon.png"
-                  initialImage="https://i.ibb.co/ZGLW03w/loading1.gif"
-                  alt={stat.imageAlt}
-                  className="bio-image"
- 
-                  />
+            <div className="bio-div">
+              <ReactImageFallback
+                src={stat.url}
+                fallbackImage="https://i.ibb.co/LnPBDY1/icon.png"
+                initialImage="https://i.ibb.co/ZGLW03w/loading1.gif"
+                alt={stat.imageAlt}
+                className="bio-image"
+              />
               <div className="bio-stats">
                 <h1 className="bio-sec">Full Name - </h1>
                 <h1>{data["full-name"]}</h1>
@@ -221,11 +211,11 @@ const PostPage = ({ post }) => {
                     </li>
                   ))}
               </div>
-                <p className="bio-p"> {bio.data.results[0].description}</p> 
+              <p className="bio-p"> {post.bio}</p>
             </div>
           </Row>
           <Row>
-            <div  className="dyn" >
+            <div className="dyn">
               <p style={{ fontSize: "1.5vh", fontWeight: "bold" }}>
                 DID YOU KNOW :
               </p>
@@ -239,10 +229,12 @@ const PostPage = ({ post }) => {
 };
 export async function getServerSideProps(context) {
   const post = await getPostBySlug(context.query.slug);
+  const bio = await getPostBySlug(context.query.slug);
 
   return {
     props: {
       post,
+      bio,
     },
   };
 }
