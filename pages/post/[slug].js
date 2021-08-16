@@ -99,7 +99,7 @@ const PostPage = ({ post }) => {
     const heros = post.name
 
     fetch(
-      "http://gateway.marvel.com/v1/public/characters?name="+heros+"&apikey=" +
+      "https://gateway.marvel.com/v1/public/characters?name="+heros+"&apikey=" +
         APIKEY,
 
       {
