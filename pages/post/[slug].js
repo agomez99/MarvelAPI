@@ -16,7 +16,7 @@ const ts = new Date().getTime();
 
 //console.log(hash);
 //console.log(ts);
-const APIKEY = process.env.MARVELKEY;
+const APIKEY = "228a2cac6d893dce20244bdab584d41a";
 
 const PostPage = ({ post }) => {
   const router = useRouter();
