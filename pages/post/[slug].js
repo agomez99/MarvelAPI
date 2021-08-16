@@ -96,7 +96,7 @@ const PostPage = ({ post }) => {
  
 
   const getBio = () => {
-    const heros = post.name.toLowerCase()
+    const heros = post.name
 
     fetch(
       "http://gateway.marvel.com/v1/public/characters?name="+heros+"&apikey=" +
@@ -121,10 +121,18 @@ const PostPage = ({ post }) => {
         // Do stuff with the JSON
         console.log(myJson);
 
-        setBio(myJson);
+        setBio(myJson.data.results[0].description);
+        if(myJson.data.results[0].description == ""){
+          setBio(post.bio);
+
+        console.log("not in api")
+        }
       })
 
       .catch(function (error) {
+        console.log("bio not available")
+        setBio(post.bio);
+
         console.log("Looks like there was a problem: \n", error);
       });
   };
@@ -211,7 +219,7 @@ const PostPage = ({ post }) => {
                     </li>
                   ))}
               </div>
-              <p className="bio-p"> {post.bio}</p>
+              <p className="bio-p"> {bio}</p>
             </div>
           </Row>
           <Row>
