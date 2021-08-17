@@ -9,14 +9,10 @@ import { FillButton } from "tailwind-react-ui";
 import "tailwindcss/tailwind.css";
 import { useEffect, useState } from "react";
 import ReactImageFallback from "react-image-fallback";
-//const md5 = require('md5');
 const ts = new Date().getTime();
 
-//const hash = md5(ts+PRIVKEY+PUBKEY);
 
-//console.log(hash);
-//console.log(ts);
-const APIKEY = "228a2cac6d893dce20244bdab584d41a";
+const APIKEY = process.env.MARVELKEY;
 
 const PostPage = ({ post }) => {
   const router = useRouter();
@@ -24,7 +20,7 @@ const PostPage = ({ post }) => {
 
   const [data, setData] = useState([]);
   const [bio, setBio] = useState([]);
-
+  const[links, setLinks] = useState([]);
   const [stat, setStat] = useState([]);
 
   const getData = () => {
@@ -122,15 +118,15 @@ const PostPage = ({ post }) => {
         console.log(myJson);
 
         setBio(myJson.data.results[0].description);
+        console.log(bio)
         if(myJson.data.results[0].description == ""){
           setBio(post.bio);
-
-        console.log("not in api")
+        console.log("bio not in Marvel api")
         }
       })
 
       .catch(function (error) {
-        console.log("bio not available")
+        //console.log("bio not available")
         setBio(post.bio);
 
         console.log("Looks like there was a problem: \n", error);
@@ -138,10 +134,46 @@ const PostPage = ({ post }) => {
   };
 
 
+  
+  const getLinks= () => {
+    const heros = post.name
+
+    fetch(
+      "https://gateway.marvel.com/v1/public/characters?name="+heros+"&apikey=" +
+        APIKEY,
+
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
+    )
+      .then(function (response) {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response.json();
+      })
+      .then(function (myJson) {
+        setLinks(myJson.data.results[0].urls[0].url);
+        
+        //setLinks(myJson.data.results[0].urls[0].url);
+        console.log(links)
+      
+      })
+    
+      .catch(function (error) {
+        console.log("links not available")
+        console.log("Looks like there was a problem: \n", error);
+      });
+  };
+
   useEffect(() => {
     getData();
     getData2();
     getBio();
+    getLinks();
   }, []);
 
   if (!post && typeof window !== "undefined") {
@@ -220,7 +252,18 @@ const PostPage = ({ post }) => {
                   ))}
               </div>
               <p className="bio-p"> {bio}</p>
+              <div style={{display:"inlineFlex", marginLeft:"auto", marginRight:"auto", textAlign:"center", backgroundColor:"white"}}>
+
+              <a href={links} style={{paddingRight:"30px"}}>About </a>
+              {/* <a  href={links[1].url} style={{paddingRight:"30px"}}>Wiki</a>
+              <a href={links[2].url}>Comics</a>  */}
+              </div>
+
             </div>
+            
+          </Row>
+          <Row>
+ 
           </Row>
           <Row>
             <div className="dyn">
@@ -238,11 +281,13 @@ const PostPage = ({ post }) => {
 export async function getServerSideProps(context) {
   const post = await getPostBySlug(context.query.slug);
   const bio = await getPostBySlug(context.query.slug);
+  const links = await getPostBySlug(context.query.slug);
 
   return {
     props: {
       post,
       bio,
+      links,
     },
   };
 }
