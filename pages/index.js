@@ -11,8 +11,9 @@ import Image from "next/image";
 import GoogleAnalytics from "./googleAnalytics";
 import { FillButton } from "tailwind-react-ui";
 
-
 //const colors = (posts) => posts.map((post) => Console.log(posts));
+
+
 
 const HomePage = ({ posts }) => (
 
@@ -102,13 +103,11 @@ const HomePage = ({ posts }) => (
                             className="flip-card-front"
                             style={{ backgroundColor: "red" }}
                           >
-                            {/* <h1 >{post.number}</h1> */}
-               
-                            <img src={post.image} alt={post.imageAlt} />
+                          <Image  height={430} width={250}  src={post.image} alt={post.imageAlt} />
                           </div>
                           <div className="flip-card-back">
+                          <Image height={430} width={250} src={post.image2}  alt={post.imageAlt} />
 
-                            <img src={post.image2} alt={post.imageAlt} />
                           </div>
                         </div>
                       </a>
