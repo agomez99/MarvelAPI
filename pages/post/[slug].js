@@ -157,7 +157,7 @@ const PostPage = ({ post }) => {
       })
       .then(function (myJson) {
         setLinks(myJson.data.results[0].urls[0].url);
-        
+        console.log(myJson.data.results[0].urls);
         //setLinks(myJson.data.results[0].urls[0].url);
         console.log(links)
       
@@ -235,6 +235,7 @@ const PostPage = ({ post }) => {
                 alt={stat.imageAlt}
                 className="bio-image"
               />
+
               <div className="bio-stats">
                 <h1 className="bio-sec">Full Name - </h1>
                 <h1>{data["full-name"]}</h1>
@@ -251,16 +252,16 @@ const PostPage = ({ post }) => {
                     </li>
                   ))}
               </div>
-              <p className="bio-p"> {bio}</p>
-              <div style={{display:"inlineFlex", marginLeft:"auto", marginRight:"auto", textAlign:"center", backgroundColor:"white"}}>
-
-              <a href={links} style={{paddingRight:"30px"}}>About </a>
-              {/* <a  href={links[1].url} style={{paddingRight:"30px"}}>Wiki</a>
-              <a href={links[2].url}>Comics</a>  */}
-              </div>
-
+              <div >
+                  <p className="bio-p"> {bio}</p>
+                  </div>
             </div>
-            
+            <div style={{textAlign:"center",marginLeft:"auto", marginRight:"auto", backgroundColor:"white"}}>
+                <a href={links} style={{paddingRight:"30px"}}>About </a>
+                 {/* <a href={links} style={{paddingRight:"30px"}}>Wiki</a>
+                <a href={links}>Comics</a>  */}
+                </div>
+
           </Row>
           <Row>
  

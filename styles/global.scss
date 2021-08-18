@@ -72,10 +72,10 @@ div.logo{
 .bio-div{
   background-color: white;
   padding:20px;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
   display: block;
-  width:100%;
+  width:90%;
 }
 .bio-stats{
   float:left;
@@ -90,14 +90,17 @@ div.logo{
 }
 .bio-p{
   font-size: 26px;
-  float: left;
-  margin-top:5%;
+  margin-top:20px;
+  display: inline-block;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 .bio-image{
   width:200px;
   height:200px;
-  margin:5%;
   float:right;
+  margin-right: 15%;
+
 }
 
 .dyn{
