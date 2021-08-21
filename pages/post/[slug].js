@@ -12,7 +12,7 @@ import ReactImageFallback from "react-image-fallback";
 const ts = new Date().getTime();
 
 
-const APIKEY = process.env.MARVELKEY;
+const APIKEY = "228a2cac6d893dce20244bdab584d41a";
 
 const PostPage = ({ post }) => {
   const router = useRouter();

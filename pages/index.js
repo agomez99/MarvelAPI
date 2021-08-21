@@ -92,7 +92,7 @@ const HomePage = ({ posts }) => (
                       <h2
                               style={{
                                 color: "white",
-                                fontSize: "2.3rem",
+                                fontSize: "1.6rem",
                                 fontFamily: "Bangers",
                               }}
                             >

@@ -1,8 +1,5 @@
 module.exports = {
-  images: {
-    domains: ['media.giphy.com']
-},
-  plugins: {
+ plugins: {
     tailwindcss: {},
     autoprefixer: {},
   },
