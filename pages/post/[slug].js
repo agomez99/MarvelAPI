@@ -22,158 +22,59 @@ const PostPage = ({ post }) => {
   const [bio, setBio] = useState([]);
   const[links, setLinks] = useState([]);
   const [stat, setStat] = useState([]);
-
+  const [image, setImage] = useState([]);
   const getData = () => {
-    fetch(
-      "https://www.superheroapi.com/api.php/3913169345411392/" +
-        post.uid +
-        "/biography",
-
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      }
-    )
-      .then(function (response) {
-        if (!response.ok) {
-          throw Error(response.statusText);
-        }
-        if ((response.error = "invalid id")) {
-          //return  "Name not Found";
-        }
-        //console.log(data);
-        // Read the response as json.
-        return response.json();
-      })
-      .then(function (myJson) {
-        // Do stuff with the JSON
-        setData(myJson);
-        //console.log(myJson);
-      })
-      .catch(function (error) {
-        console.log("Looks like there was a problem: \n", error);
-      });
-  };
-
-  const getData2 = () => {
-    fetch(
-      "https://www.superheroapi.com/api.php/3913169345411392/" +
-        post.uid +
-        "/image",
-
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      }
-    )
-      .then(function (response) {
-        if (!response.ok) {
-          throw Error(response.statusText);
-        }
-        if ((response.error = "invalid id")) {
-          setStat(response);
-        }
-        // Read the response as json.
-        return response.json();
-      })
-      .then(function (myJson) {
-        // Do stuff with the JSON
-        setStat(myJson);
-        //console.log(myJson);
-      })
-      .catch(function (error) {
-        console.log("Looks like there was a problem: \n", error);
-      });
-  };
- 
-
-  const getBio = () => {
     const heros = post.name
 
-    fetch(
-      "https://gateway.marvel.com/v1/public/characters?name="+heros+"&apikey=" +
-        APIKEY,
-
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      }
-    )
-      .then(function (response) {
-        if (!response.ok) {
-          throw Error(response.statusText);
-        }
-        //console.log(response)
-        // Read the response as json.
-        return response.json();
-      })
-      .then(function (myJson) {
-        // Do stuff with the JSON
-        console.log(myJson);
-
-        setBio(myJson.data.results[0].description);
-        console.log(bio)
-        if(myJson.data.results[0].description == ""){
-          setBio(post.bio);
-        console.log("bio not in Marvel api")
-        }
-      })
-
-      .catch(function (error) {
-        //console.log("bio not available")
-        setBio(post.bio);
-
-        console.log("Looks like there was a problem: \n", error);
-      });
-  };
-
-
-  
-  const getLinks= () => {
-    const heros = post.name
-
-    fetch(
-      "https://gateway.marvel.com/v1/public/characters?name="+heros+"&apikey=" +
-        APIKEY,
-
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      }
-    )
-      .then(function (response) {
-        if (!response.ok) {
-          throw Error(response.statusText);
-        }
-        return response.json();
-      })
-      .then(function (myJson) {
-        setLinks(myJson.data.results[0].urls[0].url);
-        console.log(myJson.data.results[0].urls);
-        //setLinks(myJson.data.results[0].urls[0].url);
-        console.log(links)
+    Promise.all([
+      fetch("https://www.superheroapi.com/api.php/3913169345411392/" + post.uid + "/biography"),
+      fetch("https://www.superheroapi.com/api.php/3913169345411392/" + post.uid + "/image"),
+      fetch("https://gateway.marvel.com/v1/public/characters?name="+ heros + "&apikey=" + APIKEY)
       
-      })
-    
-      .catch(function (error) {
-        console.log("links not available")
-        console.log("Looks like there was a problem: \n", error);
-      });
+    ])      .then(function (responses) {
+      return Promise.all(responses.map(function (response) {
+            // Read the response as json.
+            return response.json();
+
+          }))
+
+        }).then(function (data) {
+            // Do stuff with the JSON
+            console.log(data)
+            setData(data[0]);
+            if(data[0].error == 'invalid id'){
+              setData( [{ 
+                "name": "Nope",
+                "description": "Invalid ID"
+                }] );
+                console.log(data)
+              console.log("No superhero api info available")
+            }
+            setStat(data[1])
+            if(data[1].error == 'invalid id'){
+            }
+            setImage(data[2].data.results[0].thumbnail.path.extension== "jpg" ? data[2].data.results[0].thumbnail.path : data[2].data.results[0].thumbnail.path.replace("jpg", "png"))
+            console.log(image);
+
+            setLinks(data[2].data.results[0].urls);
+            if(data[2].data.results[0].urls.length < 3){
+              console.log("Links are missing")
+              }
+
+            setBio(data[2].data.results[0].description);
+            if(data[2].data.results[0].description == ""){
+              setBio(post.bio);
+              console.log("Bio is not in Marvel api")
+              }
+
+          })
+          .catch(function (error) {
+            console.log("Looks like there was a problem: \n", error);
+          });
   };
 
   useEffect(() => {
     getData();
-    getData2();
-    getBio();
-    getLinks();
   }, []);
 
   if (!post && typeof window !== "undefined") {
@@ -184,23 +85,39 @@ const PostPage = ({ post }) => {
   if (!post) {
     return null;
   }
+
+  //Links text first letter to uppercase
+  function titleCase(str) {
+    var splitStr = str.toLowerCase().split(' ');
+    for (var i = 0; i < splitStr.length; i++) {
+        // You do not need to check if i is larger than splitStr length, as your for does that for you
+        // Assign it back to the array
+        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+    }
+    // Directly return the joined string
+    return splitStr.join(' '); 
+ }
   const backColor = post.color;
+  const imageUrl = image + ".jpg" || image + ".png";
+  //const fallback = {data[2].data.results[0].thumbnail.path;
   return (
     <Layout>
       <div>
-        <Card style={{ backgroundColor: "rgb(226, 235, 175)" }}>
+        <Card  style={{ backgroundImage:"linear-gradient(white,"+backColor +")"}}>
           <Row>
             <div className="cardheading" style={{ backgroundColor: backColor }}>
               <h1 className="nameTitle">{post.name}</h1>
+              {/* <h1 className="nameTitle">{post.cardname}</h1> */}
+
               <div className="logodiv">
                 <div className="logo">
-                  <Image
+                  <img
+                    className="marvel-lg"
                     style={{
                       float: "right",
                     }}
-                    layout="intrinsic"
                     src="/logo.png"
-                    alt="Picture of the author"
+                    alt="Marvel logo"
                     layout="intrinsic"
                     width={100}
                     height={100}
@@ -227,22 +144,21 @@ const PostPage = ({ post }) => {
             </Col>
           </Row>
           <Row>
-            <div className="bio-div">
+            <div className="bio-div"  style={{ backgroundColor: backColor }} >
               <ReactImageFallback
-                src={stat.url}
-                fallbackImage="https://i.ibb.co/LnPBDY1/icon.png"
+                src={imageUrl}
+                fallbackImage={"https://i.ibb.co/LnPBDY1/icon.png"}
                 initialImage="https://i.ibb.co/ZGLW03w/loading1.gif"
                 alt={stat.imageAlt}
                 className="bio-image"
               />
-
               <div className="bio-stats">
                 <h1 className="bio-sec">Full Name - </h1>
                 <h1>{data["full-name"]}</h1>
-                <h1 className="bio-sec">First Appearance - </h1>
-                <h1> {data["first-appearance"]} </h1>
                 <h1 className="bio-sec">Place Of Birth - </h1>
                 <h1> {data["place-of-birth"]} </h1>
+                <h1 className="bio-sec">First Appearance</h1><br></br> <p> {data["first-appearance"]} </p>
+
                 <h1 className="bio-sec">Aliasas: </h1>
                 <br></br>
                 {data.aliases &&
@@ -256,12 +172,13 @@ const PostPage = ({ post }) => {
                   <p className="bio-p"> {bio}</p>
                   </div>
             </div>
-            <div style={{textAlign:"center",marginLeft:"auto", marginRight:"auto", backgroundColor:"white"}}>
-                <a href={links} style={{paddingRight:"30px"}}>About </a>
-                 {/* <a href={links} style={{paddingRight:"30px"}}>Wiki</a>
-                <a href={links}>Comics</a>  */}
-                </div>
+            <div className="link-div">
+            <p style={{textAlign:"center"}}>Links</p>
 
+            <ul className="linksdiv">
+                { links.map(({ url, type }, i) => <li className="links" key={ i }><a   href={ url } target="_blank" rel="noopener noreferrer">{ titleCase(type) }</a></li>) }
+              </ul>    
+      </div>
           </Row>
           <Row>
  

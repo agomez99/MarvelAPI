@@ -59,8 +59,8 @@ const EditPage = ({ post }) => {
     <Layout>
       <div className={styles.EditPage}>
         <form onSubmit={handleSubmit}>
-          <h1 style={{textAlign:"center", fontSize:"55px"}} id="editH1">Edit For :</h1>
-          <h1 style={{textAlign:"center", fontSize:"60px", color:"purple", textTransform:"uppercase"}} id="postH1"> {post.name}</h1>
+          <h1 style={{textAlign:"center", fontSize:"20px"}} id="editH1">Edit For :</h1>
+          <h1 style={{textAlign:"center", fontSize:"20px", color:"purple", textTransform:"uppercase"}} id="postH1"> {post.name}</h1>
 
           <div>
           <label htmlFor="number">#</label>
@@ -77,6 +77,15 @@ const EditPage = ({ post }) => {
               id="name"
               type="text"
               value={values.name}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="name">Name on Card: </label>
+            <TextInput
+              id="cardname"
+              type="text"
+              value={values.cardname}
               onChange={handleChange}
             />
           </div>
