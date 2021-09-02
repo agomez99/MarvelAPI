@@ -12,7 +12,7 @@ import ReactImageFallback from "react-image-fallback";
 const ts = new Date().getTime();
 
 
-const APIKEY = "228a2cac6d893dce20244bdab584d41a";
+const APIKEY = process.env.NEXT_PUBLIC_KEY;
 
 const PostPage = ({ post }) => {
   const router = useRouter();
@@ -41,6 +41,7 @@ const PostPage = ({ post }) => {
         }).then(function (data) {
             // Do stuff with the JSON
             console.log(data)
+            
             setData(data[0]);
             if(data[0].error == 'invalid id'){
               setData( [{ 
@@ -53,8 +54,11 @@ const PostPage = ({ post }) => {
             setStat(data[1])
             if(data[1].error == 'invalid id'){
             }
-            setImage(data[2].data.results[0].thumbnail.path.extension== "jpg" ? data[2].data.results[0].thumbnail.path : data[2].data.results[0].thumbnail.path.replace("jpg", "png"))
-            console.log(image);
+            if(data[2].data.count < 1){
+              setImage(data[1].url)
+              console.log("No Marvel api thumbnail image available")
+            }
+            setImage(data[2].data.results[0].thumbnail.path + '.' +  data[2].data.results[0].thumbnail.extension)
 
             setLinks(data[2].data.results[0].urls);
             if(data[2].data.results[0].urls.length < 3){
@@ -98,7 +102,8 @@ const PostPage = ({ post }) => {
     return splitStr.join(' '); 
  }
   const backColor = post.color;
-  const imageUrl = image + ".jpg" || image + ".png";
+  const imageUrl = image;
+  const fallback = "https://i.ibb.co/LnPBDY1/icon.png";
   //const fallback = {data[2].data.results[0].thumbnail.path;
   return (
     <Layout>
@@ -147,7 +152,7 @@ const PostPage = ({ post }) => {
             <div className="bio-div"  style={{ backgroundColor: backColor }} >
               <ReactImageFallback
                 src={imageUrl}
-                fallbackImage={"https://i.ibb.co/LnPBDY1/icon.png"}
+                fallbackImage={fallback}
                 initialImage="https://i.ibb.co/ZGLW03w/loading1.gif"
                 alt={stat.imageAlt}
                 className="bio-image"
