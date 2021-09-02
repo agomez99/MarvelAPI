@@ -51,10 +51,10 @@ div.logo{
 .idnum{
   font-weight: bold;
   text-align: center;
-  font-size: 40px;
+  font-size:30px;
   color:black;
-  top:22px;
-  right:27px;
+  top:15px;
+  right:35px;
   position: absolute;
 }
 .nameTitle{
@@ -72,9 +72,7 @@ div.logo{
   height:22rem;
 
 }
-.featimglist{
-  height:50px;
-}
+
 .bio-div{
   padding:20px;
   margin-left: 5%;
@@ -196,7 +194,7 @@ li.links:hover{
 
 .indexChar{
   color: white;
-  font-size:2vh;
+  font-size: 4rem;
   text-transform: lowercase;
   font-family: 'Bangers', cursive;
   display: flex;
@@ -205,7 +203,12 @@ li.links:hover{
 .indexChar:hover{
   background-color:red;
   color: black;
-  font-size: 35px;
+  font-size:5rem;
+  border-radius:30px;
+}
+.featimglist{
+  height:50px;
+  margin-left: 50px;
 }
   /* ----------- iPhone 4 and 4S ----------- */
 
@@ -379,12 +382,23 @@ display: inline;
   }
   .indexChar{
     color: white;
-    font-size:2rem;
+    font-size:1.6rem;
     font-family: 'Bangers', cursive;
-   display: flex;
-   float:right;
+   flex-direction: LEFT;
+   float:left;
   }
-
+  
+.indexChar:hover{
+  background-color:red;
+  color: black;
+  font-size:1.7rem;
+  border-radius:30px;
+}
+.featimglist{
+  height:50px;
+  margin-left: 50px;
+  display: none;
+}
 }
 
 

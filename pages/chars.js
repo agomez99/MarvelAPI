@@ -35,6 +35,8 @@ const Characters = ({ post }) => {
     return splitStr.join(' '); 
  }
 
+ 
+
   return (
   <div>
     <Layout className={styles.HomePage}>
@@ -89,14 +91,14 @@ const Characters = ({ post }) => {
                   {/* {posts.sort((a, b) => a.name.localeCompare(b.name)).map((post) => ( */}
                     {post.sort((a, b) => a.number - b.number).map((post) => (
                     <a href={`/post/${post.slug}`} key={post.number.toString()}  key={post.number.toString()} className="indexChar">
-                    <img
+ 
+                        {post.number} - {post.cardname}
+                        {/* {post.number} - {titleCase(post.cardname)} */}
+                        <img
                         src={post.imageAlt}
                         alt={post.imageAlt}
                         className="featimglist"
                       />
-                        {post.number} - {post.cardname}
-                        {/* {post.number} - {titleCase(post.cardname)} */}
-
                     </a>
                   ))}
                   </div>
