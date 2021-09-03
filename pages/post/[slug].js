@@ -10,6 +10,7 @@ import "tailwindcss/tailwind.css";
 import { useEffect, useState } from "react";
 import ReactImageFallback from "react-image-fallback";
 const ts = new Date().getTime();
+import Head from "next/head";
 
 
 const APIKEY = process.env.NEXT_PUBLIC_KEY;
@@ -107,6 +108,11 @@ const PostPage = ({ post }) => {
   //const fallback = {data[2].data.results[0].thumbnail.path;
   return (
     <Layout>
+    <Head>
+      <title>CARDVERSE - {post.name.toUpperCase()}</title>
+      <link rel="shortcut icon" href="/cardverse.png" />
+
+    </Head>
       <div>
         <Card  style={{ backgroundImage:"linear-gradient(white,"+backColor +")"}}>
           <Row>
