@@ -14,16 +14,12 @@ const Characters = ({ post }) => {
     return null;
   }
 
-  //Links text first letter to uppercase
   function titleCase(str) {
     var splitStr = str.toLowerCase().split(" ");
     for (var i = 0; i < splitStr.length; i++) {
-      // You do not need to check if i is larger than splitStr length, as your for does that for you
-      // Assign it back to the array
       splitStr[i] =
         splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
     }
-    // Directly return the joined string
     return splitStr.join(" ");
   }
 
@@ -42,7 +38,6 @@ const Characters = ({ post }) => {
                 <Box p={4} bg="grey-light" flex={1} text="left">
                   <Col>
                     <div>
-                      {/* {posts.sort((a, b) => a.name.localeCompare(b.name)).map((post) => ( */}
                       {post
                         .sort((a, b) => a.number - b.number)
                         .map((post) => (
@@ -72,14 +67,11 @@ const Characters = ({ post }) => {
 };
 export async function getServerSideProps(context) {
   const post = await getPosts(context.query.slug);
-  const bio = await getPosts(context.query.slug);
-  const links = await getPosts(context.query.slug);
 
   return {
     props: {
       post,
-      bio,
-      links,
+
     },
   };
 }
