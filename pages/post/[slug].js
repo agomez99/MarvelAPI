@@ -12,7 +12,6 @@ import ReactImageFallback from "react-image-fallback";
 const ts = new Date().getTime();
 import Head from "next/head";
 
-
 const APIKEY = process.env.NEXT_PUBLIC_KEY;
 
 const PostPage = ({ post }) => {
@@ -21,61 +20,83 @@ const PostPage = ({ post }) => {
 
   const [data, setData] = useState([]);
   const [bio, setBio] = useState([]);
-  const[links, setLinks] = useState([]);
+  const [links, setLinks] = useState([]);
   const [stat, setStat] = useState([]);
   const [image, setImage] = useState([]);
   const getData = () => {
-    const heros = post.name
-
+    const heros = post.name;
+    console.log(post);
     Promise.all([
-      fetch("https://www.superheroapi.com/api.php/3913169345411392/" + post.uid + "/biography"),
-      fetch("https://www.superheroapi.com/api.php/3913169345411392/" + post.uid + "/image"),
-      fetch("https://gateway.marvel.com/v1/public/characters?name="+ heros + "&apikey=" + APIKEY)
-      
-    ])      .then(function (responses) {
-      return Promise.all(responses.map(function (response) {
+      fetch(
+        "https://www.superheroapi.com/api.php/3913169345411392/" +
+          post.uid +
+          "/biography"
+      ),
+      fetch(
+        "https://www.superheroapi.com/api.php/3913169345411392/" +
+          post.uid +
+          "/image"
+      ),
+      fetch(
+        "https://gateway.marvel.com/v1/public/characters?name=" +
+          heros +
+          "&apikey=" +
+          APIKEY
+      ),
+    ])
+      .then(function (responses) {
+        return Promise.all(
+          responses.map(function (response) {
             // Read the response as json.
             return response.json();
-
-          }))
-
-        }).then(function (data) {
-            // Do stuff with the JSON
-            console.log(data)
-            
-            setData(data[0]);
-            if(data[0].error == 'invalid id'){
-              setData( [{ 
-                "name": "Nope",
-                "description": "Invalid ID"
-                }] );
-                console.log(data)
-              console.log("No superhero api info available")
-            }
-            setStat(data[1])
-            if(data[1].error == 'invalid id'){
-            }
-            if(data[2].data.count < 1){
-              setImage(data[1].url)
-              console.log("No Marvel api thumbnail image available")
-            }
-            setImage(data[2].data.results[0].thumbnail.path + '.' +  data[2].data.results[0].thumbnail.extension)
-
-            setLinks(data[2].data.results[0].urls);
-            if(data[2].data.results[0].urls.length < 3){
-              console.log("Links are missing")
-              }
-
-            setBio(data[2].data.results[0].description);
-            if(data[2].data.results[0].description == ""){
-              setBio(post.bio);
-              console.log("Bio is not in Marvel api")
-              }
-
           })
-          .catch(function (error) {
-            console.log("Looks like there was a problem: \n", error);
-          });
+        );
+      })
+      .then(function (data) {
+        // Do stuff with the JSON
+        console.log(data);
+
+        setData(data[0]);
+        if (data[0].error == "invalid id") {
+          setData([
+            {
+              name: "Nope",
+              description: "Invalid ID",
+            },
+          ]);
+          console.log(data);
+          console.log("No superhero api info available");
+        }
+        setStat(data[1]);
+        if (data[1].error == "invalid id") {
+        }
+        if (data[2].data.count < 1) {
+          setImage(data[1].url);
+          console.log("No Marvel api thumbnail image available");
+        }
+        setImage(
+          data[2].data.results[0].thumbnail.path +
+            "." +
+            data[2].data.results[0].thumbnail.extension
+        );
+
+        setLinks(data[2].data.results[0].urls);
+        if (data[2].data.results[0].urls.length < 3) {
+          console.log("Links are missing");
+        }
+
+        setBio(data[2].data.results[0].description);
+        if (
+          data[2].data.results[0].description == "" ||
+          data[1].error == "invalid id"
+        ) {
+          setBio(post.bio);
+          console.log("Bio is not in Marvel api");
+        }
+      })
+      .catch(function (error) {
+        console.log("Looks like there was a problem: \n", error);
+      });
   };
 
   useEffect(() => {
@@ -93,33 +114,36 @@ const PostPage = ({ post }) => {
 
   //Links text first letter to uppercase
   function titleCase(str) {
-    var splitStr = str.toLowerCase().split(' ');
+    var splitStr = str.toLowerCase().split(" ");
     for (var i = 0; i < splitStr.length; i++) {
-        // You do not need to check if i is larger than splitStr length, as your for does that for you
-        // Assign it back to the array
-        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+      // You do not need to check if i is larger than splitStr length, as your for does that for you
+      // Assign it back to the array
+      splitStr[i] =
+        splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
     }
     // Directly return the joined string
-    return splitStr.join(' '); 
- }
+    return splitStr.join(" ");
+  }
   const backColor = post.color;
   const imageUrl = image;
   const fallback = "https://i.ibb.co/LnPBDY1/icon.png";
   //const fallback = {data[2].data.results[0].thumbnail.path;
   return (
     <Layout>
-    <Head>
-      <title>CARDVERSE - {post.name.toUpperCase()}</title>
-      <link rel="shortcut icon" href="/cardverse.png" />
-
-    </Head>
+      <Head>
+        <title>CARDVERSE - {post.name.toUpperCase()}</title>
+        <link rel="shortcut icon" href="/cardverse.png" />
+      </Head>
       <div>
-        <Card  style={{ backgroundImage:"linear-gradient(white,"+backColor +")"}}>
+        <Card
+          style={{
+            backgroundImage: "linear-gradient(white," + backColor + ")",
+          }}
+        >
           <Row>
             <div className="cardheading" style={{ backgroundColor: backColor }}>
               <h1 className="nameTitle">{post.name}</h1>
               {/* <h1 className="nameTitle">{post.cardname}</h1> */}
-
               <div className="logodiv">
                 <div className="logo">
                   <img
@@ -155,7 +179,7 @@ const PostPage = ({ post }) => {
             </Col>
           </Row>
           <Row>
-            <div className="bio-div"  style={{ backgroundColor: backColor }} >
+            <div className="bio-div" style={{ backgroundColor: backColor }}>
               <ReactImageFallback
                 src={imageUrl}
                 fallbackImage={fallback}
@@ -168,8 +192,8 @@ const PostPage = ({ post }) => {
                 <h1>{data["full-name"]}</h1>
                 <h1 className="bio-sec">Place Of Birth - </h1>
                 <h1> {data["place-of-birth"]} </h1>
-                <h1 className="bio-sec">First Appearance</h1><br></br> <p> {data["first-appearance"]} </p>
-
+                <h1 className="bio-sec">First Appearance</h1>
+                <br></br> <p> {data["first-appearance"]} </p>
                 <h1 className="bio-sec">Aliasas: </h1>
                 <br></br>
                 {data.aliases &&
@@ -179,21 +203,25 @@ const PostPage = ({ post }) => {
                     </li>
                   ))}
               </div>
-              <div >
-                  <p className="bio-p"> {bio}</p>
-                  </div>
+              <div>
+                <p className="bio-p"> {bio}</p>
+              </div>
             </div>
             <div className="link-div">
-            <p style={{textAlign:"center"}}>Links</p>
+              <p style={{ textAlign: "center" }}>Links</p>
 
-            <ul className="linksdiv">
-                { links.map(({ url, type }, i) => <li className="links" key={ i }><a   href={ url } target="_blank" rel="noopener noreferrer">{ titleCase(type) }</a></li>) }
-              </ul>    
-      </div>
+              <ul className="linksdiv">
+                {links.map(({ url, type }, i) => (
+                  <li className="links" key={i}>
+                    <a href={url} target="_blank" rel="noopener noreferrer">
+                      {titleCase(type)}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </Row>
-          <Row>
- 
-          </Row>
+          <Row></Row>
           <Row>
             <div className="dyn">
               <p style={{ fontSize: "1.5vh", fontWeight: "bold" }}>
