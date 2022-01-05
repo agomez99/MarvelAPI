@@ -194,7 +194,7 @@ li.links:hover{
 
 .indexChar{
   color: white;
-  font-size: 4rem;
+  font-size: 2rem;
   text-transform: lowercase;
   font-family: 'Bangers', cursive;
   display: flex;
@@ -210,6 +210,30 @@ li.links:hover{
   height:100px;
   margin-left: 50px;
 }
+
+
+
+/* ----------- iPhone 11----------- */
+@media only screen 
+    and (device-width: 414px) 
+    and (device-height: 896px) 
+    and (-webkit-device-pixel-ratio: 2) 
+      and (orientation: portrait) {
+
+      div.logodiv{
+        display: none;
+      }
+      .featimglist{
+        display: none;
+      
+      }
+      .indexChar{
+        font-size: 1.5rem;
+      }
+    }
+    
+
+    
   /* ----------- iPhone 4 and 4S ----------- */
 
 /* Portrait and Landscape */
@@ -277,7 +301,13 @@ and (-webkit-min-device-pixel-ratio: 2) {
   div.logodiv{
     display: none;
   }
-
+  .featimglist{
+    display: none;
+  
+  }
+  .indexChar{
+    font-size: 1.5rem;
+  }
 }
 
 /* Portrait */
@@ -305,6 +335,17 @@ and (orientation: landscape) {
 and (min-device-width: 414px) 
 and (max-device-width: 736px) 
 and (-webkit-min-device-pixel-ratio: 3) { 
+  
+  div.logodiv{
+    display: none;
+  }
+  .featimglist{
+    display: none;
+  
+  }
+  .indexChar{
+    font-size: 1.5rem;
+  }
 
 }
 
@@ -429,3 +470,4 @@ and (-webkit-min-device-pixel-ratio: 3)
 and (orientation: landscape) { 
 
 }
+
