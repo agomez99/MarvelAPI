@@ -33,32 +33,58 @@ const Characters = ({ post }) => {
           </div>
           <h1 className={styles.charindex}>Characters Index</h1>
           <div>
-            <Row className={styles.charrow}>
-              <Flex style={{ padding: "20px 50px 70px 20px" }}>
-                <Box p={4} bg="grey-light" flex={1} text="left">
-                  <Col>
-                    <div>
+              <Flex style={{ padding: "20px 50px 70px 20px", backgroundColor:"black" }}>
+                  <Col w="1/2" >
+                    <div className={styles.charrow}>
                       {post
                         .sort((a, b) => a.number - b.number)
+                        .slice(0, 49)
                         .map((post) => (
                           <a
                             href={`/post/${post.slug}`}
                             key={post.number.toString()}
                             className="indexChar"
                           >
-                            {post.number} - {post.cardname}
+                          <div className="imageDiv">
                             <img
                               src={post.imageAlt}
                               alt={post.imageAlt}
                               className="featimglist"
                             />
+                            <p>
+                            {post.cardname}
+                            </p>
+                            </div>
+
                           </a>
                         ))}
                     </div>
                   </Col>{" "}
-                </Box>
+                  <Col w="1/2" >
+                    <div className={styles.charrow}>
+                      {post
+                        .sort((a, b) => a.number - b.number)
+                        .slice(50, 100)
+
+                        .map((post) => (
+                          <a
+                            href={`/post/${post.slug}`}
+                            key={post.number.toString()}
+                            className="indexChar"
+                          >
+                          <div className="imageDiv">
+                            <img
+                              src={post.imageAlt}
+                              alt={post.imageAlt}
+                              className="featimglist"
+                            />
+                            {post.cardname}
+                            </div>
+                          </a>
+                        ))}
+                    </div>
+                  </Col>{" "}
               </Flex>
-            </Row>
           </div>
         </div>
       </Layout>

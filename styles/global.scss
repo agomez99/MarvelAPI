@@ -197,21 +197,32 @@ li.links:hover{
   font-size: 2rem;
   text-transform: lowercase;
   font-family: 'Bangers', cursive;
-  display: flex;
+  display: block;
+  text-align: center;
+  margin-bottom: 5%;
 }
 
-.indexChar:hover{
-  background-color:red;
-  color: black;
-  font-size:5rem;
-  border-radius:30px;
-}
 .featimglist{
-  height:100px;
-  margin-left: 50px;
+  height:200px;
+  width:200px;
+  margin-left:auto;
+  margin-right:auto;
+  position: relative;
+  border-radius: 50%;
+  border : 1px solid red;
 }
 
+.featimglist:hover{
+  border : 1px solid white;
+}
 
+.imageDiv:hover{
+  transform: scale(1.3);
+}
+
+.imageDiv{
+  margin-bottom: 130px;
+}
 
 /* ----------- iPhone 11----------- */
 @media only screen 
@@ -446,10 +457,13 @@ display: inline;
   border-radius:30px;
 }
 .featimglist{
-  height:50px;
-  margin-left: 50px;
-  display: none;
+  display: block;
+  height:150px;
 }
+.imageDiv{
+  margin-bottom: 35px;
+}
+
 }
 
 
