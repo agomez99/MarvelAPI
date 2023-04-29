@@ -8,7 +8,7 @@ import { Layout } from '@components';
 
 const SignInPage = () => {
   const router = useRouter();
-  const [user, userLoading] = useAuth();
+  const {user, userLoading} = useAuth();
   const [values, setValues] = useState({ email: '', password: '' });
 
   if (userLoading) {
