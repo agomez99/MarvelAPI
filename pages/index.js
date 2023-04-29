@@ -5,18 +5,13 @@
 import styles from "@styles/index.module.scss";
 import { getPosts } from "@lib/firebase";
 import { Layout } from "@components";
-import { Col, Row, Card } from "tailwind-react-ui";
+import { Col, Row } from "tailwind-react-ui";
 import Head from "next/head";
 import Image from "next/image";
 import GoogleAnalytics from "./googleAnalytics";
 import { FillButton } from "tailwind-react-ui";
 
-//const colors = (posts) => posts.map((post) => Console.log(posts));
-
-
-
 const HomePage = ({ posts }) => (
-
   <div>
     <Layout className={styles.HomePage}>
       <div>
@@ -40,80 +35,57 @@ const HomePage = ({ posts }) => (
           <meta name="twitter:card" content="summary_large_image" />
           <title>Cardverse</title>
           <link rel="shortcut icon" href="/cardverse.png" />
-          <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin="anonymous"
+          />
           <link
             href="https://fonts.googleapis.com/css2?family=Bangers&display=swap"
             rel="stylesheet"
-          ></link>
+          />
         </Head>
         <GoogleAnalytics />
-
-        <div
-          style={{
-            backgroundColor: "rgba(0,0,0,0.5)",
-            width: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <h1
-            style={{
-              color: "white",
-              fontSize: "5.5rem",
-              fontFamily: "Bangers",
-              textAlign: "center",
-              paddingRight: "15px",
-            }}
-          >
-            Cardverse
-          </h1>
-          <Image src="/cardverse.png" alt="logo" width={300} height={300} />
+        <div className="banner">
+          <h1 className="title">Cardverse</h1>
+          <Image
+            src="/cardverse.png"
+            alt="logo"
+            width={300}
+            height={300}
+          />
         </div>
-        <h1
-          style={{
-            marginTop: "5%",
-            color: "white",
-            fontSize: "3.5rem",
-            fontFamily: "Bangers",
-            textAlign: "center",
-            backgroundColor: "rgba(0,0,0,0.5)",
-          }}
-        >
-          Characters
-        </h1>
+        <h1 className={styles.subtitle}>Characters</h1>
         <div>
           <Row gutter>
-            <Col className="hdr">
+            <Col>
               {posts.sort((a, b) => a.number - b.number).map((post) => (
-                  <article key={post.number}>
-                    <div className="flip-card">
-                      <a href={`/post/${post.slug}`}>
-                      <h2
-                              style={{
-                                color: "white",
-                                fontSize: "1.6rem",
-                                fontFamily: "Bangers",
-                              }}
-                            >
-                              {post.name}
-                            </h2>
-                        <div className="flip-card-inner">
-                          <div
-                            className="flip-card-front"
-                            style={{ backgroundColor: "red" }}
-                          >
-                          <Image  height={430} width={250}  src={post.image} alt={post.imageAlt} />
-                          </div>
-                          <div className="flip-card-back">
-                          <Image height={430} width={250} src={post.image2}  alt={post.imageAlt} />
-
-                          </div>
+                <article key={post.number}>
+                  <div className="flip-card">
+                    <a href={`/post/${post.slug}`}>
+                      <h2 className="cardTitle">{post.name}</h2>
+                      <div className="flip-card-inner">
+                        <div className="flip-card-front">
+                          <Image
+                            src={post.image}
+                            alt={post.imageAlt}
+                            width={250}
+                            height={430}
+                          />
                         </div>
-                      </a>
-                    </div>
-                  </article>
-                ))}
+                        <div className="flip-card-back">
+                          <Image
+                            src={post.image2}
+                            alt={post.imageAlt}
+                            width={250}
+                            height={430}
+                          />
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </article>
+              ))}
             </Col>
           </Row>
         </div>
@@ -132,3 +104,4 @@ export async function getServerSideProps() {
 }
 
 export default HomePage;
+
