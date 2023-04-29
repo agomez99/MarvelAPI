@@ -9,7 +9,6 @@ import { Col, Row } from "tailwind-react-ui";
 import Head from "next/head";
 import Image from "next/image";
 import GoogleAnalytics from "./googleAnalytics";
-import { FillButton } from "tailwind-react-ui";
 
 const HomePage = ({ posts }) => (
   <div>
