@@ -4,6 +4,7 @@ import { Col, Row, Flex } from "tailwind-react-ui";
 import Image from "next/image";
 import styles from "@styles/chars.module.scss";
 import router from "next/router";
+import ReactImageFallback from "react-image-fallback";
 
 export default function Characters({ post }) {
 
@@ -34,6 +35,7 @@ export default function Characters({ post }) {
   }
 
   const postChunks = sliceChunk(50, post.sort((a,b) => a.number - b.number));
+  const fallback = "https://i.ibb.co/LnPBDY1/icon.png";
 
   return (
     <Layout>
@@ -46,7 +48,7 @@ export default function Characters({ post }) {
           <div>
               <Flex style={{ padding: "20px 50px 70px 20px", backgroundColor:"black" }}>
                 {postChunks.map((chunk, index) => (
-                  <Col w="1/2" key={`chunk${index}`}>
+                  <Col  w={{ def: 'full', sm: '1/2', md: '1/2', lg: '1/1', xl: '1/1' }} key={`chunk${index}`}>
                     <div className={styles.charrow}>
                       {chunk.map((post) => (
                         <a
@@ -55,8 +57,10 @@ export default function Characters({ post }) {
                           className="indexChar"
                         >
                           <div className="imageDiv">
-                            <img
+                            <ReactImageFallback
                               src={post.imageAlt}
+                              fallbackImage={fallback}
+                              initialImage="https://i.ibb.co/ZGLW03w/loading1.gif"
                               alt={post.imageAlt}
                               className="featimglist"
                             />
