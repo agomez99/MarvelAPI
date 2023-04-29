@@ -3,8 +3,7 @@ import { useRouter } from 'next/router';
 import { signIn } from '@lib/firebase';
 import { useAuth } from '@contexts/auth';
 import styles from '@styles/signin.module.scss';
-import {Field, Label, TextInput} from 'tailwind-react-ui';
-import { FillButton } from 'tailwind-react-ui'
+import {Field, Label, TextInput, FillButton} from 'tailwind-react-ui';
 import { Layout } from '@components';
 
 const SignInPage = () => {
@@ -24,7 +23,6 @@ const SignInPage = () => {
   const handleChange = (e) => {
     const id = e.target.id;
     const newValue = e.target.value;
-
     setValues({ ...values, [id]: newValue });
   };
 
@@ -68,12 +66,7 @@ const SignInPage = () => {
           onChange={handleChange}
         />
         <FillButton type="submit" >Sign In</FillButton>
-        <FillButton  onClick={() => {
-                router.push({
-                  pathname: '/',
-                })
-              }}>Home</FillButton>
-
+        <FillButton onClick={() => router.push('/') }>Home</FillButton>
       </form>
     </div>
     </Layout>
