@@ -16,12 +16,12 @@
     "react-dropdown": "^1.9.2",
     "react-image-fallback": "^8.0.0",
     "sass": "^1.32.8",
-    "tailwind-react-ui": "^0.8.1"
+    "tailwind-react-ui": "^0.8.1",
+    "tailwindcss": "^3.3.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.4",
-    "postcss": "^8.3.6",
-    "tailwindcss": "^3.3.2"
+    "postcss": "^8.3.6"
   },
   "scripts": {
     "dev": "next dev",
