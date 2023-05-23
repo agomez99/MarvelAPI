@@ -1,9 +1,7 @@
 import { useRouter } from "next/router";
 import { getPostBySlug } from "@lib/firebase";
 import { Layout } from "@components";
-import { Col, Row, Card, Button } from "tailwind-react-ui";
-import Image from "next/image";
-import { HorizontalBar } from "react-chartjs-2";
+import { Col, Row, Card} from "tailwind-react-ui";
 import { useAuth } from "@contexts/auth";
 import { FillButton } from "tailwind-react-ui";
 import "tailwindcss/tailwind.css";
@@ -182,7 +180,7 @@ const PostPage = ({ post }) => {
             <div className="bio-div" style={{ backgroundColor: backColor }}>
               <ReactImageFallback
                 src={imageUrl}
-                fallbackImage={fallback}
+                fallbackImage= "https://i.ibb.co/LnPBDY1/icon.png"
                 initialImage="https://i.ibb.co/ZGLW03w/loading1.gif"
                 alt={stat.imageAlt}
                 className="bio-image"
