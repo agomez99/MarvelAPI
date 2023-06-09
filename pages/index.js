@@ -54,7 +54,6 @@ const HomePage = ({ posts }) => (
             height={300}
           />
         </div>
-        <h1 className={styles.subtitle}>Characters</h1>
         <div>
           <Row gutter>
             <Col>
