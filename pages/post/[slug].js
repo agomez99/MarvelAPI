@@ -15,6 +15,7 @@ const APIKEY = process.env.NEXT_PUBLIC_KEY;
 const PostPage = ({ post }) => {
   const router = useRouter();
   const [user] = useAuth();
+
   const [data, setData] = useState([]);
   const [bio, setBio] = useState([]);
   const [links, setLinks] = useState([]);
@@ -124,11 +125,12 @@ const PostPage = ({ post }) => {
   const backColor = post.color;
   const imageUrl = image;
   const fallback = "https://i.ibb.co/LnPBDY1/icon.png";
+  const title = titleCase(post.name) + " - Cardverse"
   //const fallback = {data[2].data.results[0].thumbnail.path;
   return (
     <Layout>
       <Head>
-        <title>CARDVERSE - {post.name.toUpperCase()}</title>
+        <title>{title}</title>
         <link rel="shortcut icon" href="/cardverse.png" />
       </Head>
       <div>

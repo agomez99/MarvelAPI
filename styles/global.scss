@@ -83,8 +83,8 @@ div.logo{
   text-align: center;
   font-size:30px;
   color:black;
-  top:15px;
-  right:35px;
+  top:30px;
+  right:40px;
   position: absolute;
 }
 .nameTitle{
@@ -338,7 +338,17 @@ and (orientation: landscape) {
 and (min-device-width: 375px) 
 and (max-device-width: 667px) 
 and (-webkit-min-device-pixel-ratio: 2) { 
-
+  .banner{
+    display:flex;
+   margin: auto;
+  }
+  .title{
+    font-size: 2.5rem;
+  }
+  .logo{
+    width: 30%;
+    height: 30%;
+  }
   div.logodiv{
     display: none;
   }
@@ -376,7 +386,7 @@ and (orientation: landscape) {
 and (min-device-width: 414px) 
 and (max-device-width: 736px) 
 and (-webkit-min-device-pixel-ratio: 3) { 
-  
+
   div.logodiv{
     display: none;
   }
@@ -434,6 +444,7 @@ and (-webkit-min-device-pixel-ratio: 3) {
   height: 70px;
   width:90px;
 }
+
   .bio-p{
     font-size: 4vw;
   }

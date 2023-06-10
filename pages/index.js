@@ -48,6 +48,7 @@ const HomePage = ({ posts }) => (
             alt="logo"
             width={300}
             height={300}
+            className="logo"
           />
         </div>
         <div>
