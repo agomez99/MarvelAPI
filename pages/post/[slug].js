@@ -15,7 +15,6 @@ const APIKEY = process.env.NEXT_PUBLIC_KEY;
 const PostPage = ({ post }) => {
   const router = useRouter();
   const [user] = useAuth();
-
   const [data, setData] = useState([]);
   const [bio, setBio] = useState([]);
   const [links, setLinks] = useState([]);
