@@ -14,9 +14,11 @@ const Layout = ({ children }) => {
     <div className={styles.Layout}>
     <div >
   <div className="w-full px-0">
+  
     <nav className="relative flex flex-wrap items-center justify-between px-2 py-3">
       <div className="container  mx-auto flex flex-wrap items-center justify-between">
-        <div className="w-full relative flex justify-between lg:w-auto px-4 lg:static lg:block lg:justify-start">
+        <div className="relative flex justify-between lg:w-auto px-4 lg:static lg:block lg:justify-start">
+        
           <a href="/">
             {" "}
             <Image
@@ -28,8 +30,11 @@ const Layout = ({ children }) => {
         </a>
           
         </div>
+
         <div className="flex lg:flex-grow items-center" id="example-navbar-info">
+        
           <ul className="flex flex-col lg:flex-row list-none ml-auto">
+          
             <li className="nav-item">
               <span>
           <FillButton
@@ -77,6 +82,7 @@ const Layout = ({ children }) => {
             </li>
           </ul>
         </div>
+        
       </div>
     </nav>
   </div>

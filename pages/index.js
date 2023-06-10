@@ -66,6 +66,7 @@ const HomePage = ({ posts }) => (
                             alt={post.imageAlt}
                             width={250}
                             height={430}
+                            className="cardImage"
                           />
                         </div>
                         <div className="flip-card-back">

@@ -52,6 +52,10 @@ canvas{
   text-align: center;
 
  }
+ .cardImage{
+  display: inline;
+  
+ }
 
 
 
@@ -179,7 +183,7 @@ li.links:hover{
 .flip-card {
     background-color: transparent;
     width: 290px;
-    height: 500px;
+    height: 400px;
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
   }
   
@@ -359,6 +363,10 @@ and (-webkit-min-device-pixel-ratio: 2) {
   .indexChar{
     font-size: 1.5rem;
   }
+ img{
+  height: auto;
+ }
+  
 }
 
 /* Portrait */
