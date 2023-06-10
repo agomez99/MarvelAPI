@@ -49,6 +49,7 @@ const HomePage = ({ posts }) => (
             width={300}
             height={300}
             className="logo"
+            priority
           />
         </div>
         <div>
@@ -67,6 +68,7 @@ const HomePage = ({ posts }) => (
                             width={250}
                             height={430}
                             className="cardImage"
+                            style={{ width: 250, height: 430 }}
                           />
                         </div>
                         <div className="flip-card-back">
@@ -75,6 +77,8 @@ const HomePage = ({ posts }) => (
                             alt={post.imageAlt}
                             width={250}
                             height={430}
+                            style={{ width: 250, height: 430 }}
+
                           />
                         </div>
                       </div>
