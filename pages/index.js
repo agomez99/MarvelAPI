@@ -39,10 +39,6 @@ const HomePage = ({ posts }) => (
             href="https://fonts.gstatic.com"
             crossOrigin="anonymous"
           />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Bangers&display=swap"
-            rel="stylesheet"
-          />
         </Head>
         <GoogleAnalytics />
         <div className="banner">
