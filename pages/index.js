@@ -68,7 +68,7 @@ const HomePage = ({ posts }) => (
                             width={250}
                             height={430}
                             className="cardImage"
-                            style={{ width: 250, height: 430 }}
+                            style={{ width: 250, height: 350 }}
                           />
                         </div>
                         <div className="flip-card-back">
@@ -77,7 +77,7 @@ const HomePage = ({ posts }) => (
                             alt={post.imageAlt}
                             width={250}
                             height={430}
-                            style={{ width: 250, height: 430 }}
+                            style={{ width: 250, height: 350 }}
 
                           />
                         </div>
