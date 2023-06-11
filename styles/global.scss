@@ -339,7 +339,7 @@ and (orientation: landscape) {
 
 /* Portrait and Landscape */
 @media only screen 
-and (min-device-width: 375px) 
+and (min-device-width: 330px) 
 and (max-device-width: 667px) 
 and (-webkit-min-device-pixel-ratio: 2) { 
   .banner{
@@ -512,25 +512,6 @@ display: inline;
 .imageDiv{
   margin-bottom: 35px;
 }
-
-}
-
-
-/* Portrait */
-@media only screen 
-and (min-device-width: 375px) 
-and (max-device-width: 812px) 
-and (-webkit-min-device-pixel-ratio: 3)
-and (orientation: portrait) { 
-
-}
-
-/* Landscape */
-@media only screen 
-and (min-device-width: 375px) 
-and (max-device-width: 812px) 
-and (-webkit-min-device-pixel-ratio: 3)
-and (orientation: landscape) { 
 
 }
 
