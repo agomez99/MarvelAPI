@@ -15,6 +15,7 @@ const HomePage = ({ posts }) => (
     <Layout className={styles.HomePage}>
       <div>
         <Head>
+
           <meta property="og:url" content="https://cardverse.vercel.app/" />
           <meta property="og:type" content="article" />
           <meta property="og:title" content="Cardverse" />

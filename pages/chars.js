@@ -1,24 +1,26 @@
-import { getPosts } from "@lib/firebase";
-import { Layout } from "@components";
-import { Col, Row, Flex } from "tailwind-react-ui";
-import Image from "next/image";
-import styles from "@styles/chars.module.scss";
-import router from "next/router";
-import ReactImageFallback from "react-image-fallback";
+import Image from 'next/image';
+import React from 'react';
+import { useRouter } from 'next/router';
+import { getPosts } from '@lib/firebase';
+import { Layout } from '@components';
+import { Col, Row, Flex } from 'tailwind-react-ui';
+import ReactImageFallback from 'react-image-fallback';
+
+import styles from '@styles/chars.module.scss';
 
 export default function Characters({ post }) {
 
-  function titleCase(str) { 
-    const splitStr = str.toLowerCase().split(" ");
-    for (let i = 0; i < splitStr.length; i++) {
-      splitStr[i] =
-        splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
-    }
-    return splitStr.join(" ");
+  function titleCase(str) {
+    return str.toLowerCase().split(' ').map(function(word) {
+      return word.replace(word[0], word[0].toUpperCase());
+    }).join(' ');
   }
 
-  if (!post && typeof window !== "undefined") {
-    router.push("/404");
+  const router = useRouter();
+  const fallback = 'https://i.ibb.co/LnPBDY1/icon.png';
+
+  if (!post && typeof window !== 'undefined') {
+    router.push('/404');
     return null;
   }
 
@@ -28,14 +30,13 @@ export default function Characters({ post }) {
 
   const sliceChunk = (chunkSize, arr) => {
     const res = [];
-    for (let i=0; i<arr.length; i+=chunkSize) {
-      res.push(arr.slice(i, i+chunkSize));
+    for (let i = 0; i < arr.length; i += chunkSize) {
+      res.push(arr.slice(i, i + chunkSize));
     }
     return res;
   }
 
-  const postChunks = sliceChunk(50, post.sort((a,b) => a.number - b.number));
-  const fallback = "https://i.ibb.co/LnPBDY1/icon.png";
+  const postChunks = sliceChunk(50, post.sort((a, b) => a.number - b.number));
 
   return (
     <Layout>
@@ -45,35 +46,31 @@ export default function Characters({ post }) {
           <Image src="/cardverse.png" alt="logo" width={300} height={300} className={styles.logo} />
         </div>
         <h1 className={styles.charindex}>Characters Index</h1>
-          <div>
-              <Flex style={{ padding: "20px 50px 70px 20px", backgroundColor:"black" }}>
-                {postChunks.map((chunk, index) => (
-                  <Col  w={{ def: 'full', sm: '1/2', md: '1/2', lg: '1/1', xl: '1/1' }} key={`chunk${index}`}>
-                    <div className={styles.charrow}>
-                      {chunk.map((post) => (
-                        <a
-                          href={`/post/${post.slug}`}
-                          key={post.number.toString()}
-                          className="indexChar"
-                        >
-                          <div className="imageDiv">
-                            <ReactImageFallback
-                              src={post.imageAlt}
-                              fallbackImage={fallback}
-                              initialImage="https://i.ibb.co/ZGLW03w/loading1.gif"
-                              alt={post.imageAlt}
-                              className="featimglist"
-                            />
-                            <p>{post.cardname}</p>
-                          </div>
-                        </a>
-                      ))}
-                    </div>
-                  </Col>
-                ))}
-              </Flex>
-          </div>
+        <div>
+          <Flex style={{ padding: '20px 50px 70px 20px', backgroundColor: 'black' }}>
+            {postChunks.map((chunk, index) => (
+              <Col w={{ def: 'full', sm: '1/2', md: '1/2', lg: '1/1', xl: '1/1' }} key={`chunk${index}`}>
+                <div className={styles.charrow}>
+                  {chunk.map((post) => (
+                    <a href={`/post/${post.slug}`} key={post.number.toString()} className="indexChar">
+                      <div className="imageDiv">
+                        <ReactImageFallback
+                          src={post.imageAlt}
+                          fallbackImage={fallback}
+                          initialImage="https://i.ibb.co/ZGLW03w/loading1.gif"
+                          alt={post.imageAlt}
+                          className="featimglist"
+                        />
+                        <p>{post.cardname}</p>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </Col>
+            ))}
+          </Flex>
         </div>
+      </div>
     </Layout>
   );
 }
