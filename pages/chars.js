@@ -41,8 +41,8 @@ export default function Characters({ post }) {
     <Layout>
       <div className={styles.CharsPage}>
         <div className={styles.title}>
-          <h1>Cardverse</h1>
-          <Image src="/cardverse.png" alt="logo" width={300} height={300} />
+          <h1 className={styles.hero}>Cardverse</h1>
+          <Image src="/cardverse.png" alt="logo" width={300} height={300} className={styles.logo} />
         </div>
         <h1 className={styles.charindex}>Characters Index</h1>
           <div>
