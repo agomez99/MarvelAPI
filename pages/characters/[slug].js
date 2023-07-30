@@ -21,95 +21,69 @@ const PostPage = ({ post }) => {
   const [links, setLinks] = useState([]);
   const [stat, setStat] = useState([]);
   const [image, setImage] = useState([]);
-  const getData = () => {
-    const heros = post.name;
-    console.log(post);
-    Promise.all([
-      fetch(
-        "https://www.superheroapi.com/api.php/3913169345411392/" +
-          post.uid +
-          "/biography"
-      ),
-      fetch(
-        "https://www.superheroapi.com/api.php/3913169345411392/" +
-          post.uid +
-          "/image"
-      ),
-      fetch(
-        "https://gateway.marvel.com/v1/public/characters?name=" +
-          heros +
-          "&apikey=" +
-          APIKEY
-      ),
-    ])
-      .then(function (responses) {
-        return Promise.all(
-          responses.map(function (response) {
-            // Read the response as json.
-            return response.json();
-          })
-        );
-      })
-      .then(function (data) {
-        // Do stuff with the JSON
-        console.log(data);
-
-        setData(data[0]);
-        if (data[0].error == "invalid id") {
-          setData([
-            {
-              name: "Nope",
-              description: "Invalid ID",
-            },
-          ]);
-          console.log(data);
-          console.log("No superhero api info available");
-        }
-        setStat(data[1]);
-        if (data[1].error == "invalid id") {
-        }
-        if (data[2].data.count < 1) {
-          setImage(data[1].url);
-          console.log("No Marvel api thumbnail image available");
-        }
-        setImage(
-          data[2].data.results[0].thumbnail.path +
-            "." +
-            data[2].data.results[0].thumbnail.extension
-        );
-
-        setLinks(data[2].data.results[0].urls);
-        if (data[2].data.results[0].urls.length < 3) {
-          console.log("Links are missing");
-        }
-
-        setBio(data[2].data.results[0].description);
-        if (
-          data[2].data.results[0].description == "" ||
-          data[1].error == "invalid id"
-        ) {
-          setBio(post.bio);
-          console.log("Bio is not in Marvel api");
-        }
-      })
-      .catch(function (error) {
-        console.log("Looks like there was a problem: \n", error);
-      });
-  };
 
   useEffect(() => {
-    getData();
+    const fetchData = async () => {
+      const { name, uid } = post;
+  
+      try {
+        const bioResponse = await fetch(`https://www.superheroapi.com/api.php/3913169345411392/${uid}/biography`);
+        const bioData = await bioResponse.json();
+  
+        const imageResponse = await fetch(`https://www.superheroapi.com/api.php/3913169345411392/${uid}/image`);
+        const imageData = await imageResponse.json();
+  
+        const characterResponse = await fetch(`https://gateway.marvel.com/v1/public/characters?name=${name}&apikey=${APIKEY}`);
+        const characterData = await characterResponse.json();
+  
+        if (bioData.error === "invalid id") {
+          setData([{ name: "Nope", description: "Invalid ID" }]);
+          console.log(data);
+          console.log("No superhero api info available");
+        } else {
+          setData(bioData);
+        }
+  
+        if (imageData.error === "invalid id") {
+          // Do something with invalid image id
+        }
+  
+        if (characterData.data.count < 1) {
+          setImage(imageData.url);
+          console.log("No Marvel api thumbnail image available");
+        } else {
+          setImage(`${characterData.data.results[0].thumbnail.path}.${characterData.data.results[0].thumbnail.extension}`);
+        }
+  
+        setLinks(characterData.data.results[0].urls);
+        if (characterData.data.results[0].urls.length < 3) {
+          console.log("Links are missing");
+        }
+  
+        if (characterData.data.results[0].description === "" || imageData.error === "invalid id") {
+          setBio(post.bio);
+          console.log("Bio is not in Marvel api");
+        } else {
+          setBio(characterData.data.results[0].description);
+        }
+      } catch (error) {
+        console.log("Looks like there was a problem: \n", error);
+      }
+    };
+  
+    fetchData();
   }, []);
-
+  
+  
   if (!post && typeof window !== "undefined") {
     router.push("/404");
     return;
   }
-
+  
   if (!post) {
     return null;
   }
-
+  
   //Links text first letter to uppercase
   function titleCase(str) {
     var splitStr = str.toLowerCase().split(" ");
