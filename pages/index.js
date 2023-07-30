@@ -58,7 +58,7 @@ const HomePage = ({ posts }) => (
               {posts.sort((a, b) => a.number - b.number).map((post) => (
                 <article key={post.number}>
                   <div className="flip-card">
-                    <a href={`/post/${post.slug}`}>
+                    <a href={`/characters/${post.slug}`}>
                       <h2 className="cardTitle">{post.name}</h2>
                       <div className="flip-card-inner">
                         <div className="flip-card-front">

@@ -52,11 +52,11 @@ export default function Characters({ post }) {
               <Col w={{ def: 'full', sm: '1/2', md: '1/2', lg: '1/1', xl: '1/1' }} key={`chunk${index}`}>
                 <div className={styles.charrow}>
                   {chunk.map((post) => (
-                    <a href={`/post/${post.slug}`} key={post.number.toString()} className="indexChar">
+                    <a href={`/characters/${post.slug}`} key={post.number.toString()} className="indexChar">
                       <div className="imageDiv">
                         <ReactImageFallback
                           src={post.imageAlt}
-                          fallbackImage={fallback}
+                          fallbackImage='https://i.ibb.co/LnPBDY1/icon.png'
                           initialImage="https://i.ibb.co/ZGLW03w/loading1.gif"
                           alt={post.imageAlt}
                           className="featimglist"
