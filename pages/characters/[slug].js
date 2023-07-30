@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { getPostBySlug } from "@lib/firebase";
 import { Layout } from "@components";
-import { Col, Row, Card} from "tailwind-react-ui";
+import { Col, Row, Card } from "tailwind-react-ui";
 import { useAuth } from "@contexts/auth";
 import { FillButton } from "tailwind-react-ui";
 import "tailwindcss/tailwind.css";
@@ -21,21 +21,30 @@ const PostPage = ({ post }) => {
   const [links, setLinks] = useState([]);
   const [stat, setStat] = useState([]);
   const [image, setImage] = useState([]);
+  const [comics, setComics] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const { name, uid } = post;
-  
+      const { name, uid, marvelID } = post;
+      console.log(post)
+
       try {
         const bioResponse = await fetch(`https://www.superheroapi.com/api.php/3913169345411392/${uid}/biography`);
         const bioData = await bioResponse.json();
-  
+
         const imageResponse = await fetch(`https://www.superheroapi.com/api.php/3913169345411392/${uid}/image`);
         const imageData = await imageResponse.json();
-  
+
         const characterResponse = await fetch(`https://gateway.marvel.com/v1/public/characters?name=${name}&apikey=${APIKEY}`);
         const characterData = await characterResponse.json();
-  
+        //console.log(characterData);
+
+        //const comicResponse = await fetch(`https://gateway.marvel.com:443/v1/public/characters/${uid}/comics?apikey=${APIKEY}`);
+        const comicResponse = await fetch(`https://gateway.marvel.com:/v1/public/characters/${marvelID}/comics?apikey=${APIKEY}`);
+
+        const comicData = await comicResponse.json();
+        console.log(comicData);
+
         if (bioData.error === "invalid id") {
           setData([{ name: "Nope", description: "Invalid ID" }]);
           console.log(data);
@@ -43,47 +52,60 @@ const PostPage = ({ post }) => {
         } else {
           setData(bioData);
         }
-  
+
         if (imageData.error === "invalid id") {
           // Do something with invalid image id
         }
-  
+
         if (characterData.data.count < 1) {
           setImage(imageData.url);
           console.log("No Marvel api thumbnail image available");
         } else {
           setImage(`${characterData.data.results[0].thumbnail.path}.${characterData.data.results[0].thumbnail.extension}`);
         }
-  
+
         setLinks(characterData.data.results[0].urls);
         if (characterData.data.results[0].urls.length < 3) {
           console.log("Links are missing");
         }
-  
+
         if (characterData.data.results[0].description === "" || imageData.error === "invalid id") {
           setBio(post.bio);
           console.log("Bio is not in Marvel api");
         } else {
           setBio(characterData.data.results[0].description);
         }
-      } catch (error) {
+          if(comicData === null){
+            setComics([{name: "No comics found", description: "No comics found"}]);
+          }
+          else{
+            setComics(comicData.data.results)
+            console.log(comicData.data.results)
+          
+          }
+          
+        }
+
+
+
+       catch (error) {
         console.log("Looks like there was a problem: \n", error);
       }
     };
-  
+
     fetchData();
   }, []);
-  
-  
+
+
   if (!post && typeof window !== "undefined") {
     router.push("/404");
     return;
   }
-  
+
   if (!post) {
     return null;
   }
-  
+
   //Links text first letter to uppercase
   function titleCase(str) {
     var splitStr = str.toLowerCase().split(" ");
@@ -191,7 +213,22 @@ const PostPage = ({ post }) => {
               </ul>
             </div>
           </Row>
-          <Row></Row>
+          <Row>
+            <div className="comics-div" style={{ backgroundColor: backColor }}>
+              <p style={{ textAlign: "center" }}>Comics</p>
+
+               <ul className="comicsdiv">
+                  {comics.map(({title, thumbnail}, i) => (
+                    <li className="comics" key={i}>
+                      <p className="comic-title"> {title}</p>
+                      <img src={`${thumbnail.path}.${thumbnail.extension}`} alt={title} className="comic-image"/>
+                      
+                    </li>
+                    ))}
+                  </ul>
+
+            </div>
+          </Row>
           <Row>
             <div className="dyn">
               <p style={{ fontSize: "1.5vh", fontWeight: "bold" }}>
