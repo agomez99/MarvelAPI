@@ -37,7 +37,7 @@ const PostPage = ({ post }) => {
 
         const characterResponse = await fetch(`https://gateway.marvel.com/v1/public/characters?name=${name}&apikey=${APIKEY}`);
         const characterData = await characterResponse.json();
-        //console.log(characterData);
+        console.log(characterData);
 
         //const comicResponse = await fetch(`https://gateway.marvel.com:443/v1/public/characters/${uid}/comics?apikey=${APIKEY}`);
         const comicResponse = await fetch(`https://gateway.marvel.com:/v1/public/characters/${marvelID}/comics?apikey=${APIKEY}`);
@@ -47,16 +47,26 @@ const PostPage = ({ post }) => {
 
         if (bioData.error === "invalid id") {
           setData([{ name: "Nope", description: "Invalid ID" }]);
+          setBio(post.bio);
+
           console.log(data);
           console.log("No superhero api info available");
         } else {
           setData(bioData);
+
         }
 
         if (imageData.error === "invalid id") {
           // Do something with invalid image id
         }
+        if (characterData.data.results[0].description === "" || imageData.error === "invalid id") {
+          console.log("Bio is not in Marvel api");
+          setBio(post.bio);
 
+        } else {
+          setBio(characterData.data.results[0].description);
+
+        }
         if (characterData.data.count < 1) {
           setImage(imageData.url);
           console.log("No Marvel api thumbnail image available");
@@ -69,12 +79,7 @@ const PostPage = ({ post }) => {
           console.log("Links are missing");
         }
 
-        if (characterData.data.results[0].description === "" || imageData.error === "invalid id") {
-          setBio(post.bio);
-          console.log("Bio is not in Marvel api");
-        } else {
-          setBio(characterData.data.results[0].description);
-        }
+ 
           if(comicData === null){
             setComics([{name: "No comics found", description: "No comics found"}]);
           }

@@ -47,7 +47,7 @@ const EditPage = ({ post }) => {
     updatePost(values)
       .then(() => {
         setIsLoading(false);
-        router.push(`/post/${post.slug}`);
+        router.push(`/characters/${post.slug}`);
       })
       .catch((err) => {
         alert(err);
@@ -143,6 +143,15 @@ const EditPage = ({ post }) => {
               onChange={handleChange}
             />
           </div>
+          <div>
+            <label htmlFor="dyn">Marvel Character ID #</label>
+            <TextInput className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" rows="4"      
+              id="marvelID"
+              type="text"
+              value={values.marvelID}
+              onChange={handleChange}
+            />
+          </div>
         <div>
           <div>
           <label htmlFor="bio">Bio</label>
@@ -163,6 +172,7 @@ const EditPage = ({ post }) => {
               onChange={handleChange}
             />
           </div>
+        
           </div>
           <div style={{paddingBottom:"10px"}}>
           <Button style={{backgroundColor:"green", marginBottom:"15px"}} type="submit" disabled={isLoading}>

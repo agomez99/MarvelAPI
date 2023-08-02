@@ -64,7 +64,7 @@ const Layout = ({ children }) => {
           </span>
         )} 
             </li>
-            {/* <li className="nav-item">
+            <li className="nav-item">
               {!user && (
           <span>
             <FillButton
@@ -78,7 +78,7 @@ const Layout = ({ children }) => {
             </FillButton>
           </span>
         )}  
-            </li> */}
+            </li>
           </ul>
         </div>
         
