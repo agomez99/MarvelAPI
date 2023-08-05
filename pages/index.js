@@ -55,7 +55,7 @@ const HomePage = ({ posts }) => (
                 <article key={post.number}>
                   <div className="flip-card">
                     <a href={`/characters/${post.slug}`}>
-                      <h2 className="cardTitle">{post.name}</h2>
+                      <h2 className="cardTitle">{post.name.substring(0, 25)}</h2>
                       <div className="flip-card-inner">
                         <div className="flip-card-front">
                           <Image

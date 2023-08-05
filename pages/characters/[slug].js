@@ -26,7 +26,7 @@ const PostPage = ({ post }) => {
   useEffect(() => {
     const fetchData = async () => {
       const { name, uid, marvelID } = post;
-      console.log(post)
+      console.log(data)
 
       try {
         const bioResponse = await fetch(`https://www.superheroapi.com/api.php/3913169345411392/${uid}/biography`);
@@ -38,12 +38,10 @@ const PostPage = ({ post }) => {
         const characterResponse = await fetch(`https://gateway.marvel.com/v1/public/characters?name=${name}&apikey=${APIKEY}`);
         const characterData = await characterResponse.json();
         console.log(characterData);
-
-        //const comicResponse = await fetch(`https://gateway.marvel.com:443/v1/public/characters/${uid}/comics?apikey=${APIKEY}`);
         const comicResponse = await fetch(`https://gateway.marvel.com:/v1/public/characters/${marvelID}/comics?apikey=${APIKEY}`);
 
         const comicData = await comicResponse.json();
-        console.log(comicData);
+        //console.log(comicData);
 
         if (bioData.error === "invalid id") {
           setData([{ name: "Nope", description: "Invalid ID" }]);
@@ -59,14 +57,6 @@ const PostPage = ({ post }) => {
         if (imageData.error === "invalid id") {
           // Do something with invalid image id
         }
-        if (characterData.data.results[0].description === "" || imageData.error === "invalid id") {
-          console.log("Bio is not in Marvel api");
-          setBio(post.bio);
-
-        } else {
-          setBio(characterData.data.results[0].description);
-
-        }
         if (characterData.data.count < 1) {
           setImage(imageData.url);
           console.log("No Marvel api thumbnail image available");
@@ -79,21 +69,26 @@ const PostPage = ({ post }) => {
           console.log("Links are missing");
         }
 
- 
-          if(comicData === null){
-            setComics([{name: "No comics found", description: "No comics found"}]);
-          }
-          else{
-            setComics(comicData.data.results)
-            console.log(comicData.data.results)
-          
-          }
-          
+
+        if (comicData === null) {
+          setComics([{ name: "No comics found", description: "No comics found" }]);
+        }
+        else {
+          setComics(comicData.data.results)
+          console.log(comicData.data.results)
+
         }
 
+        if (characterData.data.results[0].description === "" || imageData.error === "invalid id") {
+          console.log("Bio is not in Marvel api");
+          setBio(post.bio);
 
+        } else {
+          setBio(characterData.data.results[0].description);
 
-       catch (error) {
+        }
+      }
+      catch (error) {
         console.log("Looks like there was a problem: \n", error);
       }
     };
@@ -222,15 +217,15 @@ const PostPage = ({ post }) => {
             <div className="comics-div" style={{ backgroundColor: backColor }}>
               <p style={{ textAlign: "center" }}>Comics</p>
 
-               <ul className="comicsdiv">
-                  {comics.map(({title, thumbnail}, i) => (
-                    <li className="comics" key={i}>
-                      <p className="comic-title"> {title}</p>
-                      <img src={`${thumbnail.path}.${thumbnail.extension}`} alt={title} className="comic-image"/>
-                      
-                    </li>
-                    ))}
-                  </ul>
+              <ul className="comicsdiv">
+                {comics.map(({ title, thumbnail }, i) => (
+                  <li className="comics" key={i}>
+                    <p className="comic-title"> {title}</p>
+                    <img src={`${thumbnail.path}.${thumbnail.extension}`} alt={title} className="comic-image" />
+
+                  </li>
+                ))}
+              </ul>
 
             </div>
           </Row>
