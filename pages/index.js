@@ -1,7 +1,7 @@
 import styles from "@styles/index.module.scss";
 import { getPosts } from "@lib/firebase";
 import { Layout } from "@components";
-import { Col, Row } from "tailwind-react-ui";
+import { Col, Container, Row } from "tailwind-react-ui";
 import Head from "next/head";
 import Image from "next/image";
 import GoogleAnalytics from "./googleAnalytics";
@@ -51,6 +51,7 @@ const HomePage = ({ posts }) => (
         <div>
           <Row gutter>
             <Col>
+            <div className="card-container">
               {posts.sort((a, b) => a.number - b.number).map((post) => (
                 <article key={post.number}>
                   <div className="flip-card">
@@ -61,19 +62,21 @@ const HomePage = ({ posts }) => (
                           <Image
                             src={post.image}
                             alt={post.imageAlt}
-                            width={250}
-                            height={430}
+                            width="0"
+                            height="0"
+                            sizes="100vw"
+                            style={{ width: '90%', height: '90%' }}
                             className="cardImage"
-                            style={{ width: 250, height: 350 }}
                           />
                         </div>
                         <div className="flip-card-back">
                           <Image
                             src={post.image2}
                             alt={post.imageAlt}
-                            width={250}
-                            height={430}
-                            style={{ width: 250, height: 350 }}
+                            width="0"
+                            height="0"
+                            sizes="100vw"
+                            style={{ width: '100%', height: '90%' }}
 
                           />
                         </div>
@@ -82,6 +85,7 @@ const HomePage = ({ posts }) => (
                   </div>
                 </article>
               ))}
+              </div>
             </Col>
           </Row>
         </div>

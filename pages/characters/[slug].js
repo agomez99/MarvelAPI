@@ -106,6 +106,8 @@ const PostPage = ({ post }) => {
     return null;
   }
 
+
+
   //Links text first letter to uppercase
   function titleCase(str) {
     var splitStr = str.toLowerCase().split(" ");
@@ -215,7 +217,7 @@ const PostPage = ({ post }) => {
           </Row>
           <Row>
             <div className="comics-div" style={{ backgroundColor: backColor }}>
-              <p style={{ textAlign: "center" }}>Comics</p>
+              <p className='comic-header'>Comics</p>
 
               <ul className="comicsdiv">
                 {comics.map(({ title, thumbnail }, i) => (
