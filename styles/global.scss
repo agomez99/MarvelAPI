@@ -283,15 +283,6 @@ padding:20px;
   margin-bottom: 5%;
 }
 
-.featimglist{
-  height:200px;
-  width:200px;
-  margin-left:auto;
-  margin-right:auto;
-  position: relative;
-  border-radius: 50%;
-  border : 1px solid red;
-}
 
 .featimglist:hover{
   border : 1px solid white;
@@ -305,6 +296,11 @@ padding:20px;
   margin-bottom: 130px;
 }
 
+
+.flexdisplay{
+  display: flex;
+  flex-wrap:none;
+}
 /* ----------- iPhone 11----------- */
 @media only screen 
     and (device-width: 414px) 
@@ -315,10 +311,7 @@ padding:20px;
       div.logodiv{
         display: none;
       }
-      .featimglist{
-        display: none;
-      
-      }
+
       .indexChar{
         font-size: 1.5rem;
       }
@@ -348,10 +341,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
   div.logodiv{
     display: none;
   }
-  .featimglist{
-    display: none;
-  
-  }
+
   .indexChar{
     font-size: 1.5rem;
   }
@@ -467,26 +457,25 @@ display: inline;
   }
   .indexChar{
     color: white;
-    font-size:1.6rem;
+    font-size:1.5rem;
     font-family: 'Bangers', cursive;
-   flex-direction: LEFT;
-   float:left;
+    text-align: left;
   }
   
 .indexChar:hover{
-  background-color:red;
-  color: black;
   font-size:1.7rem;
-  border-radius:30px;
-}
-.featimglist{
-  display: block;
-  height:150px;
-}
-.imageDiv{
-  margin-bottom: 35px;
 }
 
+.imageDiv{
+  margin-bottom: 35px;
+  display: inline-flex;
 }
+.flexdisplay{
+  display: block;
+  flex-wrap: wrap;
+}
+}
+
+
 
 

@@ -28,15 +28,18 @@ export default function Characters({ post }) {
     return null;
   }
 
+  const sortAlphabetically = (post) => post.sort((a, b) => a.name.localeCompare(b.name));
+
   const sliceChunk = (chunkSize, arr) => {
     const res = [];
     for (let i = 0; i < arr.length; i += chunkSize) {
       res.push(arr.slice(i, i + chunkSize));
     }
     return res;
-  }
+  };
+  
+  const postChunks = sliceChunk(40, sortAlphabetically(post));
 
-  const postChunks = sliceChunk(50, post.sort((a, b) => a.number - b.number));
 
   return (
     <Layout>
@@ -47,10 +50,9 @@ export default function Characters({ post }) {
         </div>
         <h1 className={styles.charindex}>Characters Index</h1>
         <div>
-          <Flex style={{ padding: '20px 50px 70px 20px', backgroundColor: 'black' }}>
+          <Flex  style={{ padding: '20px 50px 70px 20px', backgroundColor: 'black' }} className="flexdisplay">
             {postChunks.map((chunk, index) => (
-              <Col w={{ def: 'full', sm: '1/2', md: '1/2', lg: '1/1', xl: '1/1' }} key={`chunk${index}`}>
-                <div className={styles.charrow}>
+              <Col w={{ def: 'full', sm: '1/1', md: '1/2', lg: '1/1', xl: '1/1' }} key={`chunk${index}`}>
                   {chunk.map((post) => (
                     <a href={`/characters/${post.slug}`} key={post.number.toString()} className="indexChar">
                       <div className="imageDiv">
@@ -59,13 +61,12 @@ export default function Characters({ post }) {
                           fallbackImage='https://i.ibb.co/LnPBDY1/icon.png'
                           initialImage="https://i.ibb.co/ZGLW03w/loading1.gif"
                           alt={post.imageAlt}
-                          className="featimglist"
+                          className={styles.imglist}
                         />
                         <p>{post.cardname}</p>
                       </div>
                     </a>
                   ))}
-                </div>
               </Col>
             ))}
           </Flex>

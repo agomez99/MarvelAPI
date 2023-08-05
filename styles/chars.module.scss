@@ -1,110 +1,133 @@
-
 .CharsPage {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0px;
+  font-family: 'Bangers', cursive;
+
+  .title {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h1 {
+    color: #fff;
+    font-size: 5.5rem;
+    text-align: center;
+    padding-right: 15px;
+  }
+
+  .charindex {
+    margin-top: 5%;
+    color: "white";
+    font-size: 3rem;
+    background-color: rgba(0, 0, 0, 1);
+  }
+
+  h2 {
+    font-size: 35px;
+    text-align: center;
+  }
+
+  .charrow {
+    color: #fff;
+    text-align: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 1);
+  }
+
+  .main-col {
+    display: block;
+    flex-direction: row;
+  }
+
+  h2 {
+    margin-top: 0;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  article {
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 5px;
+    overflow: hidden;
+    background-color: #ED1D24;
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+
+    div {
+      padding: 16px;
+
+      h2 {
+        margin-top: 0;
+        margin-bottom: 4px;
+      }
+
+      span {
+        display: block;
+        margin-bottom: 12px;
+      }
+
+      p {
+        margin: 0;
+        color: #fff;
+
+        margin-bottom: 16px;
+        text-align: center;
+      }
+
+      a {
+        color: #1a73e8;
+      }
+    }
+  }
+  .imglist{
+    height:200px;
+    width:200px;
+    margin-left:auto;
+    margin-right:auto;
+    position: relative;
+    border-radius: 50%;
+    border : 1px solid red;
+  }
+
+
+}
+
+@media screen and (max-width: 600px) {
+  .CharsPage {
     max-width: 100%;
     margin: 0 auto;
     padding: 0px;
     font-family: 'Bangers', cursive;
 
-    .title{
-        background-color: rgba(0, 0, 0, 0.5);
-        width:100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .title {
+      height: 100px;
     }
 
-    h1 {
-        color: #fff;
-        font-size: 5.5rem;
-        text-align: center;
-        padding-right: 15px;
-    }
-    
-    .charindex{
-        margin-top: 5%;
-        color:"white";
-        font-size: 3rem;
-        background-color: rgba(0, 0, 0,1);
-    }
-    h2 {
-      font-size: 35px;
-      text-align: center;
-    }
-    .charrow{
-        color: #fff;
-        text-align:center;
-        align-items: center;
-        background-color: rgba(0, 0, 0,1);
-    }
-    .main-col {
-      display: block;
-      flex-direction: row;
-    }
-    
-    h2 {
-      margin-top: 0;
-      text-transform: uppercase;
-      color:white;
-    }
-    article {
-      border: 1px solid black;
-      border-radius: 12px;
-      padding: 5px;
-      overflow: hidden;
-      background-color: #ED1D24;
-      &:not(:last-child) {
-        margin-bottom: 10px;
-      }
-  
-      div {
-        padding: 16px;
-  
-        h2 {
-          margin-top: 0;
-          margin-bottom: 4px;
-        }
-  
-        span {
-          display: block;
-          margin-bottom: 12px;
-        }
-  
-        p {
-          margin: 0;
-          color: #fff;
-
-          margin-bottom: 16px;
-          text-align: center;
-        }
-        a {
-          color: #1a73e8;
-        }
-      }
-    }
-  
-  
-  }
-
-  @media (max-width: 600px) {
-    .CharsPage {
-      max-width: 100%;
-      margin: 0 auto;
-      padding: 0px;
-      font-family: 'Bangers', cursive;
-    .title{
-      height:100px;
-    }
-    h1.hero{
+    h1.hero {
       font-size: 3rem;
     }
-    .charindex{
-      font-size:2rem;
+
+    .charindex {
+      font-size: 2rem;
     }
 
-    .logo{
-      height:50%;
-      width:20%;
+    .logo {
+      height: 50%;
+      width: 20%;
     }
 
   }
+  .imglist{
+    display: none;
+  }
+  
+
+
 }
