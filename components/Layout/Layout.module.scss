@@ -1,6 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
 .Layout {
 
-
+.navitem{
+  font-size: 1.8rem;
+  font-family: 'Bangers';
+  color:white;
+}
+.navitem:hover{
+  transform: scale(1.2);
+  font-family: 'Bangers';
+  color:white;
+  background-color: #e40013;
+}
   nav {
 
     background-color: #e40013;
@@ -21,9 +33,11 @@
 
       button {
         color: white;
-        background-color: purple;
+        background-color: rgb(152, 77, 250);
         margin-right: 10px;
         width: 100px;
+        font-family: 'Bangers';
+
 
       }
 
@@ -35,6 +49,12 @@
 
   }
 
+  .logo{
+
+    height:100px;
+    width:100px;
+    margin-top: 15%;
+  }
   footer {
     padding: 15px;
     background-color: #e40013;
@@ -58,4 +78,18 @@
   button {
     margin-bottom: 5%;
   }
+}
+
+
+
+@media screen and (max-width: 600px) {
+
+
+.nav{
+  display: flex;
+  flex-wrap: nowrap;
+
+}
+
+
 }
