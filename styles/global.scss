@@ -5,6 +5,9 @@ main {
   margin: 0 auto;
   padding: 24px;
   background-image: url("/paper.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: bottom;
 }
 
 .brand:hover {
@@ -249,7 +252,14 @@ li.links:hover {
   padding: 20px;
 }
 
+.loading{
+  font-size: 3rem;
+  color:white;
+  text-align: center;
+  margin-top: 200px;
+  font-family: 'Bangers';
 
+}
 /*End Bio Page*/
 
 

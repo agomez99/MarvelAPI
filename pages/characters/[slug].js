@@ -15,50 +15,43 @@ const APIKEY = process.env.NEXT_PUBLIC_KEY;
 const PostPage = ({ post }) => {
   const router = useRouter();
   const [user] = useAuth();
-
-  const [data, setData] = useState([]);
-  const [bio, setBio] = useState([]);
+  const [data, setData] = useState({});
+  const [bio, setBio] = useState('');
   const [links, setLinks] = useState([]);
+  const [comics, setComics] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [backColor, setBackColor] = useState(post.color);
+  const [title, setTitle] = useState('');
   const [stat, setStat] = useState([]);
   const [image, setImage] = useState([]);
-  const [comics, setComics] = useState([]);
-
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
+
       const { name, uid, marvelID } = post;
-      console.log(data)
 
       try {
         const bioResponse = await fetch(`https://www.superheroapi.com/api.php/3913169345411392/${uid}/biography`);
         const bioData = await bioResponse.json();
-
-        const imageResponse = await fetch(`https://www.superheroapi.com/api.php/3913169345411392/${uid}/image`);
-        const imageData = await imageResponse.json();
-
-        const characterResponse = await fetch(`https://gateway.marvel.com/v1/public/characters?name=${name}&apikey=${APIKEY}`);
-        const characterData = await characterResponse.json();
-        console.log(characterData);
-        const comicResponse = await fetch(`https://gateway.marvel.com:/v1/public/characters/${marvelID}/comics?apikey=${APIKEY}`);
-
-        const comicData = await comicResponse.json();
-        //console.log(comicData);
+        setData(bioData);
 
         if (bioData.error === "invalid id") {
           setData([{ name: "Nope", description: "Invalid ID" }]);
           setBio(post.bio);
-
-          console.log(data);
           console.log("No superhero api info available");
-        } else {
-          setData(bioData);
-
         }
 
-        if (imageData.error === "invalid id") {
-          // Do something with invalid image id
+        const imageResponse = await fetch(`https://www.superheroapi.com/api.php/3913169345411392/${uid}/image`);
+        const imageData = await imageResponse.json();
+
+        if (imageData.error !== "invalid id") {
+          setBackColor(imageData.url);
         }
+
+        const characterResponse = await fetch(`https://gateway.marvel.com/v1/public/characters?name=${name}&apikey=${APIKEY}`);
+        const characterData = await characterResponse.json();
+
         if (characterData.data.count < 1) {
-          setImage(imageData.url);
           console.log("No Marvel api thumbnail image available");
         } else {
           setImage(`${characterData.data.results[0].thumbnail.path}.${characterData.data.results[0].thumbnail.extension}`);
@@ -69,26 +62,24 @@ const PostPage = ({ post }) => {
           console.log("Links are missing");
         }
 
+        const comicResponse = await fetch(`https://gateway.marvel.com:/v1/public/characters/${marvelID}/comics?apikey=${APIKEY}`);
+        const comicData = await comicResponse.json();
 
         if (comicData === null) {
           setComics([{ name: "No comics found", description: "No comics found" }]);
-        }
-        else {
-          setComics(comicData.data.results)
-          console.log(comicData.data.results)
-
+        } else {
+          setLoading(false);
+          setComics(comicData.data.results);
+          console.log(comicData.data.results);
         }
 
         if (characterData.data.results[0].description === "" || imageData.error === "invalid id") {
           console.log("Bio is not in Marvel api");
           setBio(post.bio);
-
         } else {
           setBio(characterData.data.results[0].description);
-
         }
-      }
-      catch (error) {
+      } catch (error) {
         console.log("Looks like there was a problem: \n", error);
       }
     };
@@ -96,19 +87,21 @@ const PostPage = ({ post }) => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const title = titleCase(post.name) + " - Cardverse";
+    setTitle(title);
+  }, [post.name]);
 
   if (!post && typeof window !== "undefined") {
     router.push("/404");
-    return;
+    return null;
   }
 
   if (!post) {
     return null;
   }
 
-
-
-  //Links text first letter to uppercase
+  // Links text first letter to uppercase
   function titleCase(str) {
     var splitStr = str.toLowerCase().split(" ");
     for (var i = 0; i < splitStr.length; i++) {
@@ -117,11 +110,9 @@ const PostPage = ({ post }) => {
     }
     return splitStr.join(" ");
   }
-  const backColor = post.color;
-  //const imageUrl = image;
+
   const fallback = "https://i.ibb.co/LnPBDY1/icon.png";
-  const title = titleCase(post.name) + " - Cardverse"
-  //const fallback = {data[2].data.results[0].thumbnail.path;
+
   return (
     <Layout>
       <Head>
@@ -137,7 +128,6 @@ const PostPage = ({ post }) => {
           <Row>
             <div className="cardheading" style={{ backgroundColor: backColor }}>
               <h1 className="nameTitle">{post.name}</h1>
-              {/* <h1 className="nameTitle">{post.cardname}</h1> */}
               <div className="logodiv">
                 <div className="logo">
                   <img
@@ -205,7 +195,7 @@ const PostPage = ({ post }) => {
               <p style={{ textAlign: "center" }}>Links</p>
 
               <ul className="linksdiv">
-                {links.map(({ url, type }, i) => (
+                {loading && <p className="loading">Loading...</p>} {links.map(({ url, type }, i) => (
                   <li className="links" key={i}>
                     <a href={url} target="_blank" rel="noopener noreferrer">
                       {titleCase(type)}
@@ -218,6 +208,7 @@ const PostPage = ({ post }) => {
           <Row>
             <div className="comics-div" style={{ backgroundColor: backColor }}>
               <p className='comic-header'>Comics</p>
+              {loading ? (<p className="loading">Loading...</p>):(
 
               <ul className="comicsdiv">
                 {comics.map(({ title, thumbnail }, i) => (
@@ -228,7 +219,7 @@ const PostPage = ({ post }) => {
                   </li>
                 ))}
               </ul>
-
+              )}
             </div>
           </Row>
           <Row>
