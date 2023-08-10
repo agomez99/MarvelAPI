@@ -9,8 +9,15 @@ import { useEffect, useState } from "react";
 import ReactImageFallback from "react-image-fallback";
 const ts = new Date().getTime();
 import Head from "next/head";
-
+import Image from "next/image";
 const APIKEY = process.env.NEXT_PUBLIC_KEY;
+function titleCase(str) {
+  return str
+    .toLowerCase()
+    .split(" ")
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
 
 const PostPage = ({ post }) => {
   const router = useRouter();
@@ -22,10 +29,10 @@ const PostPage = ({ post }) => {
   const [loading, setLoading] = useState(false);
   const [backColor, setBackColor] = useState(post.color);
   const [title, setTitle] = useState('');
-  const [stat, setStat] = useState([]);
   const [image, setImage] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
+ 
       setLoading(true);
 
       const { name, uid, marvelID } = post;
@@ -53,6 +60,8 @@ const PostPage = ({ post }) => {
 
         if (characterData.data.count < 1) {
           console.log("No Marvel api thumbnail image available");
+          setImage(`${fallback}`);
+
         } else {
           setImage(`${characterData.data.results[0].thumbnail.path}.${characterData.data.results[0].thumbnail.extension}`);
         }
@@ -83,14 +92,11 @@ const PostPage = ({ post }) => {
         console.log("Looks like there was a problem: \n", error);
       }
     };
-
-    fetchData();
-  }, []);
-
-  useEffect(() => {
     const title = titleCase(post.name) + " - Cardverse";
     setTitle(title);
+    fetchData();
   }, [post.name]);
+
 
   if (!post && typeof window !== "undefined") {
     router.push("/404");
@@ -101,17 +107,9 @@ const PostPage = ({ post }) => {
     return null;
   }
 
-  // Links text first letter to uppercase
-  function titleCase(str) {
-    var splitStr = str.toLowerCase().split(" ");
-    for (var i = 0; i < splitStr.length; i++) {
-      splitStr[i] =
-        splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
-    }
-    return splitStr.join(" ");
-  }
-
   const fallback = "https://i.ibb.co/LnPBDY1/icon.png";
+  const avatarImage = image ||"https://i.ibb.co/ZGLW03w/loading1.gif";
+
 
   return (
     <Layout>
@@ -164,13 +162,14 @@ const PostPage = ({ post }) => {
           </Row>
           <Row>
             <div className="bio-div" style={{ backgroundColor: backColor }}>
-              <ReactImageFallback
-                src={image}
-                fallbackImage={fallback}
-                initialImage="https://i.ibb.co/ZGLW03w/loading1.gif"
-                alt={stat.imageAlt}
-                className="bio-image"
-              />
+
+                  <Image
+                  src={avatarImage}
+                  alt={post.name}
+                  className="bio-image"
+                  width={200}
+                  height={200}
+                />
               <div className="bio-stats">
                 <h1 className="bio-sec">Full Name - </h1>
                 <h1>{data["full-name"]}</h1>
@@ -237,14 +236,11 @@ const PostPage = ({ post }) => {
 };
 export async function getServerSideProps(context) {
   const post = await getPostBySlug(context.query.slug);
-  const bio = await getPostBySlug(context.query.slug);
-  const links = await getPostBySlug(context.query.slug);
+
 
   return {
     props: {
-      post,
-      bio,
-      links,
+      post
     },
   };
 }
