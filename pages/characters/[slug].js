@@ -194,7 +194,7 @@ const PostPage = ({ post }) => {
                 {loading && <p className="loading">Loading...</p>} {links.map(({ url, type }, i) => (
                   <li className="links" key={i}>
                     <a href={url} target="_blank" rel="noopener noreferrer">
-                      {titleCase(type)}
+                      {type}
                     </a>
                   </li>
                 ))}
