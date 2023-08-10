@@ -132,12 +132,17 @@
       height: 50%;
       width: 20%;
     }
-
+    .searchbar{
+      width:250px;
+      border-radius: 25px;
+      height:60px;
+      text-align: center;
+    }
+  
   }
   .imglist{
     display: none;
   }
-  
 
 
 }
