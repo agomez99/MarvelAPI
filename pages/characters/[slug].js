@@ -1,13 +1,10 @@
 import { useRouter } from "next/router";
 import { getPostBySlug } from "@lib/firebase";
 import { Layout } from "@components";
-import { Col, Row, Card } from "tailwind-react-ui";
+import { Col, Row, Card, FillButton } from "tailwind-react-ui";
 import { useAuth } from "@contexts/auth";
-import { FillButton } from "tailwind-react-ui";
 import "tailwindcss/tailwind.css";
 import { useEffect, useState } from "react";
-import ReactImageFallback from "react-image-fallback";
-const ts = new Date().getTime();
 import Head from "next/head";
 import Image from "next/image";
 const APIKEY = process.env.NEXT_PUBLIC_KEY;
@@ -207,7 +204,7 @@ const PostPage = ({ post }) => {
           <Row>
             <div className="comics-div" style={{ backgroundColor: backColor }}>
               <p className='comic-header'>Comics</p>
-              {loading ? (<p className="loading">Loading...</p>):(
+              {loading ? (<img src="https://i.ibb.co/ZGLW03w/loading1.gif" alt="loading" className="loading" />):(
 
               <ul className="comicsdiv">
                 {comics.map(({ title, thumbnail }, i) => (
