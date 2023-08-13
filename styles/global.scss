@@ -172,8 +172,7 @@ div.logo {
 .bio-image {
   width: 200px;
   height: 200px;
-  float: right;
-  margin-right: 15%;
+margin-left: auto;
   border-radius: 50%;
 }
 
@@ -252,14 +251,15 @@ li.links:hover {
   padding: 20px;
 }
 
-.loading{
+.loading {
   font-size: 3rem;
-  color:white;
+  color: white;
   text-align: center;
   margin-top: 200px;
   font-family: 'Bangers';
 
 }
+
 /*End Bio Page*/
 
 
@@ -509,4 +509,60 @@ li.links:hover {
     display: block;
     flex-wrap: wrap;
   }
+}
+
+@media screen and (max-width:600px) {
+
+
+  .logo {
+    width: 120px;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+  .bio-image {
+    width: 100px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+  }
+  .bio-div{
+    padding:0px;
+  }
+  .bio-stats{
+    max-width:350px;
+    display: inline-block;
+    float: none;
+    margin: none;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+
+  }
+  .bio-sec{
+    color: rgb(255, 255, 255);
+    word-wrap: normal;
+    font-size: 3vw;
+
+  }
+
+  .bio-p {
+    font-size: 4vw;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+
+  }
+  .bio-aliasas{
+    display: flex;
+    flex-direction: column;
+    font-size: 4vw;
+
+    
+  }
+  .flexdisplay {
+    display:flex;
+    flex-direction: column;
+  }
+
 }

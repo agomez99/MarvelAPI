@@ -27,6 +27,7 @@ const PostPage = ({ post }) => {
   const [backColor, setBackColor] = useState(post.color);
   const [title, setTitle] = useState('');
   const [image, setImage] = useState([]);
+  console.log(data)
   useEffect(() => {
     const fetchData = async () => {
  
@@ -167,18 +168,24 @@ const PostPage = ({ post }) => {
                   width={200}
                   height={200}
                 />
+                                <br></br>
+
               <div className="bio-stats">
-                <h1 className="bio-sec">Full Name - </h1>
-                <h1>{data["full-name"]}</h1>
-                <h1 className="bio-sec">Place Of Birth - </h1>
-                <h1> {data["place-of-birth"]} </h1>
-                <h1 className="bio-sec">First Appearance</h1>
-                <br></br> <p> {data["first-appearance"]} </p>
-                <h1 className="bio-sec">Aliasas: </h1>
+                <p className="bio-sec">Full Name - </p>
+                <p className="bio-sec">{data["full-name"]}</p>
+                <br></br>
+                <p className="bio-sec" >Place Of Birth - </p>
+                <p className="bio-sec" > {data["place-of-birth"]} </p>
+                <br></br>
+                <h1 className="bio-sec">First Appearance: </h1>
+                <br></br>
+                <p className="bio-sec" > {data["first-appearance"]} </p>
+                <br></br>
+                <p className="bio-sec">Aliasas: </p>
                 <br></br>
                 {data.aliases &&
                   data.aliases.map((item) => (
-                    <li key={item.toString()} style={{ listStyle: "inside" }}>
+                    <li key={item.toString()} className="bio-aliasas" >
                       {item}
                     </li>
                   ))}
