@@ -71,12 +71,14 @@ export default function Characters({ post }) {
            </div>
 
 
-          <Flex style={{ padding: '20px 50px 70px 20px', backgroundColor: 'black' }} className="flexdisplay">
+          <Flex style={{  backgroundColor: 'black' }} className="flexdisplay">
 
           {filteredChunks.map((chunk, index) => (
               <Col w={{ def: 'full', sm: '1/1', md: '1/2', lg: '1/1', xl: '1/1' }} key={`chunk${index}`}>
                 {chunk.map((post) => (
                   <a href={`/characters/${post.slug}`} key={post.number.toString()} className="indexChar">
+                  <p className={styles.charname}>{titleCase(post.name)}</p>
+
                     <div className="imageDiv">
                       <ReactImageFallback
                         src={post.imageAlt}
@@ -85,8 +87,8 @@ export default function Characters({ post }) {
                         alt={post.imageAlt}
                         className={styles.imglist}
                       />
-                      <p>{titleCase(post.name)}</p>
                     </div>
+
                   </a>
                 ))}
               </Col>
