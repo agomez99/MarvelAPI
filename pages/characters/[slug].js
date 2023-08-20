@@ -25,7 +25,7 @@ const PostPage = ({ post }) => {
   const [comics, setComics] = useState([]);
   const [expanded, setExpanded] = useState(false)
 
-  const displayMore = expanded ? comics : comics.slice(0, 6);
+  const displayMore = expanded ? comics : comics.slice(0, 9);
 
   const [loading, setLoading] = useState(false);
   const [backColor, setBackColor] = useState(post.color);
