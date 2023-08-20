@@ -126,6 +126,15 @@ const EditPage = ({ post }) => {
             />
           </div>
           <div>
+            <label htmlFor="imageAlt">background image</label>
+            <TextInput
+              id="background"
+              type="text"
+              value={values.background}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
             <label htmlFor="color">Background Color</label>
             <TextInput
               id="color"

@@ -23,6 +23,10 @@ const PostPage = ({ post }) => {
   const [bio, setBio] = useState('');
   const [links, setLinks] = useState([]);
   const [comics, setComics] = useState([]);
+  const [expanded, setExpanded] = useState(false)
+
+  const displayMore = expanded ? comics : comics.slice(0, 6);
+
   const [loading, setLoading] = useState(false);
   const [backColor, setBackColor] = useState(post.color);
   const [title, setTitle] = useState('');
@@ -30,7 +34,6 @@ const PostPage = ({ post }) => {
   console.log(data)
   useEffect(() => {
     const fetchData = async () => {
- 
       setLoading(true);
 
       const { name, uid, marvelID } = post;
@@ -69,8 +72,9 @@ const PostPage = ({ post }) => {
           console.log("Links are missing");
         }
 
-        const comicResponse = await fetch(`https://gateway.marvel.com:/v1/public/characters/${marvelID}/comics?apikey=${APIKEY}`);
+        const comicResponse = await fetch(`https://gateway.marvel.com:/v1/public/characters/${marvelID}/comics?limit=50&apikey=${APIKEY}`);
         const comicData = await comicResponse.json();
+        console.log(comicData)
 
         if (comicData === null) {
           setComics([{ name: "No comics found", description: "No comics found" }]);
@@ -104,10 +108,14 @@ const PostPage = ({ post }) => {
   if (!post) {
     return null;
   }
+  const backgroundCover= post.background;
+
+  const backgroundImage = comics[backgroundCover] && comics[backgroundCover].thumbnail.path + "." + comics[1].thumbnail.extension;
+  //const backgroundImage = comics[0] && comics[0].thumbnail.path + "." + comics[1].thumbnail.extension;
 
   const fallback = "https://i.ibb.co/LnPBDY1/icon.png";
   const avatarImage = image ||"https://i.ibb.co/ZGLW03w/loading1.gif";
-
+  //console.log(post)
 
   return (
     <Layout>
@@ -118,28 +126,18 @@ const PostPage = ({ post }) => {
       <div>
         <Card
           style={{
-            backgroundImage: "linear-gradient(white," + backColor + ")",
+            backgroundColor: "black", 
+
+            backgroundImage: `url(${backgroundImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",  
+            backgroundAttachment: "fixed",
           }}
         >
           <Row>
-            <div className="cardheading" style={{ backgroundColor: backColor }}>
+            <div className="cardheading" style={{ backgroundColor: "black" }}>
               <h1 className="nameTitle">{post.name}</h1>
-              <div className="logodiv">
-                <div className="logo">
-                  <img
-                    className="marvel-lg"
-                    style={{
-                      float: "right",
-                    }}
-                    src="/logo.png"
-                    alt="Marvel logo"
-                    layout="intrinsic"
-                    width={100}
-                    height={100}
-                  />
-                </div>
-                <h1 className="idnum">{post.number}</h1>
-              </div>{" "}
               {user && (
                 <FillButton style={{ backgroundColor: "green" }}>
                   <a href={`/edit/${post.slug}`}>EDIT </a>
@@ -214,7 +212,7 @@ const PostPage = ({ post }) => {
               {loading ? (<img src="https://i.ibb.co/ZGLW03w/loading1.gif" alt="loading" className="loading" />):(
 
               <ul className="comicsdiv">
-                {comics.map(({ title, thumbnail }, i) => (
+                {displayMore.map(({ title, thumbnail }, i) => (
                   <li className="comics" key={i}>
                     <p className="comic-title"> {title}</p>
                     <img src={`${thumbnail.path}.${thumbnail.extension}`} alt={title} className="comic-image" />
@@ -222,9 +220,17 @@ const PostPage = ({ post }) => {
                   </li>
                 ))}
               </ul>
+              
               )}
+              <div className="more-comics-div">
+              <FillButton className="more-comics" type="button" onClick={() => setExpanded(comics)}>
+                {displayMore.length === comics.length ? "No More" : "More Comics" }
+              </FillButton>
+              </div>
             </div>
+            
           </Row>
+          
           <Row>
             <div className="dyn">
               <p style={{ fontSize: "1.5vh", fontWeight: "bold" }}>

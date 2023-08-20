@@ -88,6 +88,7 @@ div.cardheading {
   width: 100%;
   margin: 0px 0px;
   margin-bottom: 5%;
+  z-index: 1;
 }
 
 div.logodiv {
@@ -126,7 +127,7 @@ div.logo {
   margin-left: auto;
   margin-right: auto;
   height: 22rem;
-
+  filter: drop-shadow(5px 5px 50px #000000);
 }
 
 .bio-div {
@@ -137,8 +138,6 @@ div.logo {
   width: 90%;
   border-radius: 25px;
   font-family: 'Bangers';
-
-
 }
 
 .bio-stats {
@@ -259,7 +258,15 @@ li.links:hover {
   font-family: 'Bangers';
 
 }
-
+.more-comics-div{
+  text-align: center;
+}
+.more-comics{
+  background-color: #ED1D24;
+  width: 200px;
+  color:white;
+ justify-content: center;
+}
 /*End Bio Page*/
 
 
