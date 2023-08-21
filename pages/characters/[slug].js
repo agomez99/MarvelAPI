@@ -23,19 +23,20 @@ const PostPage = ({ post }) => {
   const [bio, setBio] = useState('');
   const [links, setLinks] = useState([]);
   const [comics, setComics] = useState([]);
+  const [backgroundCover, setBackGroundCover] = useState([]);
+  const backgroundImage = comics[backgroundCover] && comics[backgroundCover].thumbnail.path + "." + comics[1].thumbnail.extension;
+  //const backgroundImage = comics[0] && comics[0].thumbnail.path + "." + comics[1].thumbnail.extension;
+
   const [expanded, setExpanded] = useState(false)
-
-  const displayMore = expanded ? comics : comics.slice(0, 9);
-
   const [loading, setLoading] = useState(false);
-  const [backColor, setBackColor] = useState(post.color);
+  const [backColor, setBackColor] = useState([]);
   const [title, setTitle] = useState('');
   const [image, setImage] = useState([]);
-  console.log(data)
   useEffect(() => {
     const fetchData = async () => {
+      setBackGroundCover(post.background);
       setLoading(true);
-
+      setBackColor(post.color);
       const { name, uid, marvelID } = post;
 
       try {
@@ -97,7 +98,7 @@ const PostPage = ({ post }) => {
     const title = titleCase(post.name) + " - Cardverse";
     setTitle(title);
     fetchData();
-  }, [post.name]);
+  }, []);
 
 
   if (!post && typeof window !== "undefined") {
@@ -108,14 +109,9 @@ const PostPage = ({ post }) => {
   if (!post) {
     return null;
   }
-  const backgroundCover= post.background;
-
-  const backgroundImage = comics[backgroundCover] && comics[backgroundCover].thumbnail.path + "." + comics[1].thumbnail.extension;
-  //const backgroundImage = comics[0] && comics[0].thumbnail.path + "." + comics[1].thumbnail.extension;
-
+  const displayMore = expanded ? comics : comics.slice(0, 9);
   const fallback = "https://i.ibb.co/LnPBDY1/icon.png";
   const avatarImage = image ||"https://i.ibb.co/ZGLW03w/loading1.gif";
-  //console.log(post)
 
   return (
     <Layout>
@@ -127,7 +123,6 @@ const PostPage = ({ post }) => {
         <Card
           style={{
             backgroundColor: "black", 
-
             backgroundImage: `url(${backgroundImage})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
@@ -158,7 +153,6 @@ const PostPage = ({ post }) => {
           </Row>
           <Row>
             <div className="bio-div" style={{ backgroundColor: backColor }}>
-
                   <Image
                   src={avatarImage}
                   alt={post.name}
@@ -192,8 +186,13 @@ const PostPage = ({ post }) => {
                 <p className="bio-p"> {bio}</p>
               </div>
             </div>
+
             <div className="link-div">
-              <p style={{ textAlign: "center" }}>Links</p>
+            <div className="links-header">
+            <p >
+              Links
+            </p>
+            </div>
 
               <ul className="linksdiv">
                 {loading && <p className="loading">Loading...</p>} {links.map(({ url, type }, i) => (
@@ -212,11 +211,12 @@ const PostPage = ({ post }) => {
               {loading ? (<img src="https://i.ibb.co/ZGLW03w/loading1.gif" alt="loading" className="loading" />):(
 
               <ul className="comicsdiv">
-                {displayMore.map(({ title, thumbnail }, i) => (
+                {displayMore.map(({ title, thumbnail, urls }, i) => (
                   <li className="comics" key={i}>
+                  <a href={urls[0].url} target="_blank" rel="noopener noreferrer" className="comic-link">
                     <p className="comic-title"> {title}</p>
                     <img src={`${thumbnail.path}.${thumbnail.extension}`} alt={title} className="comic-image" />
-
+                    </a>
                   </li>
                 ))}
               </ul>
