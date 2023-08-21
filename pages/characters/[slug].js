@@ -111,7 +111,7 @@ const PostPage = ({ post }) => {
   }
   const displayMore = expanded ? comics : comics.slice(0, 9);
   const fallback = "https://i.ibb.co/LnPBDY1/icon.png";
-  const avatarImage = image ||"https://i.ibb.co/ZGLW03w/loading1.gif";
+  const avatarImage = image || "https://i.ibb.co/ZGLW03w/loading1.gif";
 
   return (
     <Layout>
@@ -121,14 +121,8 @@ const PostPage = ({ post }) => {
       </Head>
       <div>
         <Card
-          style={{
-            backgroundColor: "black", 
-            backgroundImage: `url(${backgroundImage})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",  
-            backgroundAttachment: "fixed",
-          }}
+          className="bio-card"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
         >
           <Row>
             <div className="cardheading" style={{ backgroundColor: "black" }}>
@@ -153,14 +147,13 @@ const PostPage = ({ post }) => {
           </Row>
           <Row>
             <div className="bio-div" style={{ backgroundColor: backColor }}>
-                  <Image
-                  src={avatarImage}
-                  alt={post.name}
-                  className="bio-image"
-                  width={200}
-                  height={200}
-                />
-                                <br></br>
+              <Image
+                src={avatarImage}
+                alt={post.name}
+                className="bio-image"
+                width={200}
+                height={200}
+              />
 
               <div className="bio-stats">
                 <p className="bio-sec">Full Name - </p>
@@ -188,11 +181,11 @@ const PostPage = ({ post }) => {
             </div>
 
             <div className="link-div">
-            <div className="links-header">
-            <p >
-              Links
-            </p>
-            </div>
+              <div className="links-header">
+                <p >
+                  Links
+                </p>
+              </div>
 
               <ul className="linksdiv">
                 {loading && <p className="loading">Loading...</p>} {links.map(({ url, type }, i) => (
@@ -208,32 +201,32 @@ const PostPage = ({ post }) => {
           <Row>
             <div className="comics-div" style={{ backgroundColor: backColor }}>
               <p className='comic-header'>Comics</p>
-              {loading ? (<img src="https://i.ibb.co/ZGLW03w/loading1.gif" alt="loading" className="loading" />):(
+              {loading ? (<img src="https://i.ibb.co/ZGLW03w/loading1.gif" alt="loading" className="loading" />) : (
 
-              <ul className="comicsdiv">
-                {displayMore.map(({ title, thumbnail, urls }, i) => (
-                  <li className="comics" key={i}>
-                  <a href={urls[0].url} target="_blank" rel="noopener noreferrer" className="comic-link">
-                    <p className="comic-title"> {title}</p>
-                    <img src={`${thumbnail.path}.${thumbnail.extension}`} alt={title} className="comic-image" />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              
+                <ul className="comicsdiv">
+                  {displayMore.map(({ title, thumbnail, urls }, i) => (
+                    <li className="comics" key={i}>
+                      <a href={urls[0].url} target="_blank" rel="noopener noreferrer" className="comic-link">
+                        <p className="comic-title"> {title}</p>
+                        <img src={`${thumbnail.path}.${thumbnail.extension}`} alt={title} className="comic-image" />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+
               )}
               <div className="more-comics-div">
-              <FillButton className="more-comics" type="button" onClick={() => setExpanded(comics)}>
-                {displayMore.length === comics.length ? "No More" : "More Comics" }
-              </FillButton>
+                <FillButton className="more-comics" type="button" onClick={() => setExpanded(comics)}>
+                  {displayMore.length === comics.length ? "No More" : "More Comics"}
+                </FillButton>
               </div>
             </div>
-            
+
           </Row>
-          
+
           <Row>
             <div className="dyn">
-              <p style={{ fontSize: "1.5vh", fontWeight: "bold" }}>
+              <p className="dyn-header">
                 DID YOU KNOW :
               </p>
               <p> {post.dyn}</p>

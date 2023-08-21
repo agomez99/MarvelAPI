@@ -80,8 +80,13 @@ canvas {
   width: 100px;
 }
 
-.bio.card {
-  background-color: rgb(226, 235, 175);
+.bio-card {
+  background-color: #000000;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+
 }
 
 div.cardheading {
@@ -175,6 +180,10 @@ margin-left: auto;
   border-radius: 50%;
 }
 
+.dyn-header{
+  font-size: 1.5vh;
+  font-weight: bold;
+}
 .dyn {
   background-color: rgb(226, 235, 175);
   padding: 10px;
