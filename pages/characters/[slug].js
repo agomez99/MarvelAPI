@@ -7,6 +7,8 @@ import "tailwindcss/tailwind.css";
 import { useEffect, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
+import styles from '@styles/bio.module.scss'
+
 const APIKEY = process.env.NEXT_PUBLIC_KEY;
 function titleCase(str) {
   return str
@@ -114,19 +116,21 @@ const PostPage = ({ post }) => {
   const avatarImage = image || "https://i.ibb.co/ZGLW03w/loading1.gif";
 
   return (
-    <Layout>
+    <Layout >
+    <div className={styles.BioPage}>
+
       <Head>
         <title>{title}</title>
         <link rel="shortcut icon" href="/cardverse.png" />
       </Head>
       <div>
         <Card
-          className="bio-card"
+          className={styles.bioCard}
           style={{ backgroundImage: `url(${backgroundImage})` }}
         >
           <Row>
-            <div className="cardheading" style={{ backgroundColor: "black" }}>
-              <h1 className="nameTitle">{post.name}</h1>
+            <div className={styles.cardHeading}>
+              <h1 className={styles.nameTitle}>{post.name}</h1>
               {user && (
                 <FillButton style={{ backgroundColor: "green" }}>
                   <a href={`/edit/${post.slug}`}>EDIT </a>
@@ -140,43 +144,43 @@ const PostPage = ({ post }) => {
                 <img
                   src={post.imageAlt}
                   alt={post.imageAlt}
-                  className="featimg"
+                  className={styles.featimg}
                 />
               </div>
             </Col>
           </Row>
           <Row>
-            <div className="bio-div" style={{ backgroundColor: backColor }}>
+            <div className={styles.bioDiv} style={{ backgroundColor: backColor }}>
               <Image
                 src={avatarImage}
                 alt={post.name}
-                className="bio-image"
+                className={styles.bioImage}
                 width={200}
                 height={200}
               />
 
-              <div className="bio-stats">
-                <p className="bio-sec">Full Name - </p>
-                <p className="bio-sec">{data["full-name"]}</p>
+              <div className={styles.bioStats}>
+                <p className={styles.bioSec}>Full Name - </p>
+                <p className={styles.bioSec}>{data["full-name"]}</p>
                 <br></br>
-                <p className="bio-sec" >Place Of Birth - </p>
-                <p className="bio-sec" > {data["place-of-birth"]} </p>
+                <p className={styles.bioSec} >Place Of Birth - </p>
+                <p className={styles.bioSec} > {data["place-of-birth"]} </p>
                 <br></br>
-                <h1 className="bio-sec">First Appearance: </h1>
+                <h1 className={styles.bioSec}>First Appearance: </h1>
                 <br></br>
-                <p className="bio-sec" > {data["first-appearance"]} </p>
+                <p className={styles.bioSec} > {data["first-appearance"]} </p>
                 <br></br>
-                <p className="bio-sec">Aliasas: </p>
+                <p className={styles.bioSec}>Aliasas: </p>
                 <br></br>
                 {data.aliases &&
                   data.aliases.map((item) => (
-                    <li key={item.toString()} className="bio-aliasas" >
+                    <li key={item.toString()}  className={styles.aliasas}>
                       {item}
                     </li>
                   ))}
               </div>
               <div>
-                <p className="bio-p"> {bio}</p>
+                <p className={styles.bioP}> {bio}</p>
               </div>
             </div>
 
@@ -233,6 +237,7 @@ const PostPage = ({ post }) => {
             </div>
           </Row>
         </Card>
+      </div>
       </div>
     </Layout>
   );

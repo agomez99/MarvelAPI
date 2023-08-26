@@ -75,110 +75,7 @@ canvas {
 
 
 /*Bio Page*/
-.marvel-lg {
-  height: 100px;
-  width: 100px;
-}
 
-.bio-card {
-  background-color: #000000;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-
-}
-
-div.cardheading {
-  width: 100%;
-  margin: 0px 0px;
-  margin-bottom: 5%;
-  z-index: 1;
-}
-
-div.logodiv {
-  text-align: right;
-  position: relative;
-  display: block;
-}
-
-div.logo {
-  height: 100%;
-}
-
-.idnum {
-  font-weight: bold;
-  text-align: center;
-  font-size: 30px;
-  color: black;
-  top: 30px;
-  right: 40px;
-  position: absolute;
-}
-
-.nameTitle {
-  float: left;
-  font-size: 5vw;
-  font-weight: bold;
-  color: white;
-  text-transform: uppercase;
-  font-family: 'Bangers';
-  letter-spacing: 5px;
-  margin-left: 10%;
-}
-
-.featimg {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  height: 22rem;
-  filter: drop-shadow(5px 5px 50px #000000);
-}
-
-.bio-div {
-  padding: 20px;
-  margin-left: 5%;
-  margin-right: 5%;
-  display: block;
-  width: 90%;
-  border-radius: 25px;
-  font-family: 'Bangers';
-}
-
-.bio-stats {
-  float: left;
-  margin: 5%;
-  font-weight: 100;
-  font-size: 1.5rem;
-  color: rgb(255, 255, 255);
-  white-space: nowrap;
-  letter-spacing: 1px;
-
-}
-
-.bio-sec {
-  float: left;
-  font-weight: bold;
-}
-
-.bio-p {
-  font-size: 26px;
-  margin-top: 20px;
-  display: inline-block;
-  margin-left: 5%;
-  margin-right: 5%;
-  color: white;
-  font-weight: 100;
-  letter-spacing: 1px;
-
-}
-
-.bio-image {
-  width: 200px;
-  height: 200px;
-margin-left: auto;
-  border-radius: 50%;
-}
 
 .dyn-header{
   font-size: 1.5vh;
@@ -469,45 +366,12 @@ li.links:hover {
     width: 90px;
   }
 
-  .bio-p {
-    font-size: 4vw;
-  }
-
-  .bio-sec {
-    font-size: 3.5vw;
-  }
-
-  .featimg {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: 10rem;
-
-  }
 
   h1 {
     font-size: 25px;
   }
 
-  .bio-sec {
-    display: block;
-    word-wrap: break-word;
 
-  }
-
-  .bio-stats {
-    margin: 5%;
-    font-size: 1.2rem;
-    color: rgb(255, 255, 255);
-
-  }
-
-  .bio-image {
-    width: 100px;
-    height: 100px;
-    margin-left: 33%;
-    margin-right: 33%;
-  }
 
   .bio-first {
     font-size: 4vw;

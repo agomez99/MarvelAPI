@@ -1,0 +1,116 @@
+.BioPage{
+
+
+    .bioCard {
+        background-color: #000000;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+      
+      }
+      .cardHeading {
+        width: 100%;
+        margin: 0px 0px;
+        margin-bottom: 5%;
+        z-index: 1;
+        background-color: #000000;
+      }
+      .nameTitle{
+        float: left;
+        font-size: 5vw;
+        font-weight: bold;
+        color: white;
+        text-transform: uppercase;
+        font-family: 'Bangers';
+        letter-spacing: 5px;
+        margin-left: 10%;
+      }
+      .featimg{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        height: 22rem;
+        filter: drop-shadow(5px 5px 50px #000000);
+      }
+      .bioDiv{
+        padding: 20px;
+        margin-left: 5%;
+        margin-right: 5%;
+        display: block;
+        width: 90%;
+        border-radius: 25px;
+        font-family: 'Bangers';
+      }
+      .bioImage{
+        width: 200px;
+        height: 200px;
+        margin-right: auto;
+        margin-left: 5%;
+        border-radius: 50%;
+      }
+      .bioStats{
+        float: left;
+        margin: 5%;
+        font-weight: 100;
+        font-size: 1.5rem;
+        color: rgb(255, 255, 255);
+        white-space: nowrap;
+        letter-spacing: 1px;
+      
+      }
+      .bioSec{
+        float: left;
+      }
+      .bioP{
+        font-size: 26px;
+        margin-top: 20px;
+        margin-left: 5%;
+        margin-right: 5%;
+        color: white;
+        font-weight: 100;
+        letter-spacing: 1px;
+      }
+      .aliasas{
+        font-size: 26px;
+
+      }
+
+}
+
+@media only screen and (max-width: 600px) {
+
+    .BioPage{
+
+        .bioSec{
+            font-size: 3.5vw;
+            display: block;
+            word-wrap: break-word;
+        }
+          .bioP{
+            font-size: 4vw;
+
+    }
+    .aliasas{
+        font-size: 4vw;
+
+    }
+    .featimg {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        height: 10rem;
+    
+      }
+
+      .bioStats{
+        margin: 5%;
+        font-size: 1.2rem;
+        color: rgb(255, 255, 255);
+      }
+    
+
+
+}
+}
+
