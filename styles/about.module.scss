@@ -1,0 +1,41 @@
+.AboutPage{
+height:100vh;
+display: flex;
+
+
+}
+
+.content{
+    background-color: #e40013;
+    color:white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top:10%;
+    margin-left:auto;
+    margin-right: auto;
+    font-family: 'Bangers';
+    font-size: 2rem;
+    height:auto;
+
+}
+.text{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+@media screen and (max-width: 600px) {
+
+    .content{
+
+        height:auto;
+    
+    }
+.text{
+    font-size: 1.5rem;
+}
+
+
+}

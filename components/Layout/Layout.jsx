@@ -43,7 +43,7 @@ const Layout = ({ children }) => {
                   >
                     Characters
                   </NavItem>
-                  <NavItem is="a" href="#"
+                  <NavItem is="a" href="/about"
                   className={styles.navitem}
                    >
                     About

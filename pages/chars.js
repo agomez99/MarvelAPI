@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { getPosts } from '@lib/firebase';
 import { Layout } from '@components';
-import { Col, Row, Flex } from 'tailwind-react-ui';
+import { Col, Flex } from 'tailwind-react-ui';
 import ReactImageFallback from 'react-image-fallback';
 
 import styles from '@styles/chars.module.scss';
@@ -29,16 +29,13 @@ export default function Characters({ post }) {
       .join(" ");
   }
 
-
-
-
   const sortAlphabetically = (post) => post.sort((a, b) => a.name.localeCompare(b.name));
 
   const sliceChunk = (chunkSize, arr) => {
     const filteredPosts = arr.filter(post =>
       post.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
-  
+
     const res = [];
     for (let i = 0; i < filteredPosts.length; i += chunkSize) {
       res.push(filteredPosts.slice(i, i + chunkSize));
@@ -59,25 +56,23 @@ export default function Characters({ post }) {
 
         <div>
           <h1 className={styles.charindex}>Characters Index</h1>
-
           <div className={styles.searchbarDiv} style={{ backgroundColor: 'black' }}>
-                        <input
-                className={styles.searchbar}
-                type="text"
-                placeholder="Search Characters"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />         
-           </div>
+            <input
+              className={styles.searchbar}
+              type="text"
+              placeholder="Search Characters"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
 
 
-          <Flex  className={styles.flexDisplay}>
-
-          {filteredChunks.map((chunk, index) => (
+          <Flex className={styles.flexDisplay}>
+            {filteredChunks.map((chunk, index) => (
               <Col w={{ def: 'full', sm: '1/1', md: '1/2', lg: '1/1', xl: '1/1' }} key={`chunk${index}`}>
                 {chunk.map((post) => (
                   <a href={`/characters/${post.slug}`} key={post.number.toString()} className={styles.indexChar}>
-                  <p className={styles.charname}>{titleCase(post.name)}</p>
+                    <p className={styles.charname}>{titleCase(post.name)}</p>
 
                     <div className="imageDiv">
                       <ReactImageFallback
