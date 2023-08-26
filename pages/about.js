@@ -14,7 +14,7 @@ export default function about() {
     <div className={styles.AboutPage}>
 
         <div className={styles.content}>
-            <h1 className="text-2xl font-bold">About</h1>
+            <h1 >About</h1>
             <div className={styles.text}>
             
             <p>I developed a straightforward application to exhibit a set of Marvel cards dating back to 1990. Given my childhood passion for these cards, I aimed to craft an uncomplicated app that not only presents the collection but also integrates a custom API. Additionally, I leveraged the Marvel API to seamlessly present details like images, biographies, and comic affiliations. </p>
