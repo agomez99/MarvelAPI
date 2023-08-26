@@ -1,4 +1,6 @@
-.BioPage{
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+.BioPage {
 
 
     .bioCard {
@@ -7,16 +9,18 @@
         background-position: center;
         background-attachment: fixed;
         background-repeat: no-repeat;
-      
-      }
-      .cardHeading {
+
+    }
+
+    .cardHeading {
         width: 100%;
         margin: 0px 0px;
         margin-bottom: 5%;
         z-index: 1;
         background-color: #000000;
-      }
-      .nameTitle{
+    }
+
+    .nameTitle {
         float: left;
         font-size: 5vw;
         font-weight: bold;
@@ -25,15 +29,17 @@
         font-family: 'Bangers';
         letter-spacing: 5px;
         margin-left: 10%;
-      }
-      .featimg{
+    }
+
+    .featimg {
         display: block;
         margin-left: auto;
         margin-right: auto;
         height: 22rem;
         filter: drop-shadow(5px 5px 50px #000000);
-      }
-      .bioDiv{
+    }
+
+    .bioDiv {
         padding: 20px;
         margin-left: 5%;
         margin-right: 5%;
@@ -41,15 +47,17 @@
         width: 90%;
         border-radius: 25px;
         font-family: 'Bangers';
-      }
-      .bioImage{
+    }
+
+    .bioImage {
         width: 200px;
         height: 200px;
         margin-right: auto;
         margin-left: 5%;
         border-radius: 50%;
-      }
-      .bioStats{
+    }
+
+    .bioStats {
         float: left;
         margin: 5%;
         font-weight: 100;
@@ -57,12 +65,14 @@
         color: rgb(255, 255, 255);
         white-space: nowrap;
         letter-spacing: 1px;
-      
-      }
-      .bioSec{
+
+    }
+
+    .bioSec {
         float: left;
-      }
-      .bioP{
+    }
+
+    .bioP {
         font-size: 26px;
         margin-top: 20px;
         margin-left: 5%;
@@ -70,47 +80,143 @@
         color: white;
         font-weight: 100;
         letter-spacing: 1px;
-      }
-      .aliasas{
+    }
+
+    .aliasas {
         font-size: 26px;
 
-      }
+    }
 
+    .linkDiv {
+        margin-top: 5%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 5%;
+        color: white;
+        font-family: 'Bangers';
+        font-size: 1.5rem;
+    }
+
+    .linksDiv {
+        display: inline-flex;
+        text-align: center;
+    }
+
+    .linksHeader {
+        color: white;
+        font-size: 1.5rem;
+        text-align: center;
+        display: block;
+    }
+
+    .comicsDiv {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .comicHeader {
+        text-align: center;
+        color: white;
+        font-family: 'Bangers';
+        font-size: 2.2rem;
+    }
+
+    .comicTitle {
+        color: white;
+        font-family: 'Bangers';
+        font-weight: 100;
+        font-size: 1.3rem;
+        width: 200px;
+        text-align: center;
+        margin-bottom: 10%;
+    }
+
+    .comicImage {
+        height: 300px;
+        padding: 20px;
+        transition: transform .2s;
+        /* Animation */
+    }
+
+    .comicImage:hover {
+        transform: scale(1.2);
+
+    }
+
+    .moreComicsDiv {
+        text-align: center;
+
+    }
+
+    .moreComicsBtn {
+        background-color: #ED1D24;
+        width: 200px;
+        color: white;
+        justify-content: center;
+    }
+
+    .loading {
+        font-size: 3rem;
+        color: white;
+        text-align: center;
+        margin-top: 200px;
+        font-family: 'Bangers';
+    }
+
+
+    .dynHeader {
+        font-size: 1.5vh;
+        font-weight: bold;
+    }
+
+    .dyn {
+        background-color: rgb(226, 235, 175);
+        padding: 10px;
+        border-width: 2px;
+        border-color: black;
+        margin: 5% auto 5% auto;
+        font-size: 1.5vh;
+        font-weight: bold;
+    }
 }
 
 @media only screen and (max-width: 600px) {
 
-    .BioPage{
+    .BioPage {
 
-        .bioSec{
+        .bioSec {
             font-size: 3.5vw;
             display: block;
             word-wrap: break-word;
         }
-          .bioP{
+
+        .bioP {
             font-size: 4vw;
 
-    }
-    .aliasas{
-        font-size: 4vw;
+        }
+
+        .aliasas {
+            font-size: 4vw;
+
+        }
+
+        .featimg {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            height: 10rem;
+
+        }
+
+        .bioStats {
+            margin: 5%;
+            font-size: 1.2rem;
+            color: rgb(255, 255, 255);
+        }
+
+
 
     }
-    .featimg {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        height: 10rem;
-    
-      }
-
-      .bioStats{
-        margin: 5%;
-        font-size: 1.2rem;
-        color: rgb(255, 255, 255);
-      }
-    
-
-
 }
-}
-

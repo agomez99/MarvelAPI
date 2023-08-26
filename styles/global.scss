@@ -71,54 +71,13 @@ canvas {
 
 }
 
-
-
-
 /*Bio Page*/
-
-
-.dyn-header{
-  font-size: 1.5vh;
-  font-weight: bold;
-}
-.dyn {
-  background-color: rgb(226, 235, 175);
-  padding: 10px;
-  border-width: 2px;
-  border-color: black;
-  margin: 5% auto 5% auto;
-  font-size: 1.5vh;
-  font-weight: bold;
-}
 
 a {
   padding-right: 20px;
   font-size: 2rem;
 }
-.links-header{
-  color:white;
-  font-family: 'Bangers';
-  font-size: 1.5rem;
-  text-align: center;
-  display:block;
-}
-.link-div {
-  margin-top: 5%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 5%;
-  
-  color: white;
-  font-family: 'Bangers';
-  font-size: 1.5rem;
 
-}
-
-.linksdiv {
-  display: inline-flex;
-  font-family: 'Bangers';
-  text-align: center;
-}
 
 li.links {
   margin-top: 5%;
@@ -131,61 +90,7 @@ li.links:hover {
 
 }
 
-.comic-header {
-  text-align: center;
-  color: white;
-  font-family: 'Bangers';
-  font-size: 2rem;
-}
-
-.comicsdiv {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-
-.comic-title {
-  color: white;
-  font-family: 'Bangers';
-  font-weight: 100;
-  font-size: 1rem;
-  width: 200px;
-  text-align: center;
-  margin-bottom: 10%;
-}
-
-.comic-image {
-  height: 300px;
-  padding: 20px;
-  transition: transform .2s; /* Animation */
-
-}
-
-.loading {
-  font-size: 3rem;
-  color: white;
-  text-align: center;
-  margin-top: 200px;
-  font-family: 'Bangers';
-
-}
-.more-comics-div{
-  text-align: center;
-}
-.more-comics{
-  background-color: #ED1D24;
-  width: 200px;
-  color:white;
- justify-content: center;
-}
-
-.comic-image:hover{
-  transform: scale(1.2);
-}
 /*End Bio Page*/
-
-
 .flip-card {
   background-color: transparent;
   width: 290px;
@@ -312,13 +217,6 @@ li.links:hover {
 
 }
 
-/* Portrait */
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {}
-
-/* Landscape */
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {}
-
-/* ----------- iPhone 6+, 7+ and 8+ ----------- */
 
 /* Portrait and Landscape */
 @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {

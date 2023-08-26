@@ -184,15 +184,15 @@ const PostPage = ({ post }) => {
               </div>
             </div>
 
-            <div className="link-div">
-              <div className="links-header">
+            <div className={styles.linkDiv}>
+              <div className={styles.linksHeader}>
                 <p >
                   Links
                 </p>
               </div>
 
-              <ul className="linksdiv">
-                {loading && <p className="loading">Loading...</p>} {links.map(({ url, type }, i) => (
+              <ul className={styles.linksDiv}>
+                {loading && <p className={styles.loading}>Loading...</p>} {links.map(({ url, type }, i) => (
                   <li className="links" key={i}>
                     <a href={url} target="_blank" rel="noopener noreferrer">
                       {type}
@@ -203,24 +203,24 @@ const PostPage = ({ post }) => {
             </div>
           </Row>
           <Row>
-            <div className="comics-div" style={{ backgroundColor: backColor }}>
-              <p className='comic-header'>Comics</p>
-              {loading ? (<img src="https://i.ibb.co/ZGLW03w/loading1.gif" alt="loading" className="loading" />) : (
+            <div className={styles.comicsDiv} style={{ backgroundColor: backColor }}>
+              <p className={styles.comicHeader}>Comics</p>
+              {loading ? (<img src="https://i.ibb.co/ZGLW03w/loading1.gif" alt="loading" className={styles.loading} />) : (
 
-                <ul className="comicsdiv">
+                <ul className={styles.comicsDiv}>
                   {displayMore.map(({ title, thumbnail, urls }, i) => (
                     <li className="comics" key={i}>
-                      <a href={urls[0].url} target="_blank" rel="noopener noreferrer" className="comic-link">
-                        <p className="comic-title"> {title}</p>
-                        <img src={`${thumbnail.path}.${thumbnail.extension}`} alt={title} className="comic-image" />
+                      <a href={urls[0].url} target="_blank" rel="noopener noreferrer" >
+                        <p className={styles.comicTitle}> {title}</p>
+                        <img src={`${thumbnail.path}.${thumbnail.extension}`} alt={title} className={styles.comicImage} />
                       </a>
                     </li>
                   ))}
                 </ul>
 
               )}
-              <div className="more-comics-div">
-                <FillButton className="more-comics" type="button" onClick={() => setExpanded(comics)}>
+              <div className={styles.morecomicsDiv}>
+                <FillButton className={styles.moreComicsBtn} type="button" onClick={() => setExpanded(comics)}>
                   {displayMore.length === comics.length ? "No More" : "More Comics"}
                 </FillButton>
               </div>
@@ -229,8 +229,8 @@ const PostPage = ({ post }) => {
           </Row>
 
           <Row>
-            <div className="dyn">
-              <p className="dyn-header">
+            <div className={styles.dyn}>
+              <p className={styles.dynHeader}>
                 DID YOU KNOW :
               </p>
               <p> {post.dyn}</p>
