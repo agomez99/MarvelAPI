@@ -8,8 +8,8 @@ import GoogleAnalytics from "./googleAnalytics";
 
 const HomePage = ({ posts }) => (
   <div>
-    <Layout className={styles.HomePage}>
-      <div>
+    <Layout >
+      <div >
         <Head>
           <meta property="og:url" content="https://cardverse.vercel.app/" />
           <meta property="og:type" content="article" />

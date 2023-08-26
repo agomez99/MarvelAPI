@@ -10,9 +10,6 @@ main {
   background-position: bottom;
 }
 
-.brand:hover {
-  background-color: rgb(77, 10, 10);
-}
 
 article {
   border: 1px solid black;
@@ -141,15 +138,7 @@ li.links:hover {
   color: "red"
 }
 
-.indexChar {
-  color: white;
-  font-size: 2rem;
-  text-transform: lowercase;
-  font-family: 'Bangers', cursive;
-  display: block;
-  text-align: center;
-  margin-bottom: 5%;
-}
+
 
 
 .featimglist:hover {
@@ -165,76 +154,6 @@ li.links:hover {
 }
 
 
-.flexdisplay {
-  display: flex;
-  flex-wrap: none;
-}
-
-/* ----------- iPhone 11----------- */
-@media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait) {
-
-  div.logodiv {
-    display: none;
-  }
-
-  .indexChar {
-    font-size: 1.5rem;
-  }
-}
-
-
-
-
-/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
-
-/* Portrait and Landscape */
-@media only screen and (min-device-width: 320px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
-  .banner {
-    display: flex;
-    margin: auto;
-  }
-
-  .title {
-    font-size: 2.5rem;
-  }
-
-  .logo {
-    width: 30%;
-    height: 30%;
-  }
-
-  div.logodiv {
-    display: none;
-  }
-
-  .indexChar {
-    font-size: 1.5rem;
-  }
-
-  img {
-    height: auto;
-  }
-
-}
-
-
-/* Portrait and Landscape */
-@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {
-
-  div.logodiv {
-    display: none;
-  }
-
-  .featimglist {
-    display: none;
-
-  }
-
-  .indexChar {
-    font-size: 1.5rem;
-  }
-
-}
 
 /* ----------- iPhone X ----------- */
 
@@ -277,12 +196,7 @@ li.links:hover {
 
   }
 
-  .indexChar {
-    color: white;
-    font-size: 1.5rem;
-    font-family: 'Bangers', cursive;
-    text-align: left;
-  }
+
 
   .indexChar:hover {
     font-size: 1.7rem;
@@ -293,10 +207,7 @@ li.links:hover {
     display: inline-flex;
   }
 
-  .flexdisplay {
-    display: block;
-    flex-wrap: wrap;
-  }
+
 }
 
 @media screen and (max-width:600px) {
@@ -309,38 +220,7 @@ li.links:hover {
   .title {
     font-size: 3rem;
   }
-  .bio-image {
-    width: 100px;
-    height: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 50%;
-  }
-  .bio-div{
-    padding:0px;
-  }
-  .bio-stats{
-    max-width:350px;
-    display: inline-block;
-    float: none;
-    margin: none;
-    white-space: nowrap;
-    overflow: hidden;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
 
-  }
-  .bio-sec{
-    color: rgb(255, 255, 255);
-    word-wrap: normal;
-    font-size: 3vw;
-
-  }
-
-  .bio-p {
-    font-size: 4vw;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-
-  }
   .bio-aliasas{
     display: flex;
     flex-direction: column;
@@ -348,19 +228,7 @@ li.links:hover {
 
     
   }
-  .flexdisplay {
-    display:flex;
-    flex-direction: column;
-  }
 
-  .indexChar {
-    color: white;
-    font-size: 1.8rem;
-    font-family: 'Bangers', cursive;
-    display: block;
-    text-align: center;
-    margin-bottom: 0%;
-  }
   .imageDiv{
     margin-bottom: 0%;
   }

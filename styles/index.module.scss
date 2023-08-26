@@ -13,7 +13,7 @@
     text-align: center;
   }
   img {
-    width: 100%;
+    width: 25%;
     height: auto;
   }
   .main-col {
@@ -59,7 +59,27 @@
         color: #1a73e8;
       }
     }
+
+  }
+  
+  .banner{
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
   }
 
+}
+
+@media screen and (max-width: 600px) {
+
+  .HomePage {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0px;
+  
+  }
 
 }

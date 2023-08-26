@@ -71,12 +71,12 @@ export default function Characters({ post }) {
            </div>
 
 
-          <Flex style={{  backgroundColor: 'black' }} className="flexdisplay">
+          <Flex  className={styles.flexDisplay}>
 
           {filteredChunks.map((chunk, index) => (
               <Col w={{ def: 'full', sm: '1/1', md: '1/2', lg: '1/1', xl: '1/1' }} key={`chunk${index}`}>
                 {chunk.map((post) => (
-                  <a href={`/characters/${post.slug}`} key={post.number.toString()} className="indexChar">
+                  <a href={`/characters/${post.slug}`} key={post.number.toString()} className={styles.indexChar}>
                   <p className={styles.charname}>{titleCase(post.name)}</p>
 
                     <div className="imageDiv">
